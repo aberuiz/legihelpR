@@ -88,3 +88,12 @@ getMasterList(session = 2108)
 #> # ℹ 389 more rows
 #> # ℹ 3 more variables: last_action <chr>, title <chr>, description <chr>
 ```
+
+# In Development, In Order
+
+    `legiSearch` = getSearch
+    `getPerson` = getPerson
+    `getMonitored` = getMonitorList
+    `getBill` = getBill
+
+Last Update 08/20/24

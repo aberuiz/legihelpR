@@ -3,4 +3,5 @@
 export(getMasterList)
 export(getSessions)
 export(getlegiKey)
+export(legiSearch)
 export(setlegiKey)

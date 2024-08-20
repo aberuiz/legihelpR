@@ -60,3 +60,13 @@ For receiving a Master List from legiscan's API you can use `getMasterlist`. You
 ```{r}
 getMasterList(session = 2108)
 ```
+
+
+# In Development, In Order
+
+    `legiSearch` = getSearch
+    `getPerson` = getPerson
+    `getMonitored` = getMonitorList
+    `getBill` = getBill
+
+Last Update `r format(Sys.Date(), "%D")`
