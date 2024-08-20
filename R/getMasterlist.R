@@ -14,6 +14,8 @@
 #' @examples
 #' getMasterlist(session = 2108)
 #' getMasterlist(state = "TX")
+#'
+#' @export
 getMasterList <- function(session = NULL, state = NULL, legiKey = NULL, op = "getMasterList"){
   if (is.null(legiKey)){
     legiKey <- getlegiKey()

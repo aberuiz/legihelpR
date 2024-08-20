@@ -27,4 +27,5 @@ Returns a legiscan Master List for a specified session or the most recent regula
 \examples{
 getMasterlist(session = 2108)
 getMasterlist(state = "TX")
+
 }

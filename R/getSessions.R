@@ -12,6 +12,7 @@
 #' @examples
 #' getSessions(state = "MA")
 #'
+#' @export
 getSessions <- function(state = "TX", legiKey = NULL, op = "getSessionlist"){
   if (is.null(legiKey)){
     legiKey <- getlegiKey()

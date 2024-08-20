@@ -6,6 +6,8 @@
 #' @param APIkey 32 character string given to you by legiscan.com
 #'
 #' @return Your legiscan API key is set for data requests
+#'
+#' @export
 setlegiKey <- function(APIkey, install = FALSE, overwrite = FALSE){
 
   if (!rlang::is_string(APIkey)){

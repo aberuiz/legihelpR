@@ -1,0 +1,62 @@
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# legihelpR
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This R package, legihelpR, is meant to use the legiscan API to help track legislative actions.
+
+## Installation & Load
+
+You can install the development version of legihelpR from [GitHub](https://github.com/aberuiz/legihelpR) with:
+
+```{r}
+# install.packages("remotes")
+# remotes::install_github("aberuiz/legihelpR")
+library(legihelpR)
+```
+
+## API Registration
+
+Requests to legiscan require an API key to function. You can register for an API key on the [legiscan website](https://legiscan.com/user/register).
+
+You can store your API key into your environment using `setlegiKey`. To permanently store your legiscan API key in your environment use the argument 'install = TRUE'.
+
+```{r eval = FALSE}
+setlegiKey(
+  APIkey = "< 32 character API Key >",
+  install = TRUE
+)
+```
+
+Once you have set up your API key all other legihelpR functions will use `getlegiKey` to check your stored environment file by default.
+You can use `getlegiKey` to check which API key you have stored. 
+You can overwrite your existing key by using 'overwrite = TRUE' in `setlegiKey`.
+
+## Sessions
+
+Receive a dataframe of all sessions in legiscan's database using `getSessions` to return unique Session IDs for the provided state.
+
+```{r}
+getSessions(state = "MA")
+```
+
+## Master List
+
+For receiving a Master List from legiscan's API you can use `getMasterlist`. You can provide a unique session ID or you can provide the state abbreviation to return the most recent regular session from that state.
+
+```{r}
+getMasterList(session = 2108)
+```
