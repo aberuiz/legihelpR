@@ -15,7 +15,7 @@ legiSearch(
 )
 }
 \arguments{
-\item{query}{Enter your text}
+\item{query}{Enter your search text. Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.}
 
 \item{state}{Search the entire nation by default with 'ALL' or specify state using letter abbreviations}
 
@@ -23,8 +23,8 @@ legiSearch(
 
 \item{session}{Limit search to specific session with a session_id}
 
-\item{page}{Default is set to return Page 1. Up to 2,000 results per page}
+\item{page}{Default is set to return Page 1. `legisearch` will paginate and include results.}
 }
 \description{
-Return up to 2,000 results at a time from legiscan's database
+Return search results from legiscan's database
 }

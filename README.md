@@ -89,6 +89,34 @@ getMasterList(session = 2108)
 #> # ℹ 3 more variables: last_action <chr>, title <chr>, description <chr>
 ```
 
+## legiSearch
+
+Return a dataframe of search results from legiscan using the
+`legiSearch` function.
+
+``` r
+legiSearch(
+  query = "workers compensation",
+  state = "TX"
+)
+#> 126 Results Found
+#> # A tibble: 126 × 11
+#>    relevance state bill_number bill_id change_hash   url   text_url research_url
+#>        <int> <chr> <chr>         <int> <chr>         <chr> <chr>    <chr>       
+#>  1       100 TX    HB351       1632612 dd8a4d0ce42d… http… https:/… https://leg…
+#>  2        99 TX    HB4389      1731515 0cead4ca815c… http… https:/… https://leg…
+#>  3        99 TX    HB778       1633853 15f1b71b4aa3… http… https:/… https://leg…
+#>  4        99 TX    HB3335      1726032 aa237860109e… http… https:/… https://leg…
+#>  5        98 TX    HB4147      1730763 f0d956d2c38e… http… https:/… https://leg…
+#>  6        98 TX    HB790       1634033 f24304e018fb… http… https:/… https://leg…
+#>  7        98 TX    HB102       1632560 e63dc9a79415… http… https:/… https://leg…
+#>  8        98 TX    HB2314      1706966 999038a29872… http… https:/… https://leg…
+#>  9        98 TX    HB2702      1719196 41789a475d09… http… https:/… https://leg…
+#> 10        98 TX    SB1776      1729262 9cf2c498fd6d… http… https:/… https://leg…
+#> # ℹ 116 more rows
+#> # ℹ 3 more variables: last_action_date <chr>, last_action <chr>, title <chr>
+```
+
 # In Development, In Order
 
     `legiSearch` = getSearch

@@ -61,7 +61,16 @@ For receiving a Master List from legiscan's API you can use `getMasterlist`. You
 getMasterList(session = 2108)
 ```
 
+## legiSearch
 
+Return a dataframe of search results from legiscan using the `legiSearch` function.
+
+```{r}
+legiSearch(
+  query = "workers compensation",
+  state = "TX"
+)
+```
 # In Development, In Order
 
     `legiSearch` = getSearch
