@@ -28,3 +28,14 @@ legiSearch(
 \description{
 Return search results from legiscan's database
 }
+\examples{
+legiSearch(
+  query = "action:yesterday AND workers compensation",
+  state = "TX"
+)
+
+legiSearch(
+query = "intro:month AND wage theft"
+)
+
+}

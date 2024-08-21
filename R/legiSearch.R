@@ -12,6 +12,16 @@
 #' @param session Limit search to specific session with a session_id
 #'
 #' @param page Default is set to return Page 1. `legisearch` will paginate and include results.
+#' @examples
+#' legiSearch(
+#'   query = "action:yesterday AND workers compensation",
+#'   state = "TX"
+#' )
+#'
+#'legiSearch(
+#' query = "intro:month AND wage theft"
+#')
+#'
 #' @export
 legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, page = 1, legiKey = NULL, op = "getSearch"){
   if (is.null(legiKey)){
@@ -40,7 +50,7 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, pa
       httr2::resp_body_json()
 
     if (is.null(req$searchresult) || length(req$searchresult) == 0) {
-      warning("No results found. Check legiscan.com for search syntax help.")
+      warning("No results found. Reference <https://legiscan.com/fulltext-search> for help with search syntax.")
       break
     }
 
@@ -59,7 +69,7 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, pa
     page <- page + 1
   }
   if (length(all_data) == 0) {
-    warning("No results found.")
+    warning("No results found. Reference <https://legiscan.com/fulltext-search> for help with search syntax.")
     return(NULL)
   } else {
     message(paste0(nrow(all_data), " Results Found"))

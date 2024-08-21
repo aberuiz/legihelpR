@@ -93,7 +93,10 @@ getMasterList(session = 2108)
 ## legiSearch
 
 Return a dataframe of search results from legiscan using the
-`legiSearch` function.
+`legiSearch` function. Reference [legiscan’s
+documentation](https://legiscan.com/fulltext-search) for assistance with
+additional search syntax. You can specify dates, status, type, & more
+using legiscan’s search filters in the ‘query’ argument.
 
 ``` r
 legiSearch(
@@ -117,8 +120,6 @@ legiSearch(
 #> # ℹ 116 more rows
 #> # ℹ 3 more variables: last_action_date <chr>, last_action <chr>, title <chr>
 ```
-
-*legiSearch is still in development*
 
 # Up Next, In Order
 
