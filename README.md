@@ -2,6 +2,7 @@
 # legihelpR
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 This R package, legihelpR, is meant to use the legiscan API to help
@@ -117,11 +118,12 @@ legiSearch(
 #> # ℹ 3 more variables: last_action_date <chr>, last_action <chr>, title <chr>
 ```
 
-# In Development, In Order
+*legiSearch is still in development*
+
+# Up Next, In Order
 
     `legiSearch` = getSearch
-    `getPerson` = getPerson
     `getMonitored` = getMonitorList
     `getBill` = getBill
 
-Last Update 08/20/24
+Last Update 08/21/24

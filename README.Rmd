@@ -71,10 +71,11 @@ legiSearch(
   state = "TX"
 )
 ```
-# In Development, In Order
+*legiSearch is still in development*
+
+# Up Next, In Order
 
     `legiSearch` = getSearch
-    `getPerson` = getPerson
     `getMonitored` = getMonitorList
     `getBill` = getBill
 
