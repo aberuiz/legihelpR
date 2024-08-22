@@ -74,8 +74,7 @@ legiSearch(
 
 # Up Next, In Order
 
-    `legiSearch` = getSearch
+    `getBill` = getBill *active*
     `getMonitored` = getMonitorList
-    `getBill` = getBill
 
 Last Update `r format(Sys.Date(), "%D")`
