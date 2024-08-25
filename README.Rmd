@@ -74,7 +74,6 @@ legiSearch(
 
 # Up Next, In Order
 
-    `getBill` = getBill *active*
-    `getMonitored` = getMonitorList
+Additional development being done to work on `getBill` to also add in a nice way to output the lists provided from legiscan.
 
 Last Update `r format(Sys.Date(), "%D")`

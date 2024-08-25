@@ -122,7 +122,7 @@ legiSearch(
 
 # Up Next, In Order
 
-    `getBill` = getBill *active*
-    `getMonitored` = getMonitorList
+Additional development being done to work on `getBill` to also add in a
+nice way to output the lists provided from legiscan.
 
-Last Update 08/22/24
+Last Update 08/24/24

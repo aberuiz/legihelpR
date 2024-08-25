@@ -2,6 +2,7 @@
 
 export(getBill)
 export(getMasterList)
+export(getMonitorList)
 export(getPerson)
 export(getSessions)
 export(getlegiKey)
