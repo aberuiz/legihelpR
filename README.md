@@ -2,6 +2,7 @@
 # legihelpR
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 This R package, legihelpR, is meant to use the legiscan API to help
@@ -122,7 +123,7 @@ legiSearch(
 
 # Up Next, In Order
 
-Additional development being done to work on `getBill` to also add in a
-nice way to output the lists provided from legiscan.
+    getSessionPeople
+    getRollCall
 
-Last Update 08/24/24
+Last Update 09/03/24

@@ -74,6 +74,7 @@ legiSearch(
 
 # Up Next, In Order
 
-Additional development being done to work on `getBill` to also add in a nice way to output the lists provided from legiscan.
+    getSessionPeople
+    getRollCall
 
 Last Update `r format(Sys.Date(), "%D")`
