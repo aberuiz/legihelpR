@@ -12,11 +12,13 @@
 #' @returns Master List in dataframe format
 #'
 #' @examples
-#' getMasterlist(session = 2108)
-#' getMasterlist(state = "TX")
+#' getMasterList(session = 2108)
+#' getMasterList(state = "TX")
 #'
 #' @export
-getMasterList <- function(session = NULL, state = NULL, legiKey = NULL, op = "getMasterList"){
+getMasterList <- function(session = NULL, state = NULL, legiKey = NULL){
+  op <- "getMasterList"
+
   if (is.null(legiKey)){
     legiKey <- getlegiKey()
   }
