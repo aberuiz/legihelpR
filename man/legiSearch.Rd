@@ -10,8 +10,7 @@ legiSearch(
   year = 2,
   session = NULL,
   page = 1,
-  legiKey = NULL,
-  op = "getSearch"
+  legiKey = NULL
 )
 }
 \arguments{
@@ -26,11 +25,11 @@ legiSearch(
 \item{page}{Default is set to return Page 1. `legisearch` will paginate and include results.}
 }
 \description{
-Return search results from legiscan's database
+Return search results from legiscan's database. Check legiscan.com for specific search syntax for more details.
 }
 \examples{
 legiSearch(
-  query = "action:yesterday AND workers compensation",
+  query = "action:yesterday AND 'workers compensation'",
   state = "TX"
 )
 

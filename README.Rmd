@@ -72,9 +72,19 @@ legiSearch(
 )
 ```
 
+## Session People
+
+Return a dataframe of basic information for people from the provided session id.
+
+```{r}
+getSessionPeople(session = 2108)
+```
+
+
 # Up Next, In Order
 
-    getSessionPeople
     getRollCall
+    getAmendement
+    getSupplement
 
 Last Update `r format(Sys.Date(), "%D")`

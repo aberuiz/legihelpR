@@ -2,7 +2,6 @@
 # legihelpR
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 This R package, legihelpR, is meant to use the legiscan API to help
@@ -121,9 +120,39 @@ legiSearch(
 #> # ℹ 3 more variables: last_action_date <chr>, last_action <chr>, title <chr>
 ```
 
+## Session People
+
+Return a dataframe of basic information for people from the provided
+session id.
+
+``` r
+getSessionPeople(session = 2108)
+#> [1] "88th Legislature 4th Special Session"
+#> # A tibble: 180 × 23
+#>    people_id person_hash party_id state_id party role_id role  name   first_name
+#>        <int> <chr>       <chr>       <int> <chr>   <int> <chr> <chr>  <chr>     
+#>  1      5848 3b040ho3    1              43 D           1 Rep   Alma … Alma      
+#>  2      5850 mcnms1e8    1              43 D           2 Sen   Carol… Carol     
+#>  3      5851 i5zt5f3s    1              43 D           1 Rep   Rafae… Rafael    
+#>  4      5852 0iywahqt    2              43 R           1 Rep   Charl… Charles   
+#>  5      5862 2oz7ngk6    2              43 R           1 Rep   Angie… Angie     
+#>  6      5874 afzjvlgk    2              43 R           1 Rep   Tom C… Tom       
+#>  7      5875 d8zu56yg    2              43 R           2 Sen   Charl… Charles   
+#>  8      5877 x0l0s73o    2              43 R           1 Rep   Drew … Drew      
+#>  9      5879 gel8m81o    1              43 D           1 Rep   Yvonn… Yvonne    
+#> 10      5884 1pzqjv8g    1              43 D           1 Rep   Harol… Harold    
+#> # ℹ 170 more rows
+#> # ℹ 14 more variables: middle_name <chr>, last_name <chr>, suffix <chr>,
+#> #   nickname <chr>, district <chr>, ftm_eid <int>, votesmart_id <int>,
+#> #   opensecrets_id <chr>, knowwho_pid <int>, ballotpedia <chr>,
+#> #   bioguide_id <chr>, committee_sponsor <int>, committee_id <int>,
+#> #   state_federal <int>
+```
+
 # Up Next, In Order
 
-    getSessionPeople
     getRollCall
+    getAmendement
+    getSupplement
 
 Last Update 09/03/24

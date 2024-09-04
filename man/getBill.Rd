@@ -4,7 +4,7 @@
 \alias{getBill}
 \title{Return a specific bill}
 \usage{
-getBill(billID = NULL, legiKey = NULL, op = "getBill")
+getBill(billID = NULL, legiKey = NULL)
 }
 \arguments{
 \item{billID}{bill_id integer value}

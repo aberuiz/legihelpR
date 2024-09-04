@@ -1,16 +1,18 @@
-#' Return a specific bill
+#' People from specified session
 #'
 #' @description
-#' Return a specific bill based on a legiscan bill_id
+#' Return a dataframe of people from the specified session
 #'
-#' @param billID bill_id integer value
+#' @param session Session ID. Can be found with `getSessions`
+#'
+#' @param legiKey 32 character string provided by legiscan
 #'
 #' @examples
-#' getBill(billID = 1633853)
+#' getSessionPeople(session = 2003)
 #'
 #' @export
-getBill <- function(billID = NULL, legiKey = NULL){
-  op <- "getBill"
+getSessionPeople <- function(session = NULL, legiKey = NULL){
+  op = "getSessionPeople"
 
   if (is.null(legiKey)){
     legiKey <- getlegiKey()
@@ -20,17 +22,17 @@ getBill <- function(billID = NULL, legiKey = NULL){
     return(paste0("Invalid API Key: ",legiKey," Register <https://legiscan.com/user/register> Store with `setlegiKey`"))
   }
 
-  req <- httr2::request("https://api.legiscan.com") |>
+  req <- httr2::request(
+    "https://api.legiscan.com"
+  ) |>
     httr2::req_url_query(
       key = legiKey,
       op = op,
-      id = billID,
+      id = session,
       .multi = "explode"
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()
-  print(
-    paste0(req$bill$bill_number, " from ", req$bill$state, " ", req$bill$session$session_name)
-  )
-  return(req$bill)
+  print(req$sessionpeople$session$session_name)
+  return(dplyr::bind_rows(req$sessionpeople$people))
 }

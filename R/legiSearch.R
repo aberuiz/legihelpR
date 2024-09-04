@@ -1,7 +1,7 @@
 #' Return search results from legiscan's database
 #'
 #' @description
-#' Return search results from legiscan's database
+#' Return search results from legiscan's database. Check legiscan.com for specific search syntax for more details.
 #'
 #' @param query Enter your search text. Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.
 #'
@@ -12,9 +12,10 @@
 #' @param session Limit search to specific session with a session_id
 #'
 #' @param page Default is set to return Page 1. `legisearch` will paginate and include results.
+#'
 #' @examples
 #' legiSearch(
-#'   query = "action:yesterday AND workers compensation",
+#'   query = "action:yesterday AND 'workers compensation'",
 #'   state = "TX"
 #' )
 #'
@@ -23,7 +24,9 @@
 #')
 #'
 #' @export
-legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, page = 1, legiKey = NULL, op = "getSearch"){
+legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, page = 1, legiKey = NULL){
+  op <- "getSearch"
+
   if (is.null(legiKey)){
     legiKey <- getlegiKey()
   }

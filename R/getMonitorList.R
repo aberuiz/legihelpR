@@ -1,12 +1,14 @@
-#' Return monitored list
+#' Return associated monitor list
 #'
 #' @description
-#' Return items from the monitored list from the account associated with legiKey provided
+#' Return items from the monitor list from the account associated with the legiKey provided
 #'
 #' @param legiKey 32 character API key from legiscan
 #'
 #' @export
-getMonitorList <- function(legiKey = NULL, op = "getMonitorList"){
+getMonitorList <- function(legiKey = NULL){
+  op <- "getMonitorList"
+
   if (is.null(legiKey)){
     legiKey <- getlegiKey()
   }

@@ -4,7 +4,7 @@
 \alias{getSessions}
 \title{Return legislative session ids}
 \usage{
-getSessions(state = "TX", legiKey = NULL, op = "getSessionlist")
+getSessions(state = "TX", legiKey = NULL)
 }
 \arguments{
 \item{state}{US State abbreviation}

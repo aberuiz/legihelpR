@@ -4,7 +4,7 @@
 \alias{getPerson}
 \title{Return record on Person}
 \usage{
-getPerson(PeopleID = NULL, op = "getPerson", legiKey = NULL)
+getPerson(PeopleID = NULL, legiKey = NULL)
 }
 \arguments{
 \item{PeopleID}{integer value from legiscan}

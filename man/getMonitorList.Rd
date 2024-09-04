@@ -2,13 +2,13 @@
 % Please edit documentation in R/getMonitorList.R
 \name{getMonitorList}
 \alias{getMonitorList}
-\title{Return monitored list}
+\title{Return associated monitor list}
 \usage{
-getMonitorList(legiKey = NULL, op = "getMonitorList")
+getMonitorList(legiKey = NULL)
 }
 \arguments{
 \item{legiKey}{32 character API key from legiscan}
 }
 \description{
-Return items from the monitored list from the account associated with legiKey provided
+Return items from the monitor list from the account associated with the legiKey provided
 }

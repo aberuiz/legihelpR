@@ -6,7 +6,9 @@
 #' @param PeopleID integer value from legiscan
 #'
 #' @export
-getPerson <- function(PeopleID = NULL, op = "getPerson", legiKey = NULL){
+getPerson <- function(PeopleID = NULL, legiKey = NULL){
+  op <- "getPerson"
+
   if (is.null(legiKey)){
     legiKey <- getlegiKey()
   }
@@ -23,5 +25,6 @@ getPerson <- function(PeopleID = NULL, op = "getPerson", legiKey = NULL){
     ) |>
     httr2::req_perform() |>
     httr2::resp_body_json()
+  print(req$person$name)
   return(dplyr::bind_rows(req$person))
 }
