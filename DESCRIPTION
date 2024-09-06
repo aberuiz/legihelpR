@@ -1,11 +1,10 @@
 Package: legihelpR
 Type: Package
-Title: legihelpR a legiscan R assistant
+Title: LegiScan R assistant
 Version: 0.1.0
 Author: Abraham Ruiz
 Maintainer: Abraham Ruiz <abraham@graycompass.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: legihelpR uses the LegiScan api to read in data and put it into a dataframe.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
