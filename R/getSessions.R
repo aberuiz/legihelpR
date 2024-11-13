@@ -13,7 +13,7 @@
 #' getSessions(state = "MA")
 #'
 #' @export
-getSessions <- function(state = "TX", legiKey = NULL){
+getSessions <- function(state = NULL, legiKey = NULL){
   op <- "getSessionlist"
 
   if (is.null(legiKey)){
