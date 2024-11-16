@@ -1,19 +1,20 @@
-#' Return list of available datasets
+#' Voting information for provided Roll Call
 #'
 #' @description
-#' Return a list of available datasets, available to filter by state and year
+#' Return vote detail summary for provided Roll Call and a nested list of individual votes
 #'
-#' @param state US state 2 character abbreviation
-#'
-#' @param year 4 year digit
+#' @param RollCall Roll Call ID integer
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns available datasets for download
+#' @returns Summary of Vote and nested list of individual votes by people id
+#'
+#' @examples
+#' getRollCall(RollCall = 1361957)
 #'
 #' @export
-getDatasetList <- function(state = NULL, year = NULL, legiKey = NULL){
-  op <- "getDatasetList"
+getRollCall <- function(RollCall = NULL, legiKey = NULL){
+  op <- "getRollcall"
 
   if (is.null(legiKey)){
     legiKey <- getlegiKey()
@@ -23,19 +24,12 @@ getDatasetList <- function(state = NULL, year = NULL, legiKey = NULL){
     return(paste0("Invalid API Key: ",legiKey,"\nRegister <https://legiscan.com/user/register>\nStore with `setlegiKey`"))
   }
 
-  if (!is.null(year)){
-    if(nchar(year) !=4){
-      warning("year should be 4 digits")
-    }
-  }
-
   tryCatch({
     req <- httr2::request("https://api.legiscan.com") |>
       httr2::req_url_query(
         key = legiKey,
         op = op,
-        state = state,
-        year = year,
+        id = RollCall,
         .multi = "explode"
       ) |>
       httr2::req_perform()
@@ -53,7 +47,8 @@ getDatasetList <- function(state = NULL, year = NULL, legiKey = NULL){
       }
     }
 
-    return(dplyr::bind_rows(response$datasetlist))
+    print(response$roll_call$desc)
+    return(response)
   }, error = function(e) {
     stop(sprintf("Error in API request: %s", e$message))
   })
