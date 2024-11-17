@@ -8,6 +8,8 @@ getPerson(PeopleID = NULL, legiKey = NULL)
 }
 \arguments{
 \item{PeopleID}{integer value from legiscan}
+
+\item{legiKey}{32 character string provided by legiscan}
 }
 \description{
 Return an individual record with basic information

@@ -8,7 +8,7 @@
 #' @param legiKey 32 character string provided by legiscan
 #'
 #' @examples
-#' getSessionPeople(session = 2003)
+#' getSessionPeople(session = 2160)
 #'
 #' @export
 getSessionPeople <- function(session = NULL, legiKey = NULL){

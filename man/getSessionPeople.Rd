@@ -15,6 +15,6 @@ getSessionPeople(session = NULL, legiKey = NULL)
 Return a dataframe of people from the specified session
 }
 \examples{
-getSessionPeople(session = 2003)
+getSessionPeople(session = 2160)
 
 }
