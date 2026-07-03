@@ -7,17 +7,20 @@
 #'
 #' @param accessKey access_key string value (use access_key from getDatasetList)
 #'
+#' @param file Optional file path to write the decoded ZIP archive to. When supplied, the base64 zip is decoded and saved to disk
+#'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Dataset archive with metadata and base64 encoded ZIP file
+#' @returns Dataset archive with metadata and base64 encoded ZIP file, or the file path invisibly when `file` is supplied
 #'
 #' @examples
 #' \dontrun{
 #' getDataset(sessionID = 1234, accessKey = "abc123def456")
+#' getDataset(sessionID = 1234, accessKey = "abc123def456", file = "dataset.zip")
 #' }
 #'
 #' @export
-getDataset <- function(sessionID = NULL, accessKey = NULL, legiKey = NULL){
+getDataset <- function(sessionID = NULL, accessKey = NULL, file = NULL, legiKey = NULL){
 
   if (is.null(sessionID) && is.null(accessKey)){
     stop("Specify either a sessionID or accessKey to download a dataset")
@@ -31,5 +34,10 @@ getDataset <- function(sessionID = NULL, accessKey = NULL, legiKey = NULL){
   )
 
   message(paste0("Dataset: ", response$dataset$session_name, " (", response$dataset$state_name, ")"))
+  if (!is.null(file)){
+    writeBin(openssl::base64_decode(response$dataset$zip), file)
+    message(paste0("Dataset saved to ", file))
+    return(invisible(file))
+  }
   return(response$dataset)
 }

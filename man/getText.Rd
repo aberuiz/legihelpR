@@ -4,15 +4,17 @@
 \alias{getText}
 \title{Return bill text document}
 \usage{
-getText(textID = NULL, legiKey = NULL)
+getText(textID = NULL, file = NULL, legiKey = NULL)
 }
 \arguments{
 \item{textID}{text_id integer value from bill object}
 
+\item{file}{Optional file path to write the decoded document to. When supplied, the base64 doc is decoded and saved to disk}
+
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Bill text document with metadata and base64 encoded document
+Bill text document with metadata and base64 encoded document, or the file path invisibly when `file` is supplied
 }
 \description{
 Return bill text document in base64 encoded format based on a text_id
@@ -20,6 +22,7 @@ Return bill text document in base64 encoded format based on a text_id
 \examples{
 \dontrun{
 getText(textID = 1234567)
+getText(textID = 1234567, file = "bill_text.html")
 }
 
 }

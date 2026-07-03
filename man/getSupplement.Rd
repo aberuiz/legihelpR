@@ -4,15 +4,17 @@
 \alias{getSupplement}
 \title{Return supplement document}
 \usage{
-getSupplement(supplementID = NULL, legiKey = NULL)
+getSupplement(supplementID = NULL, file = NULL, legiKey = NULL)
 }
 \arguments{
 \item{supplementID}{supplement_id integer value from bill object}
 
+\item{file}{Optional file path to write the decoded document to. When supplied, the base64 doc is decoded and saved to disk}
+
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Supplement document with metadata and base64 encoded document
+Supplement document with metadata and base64 encoded document, or the file path invisibly when `file` is supplied
 }
 \description{
 Return supplement document in base64 encoded format based on a supplement_id
@@ -20,6 +22,7 @@ Return supplement document in base64 encoded format based on a supplement_id
 \examples{
 \dontrun{
 getSupplement(supplementID = 1234567)
+getSupplement(supplementID = 1234567, file = "supplement.pdf")
 }
 
 }
