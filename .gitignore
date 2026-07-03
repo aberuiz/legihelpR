@@ -50,3 +50,6 @@ rsconnect/
 docs
 
 .vs_code
+
+# macOS
+.DS_Store
