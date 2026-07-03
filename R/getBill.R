@@ -23,7 +23,7 @@ getBill <- function(billID = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  print(
+  message(
     paste0(response$bill$bill_number, " from ", response$bill$state, " ", response$bill$session$session_name)
   )
   return(response$bill)

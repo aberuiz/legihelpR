@@ -30,6 +30,6 @@ getDataset <- function(sessionID = NULL, accessKey = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  print(paste0("Dataset: ", response$dataset$session_name, " (", response$dataset$state_name, ")"))
+  message(paste0("Dataset: ", response$dataset$session_name, " (", response$dataset$state_name, ")"))
   return(response$dataset)
 }

@@ -42,6 +42,6 @@ getDatasetRaw <- function(sessionID = NULL, accessKey = NULL, format = "json", f
     file <- paste0("legiscan_dataset_", sessionID, ".zip")
   }
   writeBin(response, file)
-  print(paste0("Dataset saved to ", file))
+  message(paste0("Dataset saved to ", file))
   return(invisible(file))
 }

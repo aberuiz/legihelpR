@@ -23,6 +23,6 @@ getText <- function(textID = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  print(paste0(response$text$bill_number, " - ", response$text$type_desc))
+  message(paste0(response$text$bill_number, " - ", response$text$type_desc))
   return(response$text)
 }

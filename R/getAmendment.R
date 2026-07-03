@@ -23,6 +23,6 @@ getAmendment <- function(amendmentID = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  print(paste0(response$amendment$bill_number, " - ", response$amendment$title))
+  message(paste0(response$amendment$bill_number, " - ", response$amendment$title))
   return(response$amendment)
 }

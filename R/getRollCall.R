@@ -23,6 +23,6 @@ getRollCall <- function(RollCall = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  print(response$roll_call$desc)
+  message(response$roll_call$desc)
   return(response$roll_call)
 }

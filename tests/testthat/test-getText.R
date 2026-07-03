@@ -1,6 +1,6 @@
 with_mock_dir("fixtures", {
   test_that("getText returns document metadata and a base64 encoded doc", {
-    expect_output(
+    expect_message(
       text <- getText(textID = 2614108, legiKey = fakeKey)
     )
     expect_type(text, "list")

@@ -23,6 +23,6 @@ getSessionPeople <- function(session = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  print(response$sessionpeople$session$session_name)
+  message(response$sessionpeople$session$session_name)
   return(dplyr::bind_rows(response$sessionpeople$people))
 }

@@ -1,6 +1,6 @@
 with_mock_dir("fixtures", {
   test_that("getPerson returns an individual record as a dataframe", {
-    expect_output(
+    expect_message(
       person <- getPerson(PeopleID = 5997, legiKey = fakeKey)
     )
     expect_s3_class(person, "data.frame")

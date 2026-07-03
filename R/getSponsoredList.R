@@ -23,12 +23,12 @@ getSponsoredList <- function(peopleID = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  cat(
+  message(
     paste0(
       "Individual: ", response$sponsoredbills$sponsor$name, '\n',
       "District: ", response$sponsoredbills$sponsor$district, '\n',
       "First Active: ", utils::tail(dplyr::bind_rows(response$sponsoredbills$sessions),n=1)$session_title, '\n',
-      "Last Active: ", utils::head(dplyr::bind_rows(response$sponsoredbills$sessions), n=1)$session_title, '\n'
+      "Last Active: ", utils::head(dplyr::bind_rows(response$sponsoredbills$sessions), n=1)$session_title
     )
   )
   return(dplyr::bind_rows(response$sponsoredbills$bills))

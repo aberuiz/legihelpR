@@ -31,6 +31,6 @@ getMasterList <- function(session = NULL, state = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  print(response$masterlist$session$session_name)
+  message(response$masterlist$session$session_name)
   return(dplyr::bind_rows(response$masterlist[-1]))
 }

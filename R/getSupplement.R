@@ -23,6 +23,6 @@ getSupplement <- function(supplementID = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  print(paste0(response$supplement$bill_number, " - ", response$supplement$type_desc))
+  message(paste0(response$supplement$bill_number, " - ", response$supplement$type_desc))
   return(response$supplement)
 }

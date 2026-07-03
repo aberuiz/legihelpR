@@ -1,6 +1,6 @@
 with_mock_dir("fixtures", {
   test_that("getBill returns bill detail for a bill_id", {
-    expect_output(
+    expect_message(
       bill <- getBill(billID = 1633853, legiKey = fakeKey),
       "HB778"
     )

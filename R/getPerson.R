@@ -23,6 +23,6 @@ getPerson <- function(PeopleID = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  print(response$person$name)
+  message(response$person$name)
   return(dplyr::bind_rows(response$person))
 }

@@ -35,7 +35,7 @@ getMasterListRaw <- function(session = NULL, state = NULL, legiKey = NULL){
 
   masterlist <- response$masterlist
   if (!is.null(masterlist$session)){
-    print(masterlist$session$session_name)
+    message(masterlist$session$session_name)
     masterlist$session <- NULL
   }
   return(dplyr::bind_rows(masterlist))

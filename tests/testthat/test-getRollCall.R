@@ -1,6 +1,6 @@
 with_mock_dir("fixtures", {
   test_that("getRollCall returns vote detail for a roll call id", {
-    expect_output(
+    expect_message(
       rollCall <- getRollCall(RollCall = 1361957, legiKey = fakeKey)
     )
     expect_type(rollCall, "list")
