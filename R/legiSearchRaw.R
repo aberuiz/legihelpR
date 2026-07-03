@@ -1,0 +1,66 @@
+#' Return raw search results from legiscan's database
+#'
+#' @description
+#' Return search results from legiscan's full text engine with simplified details,
+#' 2000 results at a time. Returns relevance, bill_id, and change_hash only,
+#' appropriate for automated keyword monitoring. Check legiscan.com for specific search syntax for more details.
+#'
+#' @param query Enter your search text. Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.
+#'
+#' @param state Search the entire nation by default with 'ALL' or specify state using letter abbreviations
+#'
+#' @param year Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior, >1900=Exact Year
+#'
+#' @param session Limit search to specific session with a session_id
+#'
+#' @param page Default is set to return Page 1. `legiSearchRaw` will paginate and include results.
+#'
+#' @param legiKey 32 character string provided by legiscan
+#'
+#' @returns Search results with relevance, bill_id, and change_hash in dataframe format
+#'
+#' @examples
+#' \dontrun{
+#' legiSearchRaw(
+#'   query = "intro:month AND wage theft",
+#'   state = "TX"
+#' )
+#' }
+#'
+#' @export
+legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, session = NULL, page = 1, legiKey = NULL){
+
+  all_data <- list()
+
+  while (TRUE) {
+    response <- legiRequest(
+      op = "getSearchRaw",
+      state = state,
+      query = query,
+      year = year,
+      id = session,
+      page = page,
+      legiKey = legiKey
+    )
+
+    results <- response$searchresult$results
+    if (is.null(results) || length(results) == 0) {
+      break
+    }
+
+    all_data <- dplyr::bind_rows(all_data, dplyr::bind_rows(results))
+
+    if (page >= response$searchresult$summary$page_total) {
+      break
+    }
+
+    page <- page + 1
+  }
+  if (length(all_data) == 0) {
+    warning("No results found. Reference <https://legiscan.com/fulltext-search> for help with search syntax.")
+    return(NULL)
+  } else {
+    message(paste0(nrow(all_data), " Results Found"))
+    return(all_data)
+  }
+}
