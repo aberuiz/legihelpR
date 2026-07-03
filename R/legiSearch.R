@@ -13,6 +13,9 @@
 #'
 #' @param page Default is set to return Page 1. `legiSearch` will paginate and include results.
 #'
+#' @param maxPages Maximum number of pages to fetch. Each page is one API query
+#' against your monthly quota. Use `Inf` to fetch every page.
+#'
 #' @param legiKey 32 character string provided by legiscan
 #'
 #' @returns Search results in dataframe format
@@ -30,7 +33,7 @@
 #' }
 #'
 #' @export
-legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, page = 1, legiKey = NULL){
+legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, page = 1, maxPages = 10, legiKey = NULL){
 
   all_data <- list()
 
@@ -58,6 +61,11 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, pa
     all_data <- dplyr::bind_rows(all_data, df)
 
     if (nrow(df) < 50) {
+      break
+    }
+
+    if (page >= maxPages) {
+      message("Stopped at page ", page, "; more results exist. Raise `maxPages` to fetch them.")
       break
     }
 

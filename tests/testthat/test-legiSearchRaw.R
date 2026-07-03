@@ -8,4 +8,15 @@ with_mock_dir("fixtures", {
     expect_gt(nrow(results), 0)
     expect_contains(names(results), c("bill_id", "change_hash", "relevance"))
   })
+
+  test_that("legiSearchRaw stops at maxPages and reports remaining pages", {
+    expect_message(
+      expect_message(
+        results <- legiSearchRaw(query = "pagetest", state = "MA", maxPages = 2, legiKey = fakeKey),
+        "3 pages of results exist; stopped at page 2"
+      ),
+      "Results Found"
+    )
+    expect_equal(nrow(results), 4)
+  })
 })

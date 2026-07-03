@@ -10,6 +10,7 @@ legiSearchRaw(
   year = 2,
   session = NULL,
   page = 1,
+  maxPages = 10,
   legiKey = NULL
 )
 }
@@ -23,6 +24,9 @@ legiSearchRaw(
 \item{session}{Limit search to specific session with a session_id}
 
 \item{page}{Default is set to return Page 1. `legiSearchRaw` will paginate and include results.}
+
+\item{maxPages}{Maximum number of pages to fetch. Each page is one API query
+against your monthly quota. Use `Inf` to fetch every page.}
 
 \item{legiKey}{32 character string provided by legiscan}
 }

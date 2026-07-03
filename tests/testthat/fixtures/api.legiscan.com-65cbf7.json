@@ -1,0 +1,25 @@
+{
+  "status": "OK",
+  "searchresult": {
+    "summary": {
+      "page": "2 of 3",
+      "range": "1 - 2000",
+      "relevancy": "100% - 90%",
+      "count": 5000,
+      "page_current": 2,
+      "page_total": 3
+    },
+    "results": [
+      {
+        "relevance": 99,
+        "bill_id": 2001,
+        "change_hash": "hash0201"
+      },
+      {
+        "relevance": 99,
+        "bill_id": 2002,
+        "change_hash": "hash0202"
+      }
+    ]
+  }
+}

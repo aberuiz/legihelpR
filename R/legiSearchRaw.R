@@ -15,6 +15,9 @@
 #'
 #' @param page Default is set to return Page 1. `legiSearchRaw` will paginate and include results.
 #'
+#' @param maxPages Maximum number of pages to fetch. Each page is one API query
+#' against your monthly quota. Use `Inf` to fetch every page.
+#'
 #' @param legiKey 32 character string provided by legiscan
 #'
 #' @returns Search results with relevance, bill_id, and change_hash in dataframe format
@@ -28,7 +31,7 @@
 #' }
 #'
 #' @export
-legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, session = NULL, page = 1, legiKey = NULL){
+legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, session = NULL, page = 1, maxPages = 10, legiKey = NULL){
 
   all_data <- list()
 
@@ -51,6 +54,11 @@ legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, session = NULL,
     all_data <- dplyr::bind_rows(all_data, dplyr::bind_rows(results))
 
     if (page >= response$searchresult$summary$page_total) {
+      break
+    }
+
+    if (page >= maxPages) {
+      message(response$searchresult$summary$page_total, " pages of results exist; stopped at page ", page, ". Raise `maxPages` to fetch them.")
       break
     }
 
