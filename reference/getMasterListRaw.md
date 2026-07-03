@@ -8,12 +8,12 @@ Optimized for detecting which bills have changed and need updating via
 ## Usage
 
 ``` r
-getMasterListRaw(session = NULL, state = NULL, legiKey = NULL)
+getMasterListRaw(sessionID = NULL, state = NULL, legiKey = NULL)
 ```
 
 ## Arguments
 
-- session:
+- sessionID:
 
   Session id integer value. Can be found with \`getSessions\`
 
@@ -33,7 +33,7 @@ Master List of bill_id and change_hash in dataframe format
 
 ``` r
 if (FALSE) { # \dontrun{
-getMasterListRaw(session = 2108)
+getMasterListRaw(sessionID = 2108)
 getMasterListRaw(state = "TX")
 } # }
 ```

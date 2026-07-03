@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">legihelpR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,12 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/change-detection.html">Detecting Bill Changes with change_hash</a></li>
+  </ul>
+</li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -97,8 +103,8 @@
 </h2>
 <p>For receiving a Master List from legiscan’s API you can use <code>getMasterlist</code>. You can provide a unique session ID or you can provide the state abbreviation to return the most recent regular session from that state.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/getMasterList.html">getMasterList</a></span><span class="op">(</span>session <span class="op">=</span> <span class="fl">2108</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "88th Legislature 4th Special Session"</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/getMasterList.html">getMasterList</a></span><span class="op">(</span>sessionID <span class="op">=</span> <span class="fl">2108</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 88th Legislature 4th Special Session</span></span>
 <span><span class="co">#&gt; # A tibble: 399 × 10</span></span>
 <span><span class="co">#&gt;    bill_id number change_hash          url   status_date status last_action_date</span></span>
 <span><span class="co">#&gt;      &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;                &lt;chr&gt; &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;           </span></span>
@@ -114,6 +120,7 @@
 <span><span class="co">#&gt; 10 1783015 HB16   c3af43bf73d6302a2db… http… 2023-11-07       1 2023-11-07      </span></span>
 <span><span class="co">#&gt; # ℹ 389 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 3 more variables: last_action &lt;chr&gt;, title &lt;chr&gt;, description &lt;chr&gt;</span></span></code></pre></div>
+<p>To track a session over time without burning API quota, use <code>getMasterListRaw</code> — it returns each bill’s <code>change_hash</code> so you can detect which bills changed and re-fetch only those with <code>getBill</code>. See the <a href="https://aberuiz.github.io/legihelpR/articles/change-detection.html">change detection vignette</a> (<code><a href="articles/change-detection.html">vignette("change-detection")</a></code>) for the full workflow.</p>
 </div>
 <div class="section level2">
 <h2 id="legisearch">legiSearch<a class="anchor" aria-label="anchor" href="#legisearch"></a>
@@ -146,8 +153,8 @@
 </h2>
 <p>Return a dataframe of basic information for people from the provided session id.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/getSessionPeople.html">getSessionPeople</a></span><span class="op">(</span>session <span class="op">=</span> <span class="fl">2108</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "88th Legislature 4th Special Session"</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/getSessionPeople.html">getSessionPeople</a></span><span class="op">(</span>sessionID <span class="op">=</span> <span class="fl">2108</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 88th Legislature 4th Special Session</span></span>
 <span><span class="co">#&gt; # A tibble: 537 × 24</span></span>
 <span><span class="co">#&gt;    people_id person_hash party_id state_id party role_id role  name   first_name</span></span>
 <span><span class="co">#&gt;        &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     </span></span>

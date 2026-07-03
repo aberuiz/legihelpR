@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">legihelpR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,6 +16,10 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/change-detection.html">Detecting Bill Changes with change_hash</a></li>
+  </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
       </ul></div>
@@ -41,7 +45,7 @@
 <span>  query <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  state <span class="op">=</span> <span class="st">"ALL"</span>,</span>
 <span>  year <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  session <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  sessionID <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  page <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  maxPages <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  legiKey <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -64,7 +68,7 @@
 <dd><p>Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior, &gt;1900=Exact Year</p></dd>
 
 
-<dt id="arg-session">session<a class="anchor" aria-label="anchor" href="#arg-session"></a></dt>
+<dt id="arg-sessionid">sessionID<a class="anchor" aria-label="anchor" href="#arg-sessionid"></a></dt>
 <dd><p>Limit search to specific session with a session_id</p></dd>
 
 

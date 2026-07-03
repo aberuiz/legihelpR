@@ -71,8 +71,8 @@ that state.
 
 ``` r
 
-getMasterList(session = 2108)
-#> [1] "88th Legislature 4th Special Session"
+getMasterList(sessionID = 2108)
+#> 88th Legislature 4th Special Session
 #> # A tibble: 399 × 10
 #>    bill_id number change_hash          url   status_date status last_action_date
 #>      <int> <chr>  <chr>                <chr> <chr>        <int> <chr>           
@@ -89,6 +89,14 @@ getMasterList(session = 2108)
 #> # ℹ 389 more rows
 #> # ℹ 3 more variables: last_action <chr>, title <chr>, description <chr>
 ```
+
+To track a session over time without burning API quota, use
+`getMasterListRaw` — it returns each bill’s `change_hash` so you can
+detect which bills changed and re-fetch only those with `getBill`. See
+the [change detection
+vignette](https://aberuiz.github.io/legihelpR/articles/change-detection.html)
+([`vignette("change-detection")`](https://aberuiz.github.io/legihelpR/articles/change-detection.md))
+for the full workflow.
 
 ## legiSearch
 
@@ -129,8 +137,8 @@ session id.
 
 ``` r
 
-getSessionPeople(session = 2108)
-#> [1] "88th Legislature 4th Special Session"
+getSessionPeople(sessionID = 2108)
+#> 88th Legislature 4th Special Session
 #> # A tibble: 537 × 24
 #>    people_id person_hash party_id state_id party role_id role  name   first_name
 #>        <int> <chr>       <chr>       <int> <chr>   <int> <chr> <chr>  <chr>     
@@ -228,3 +236,9 @@ Last Update 07/03/26
 - [`setMonitor()`](https://aberuiz.github.io/legihelpR/reference/setMonitor.md)
   : Add or remove bills from the monitor list
 
+# Articles
+
+### All vignettes
+
+- [Detecting Bill Changes with
+  change_hash](https://aberuiz.github.io/legihelpR/articles/change-detection.md):

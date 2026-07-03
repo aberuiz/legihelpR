@@ -5,12 +5,12 @@ Return a dataframe of people from the specified session
 ## Usage
 
 ``` r
-getSessionPeople(session = NULL, legiKey = NULL)
+getSessionPeople(sessionID = NULL, legiKey = NULL)
 ```
 
 ## Arguments
 
-- session:
+- sessionID:
 
   Session ID. Can be found with \`getSessions\`
 
@@ -26,6 +26,6 @@ People active in the specified session in dataframe format
 
 ``` r
 if (FALSE) { # \dontrun{
-getSessionPeople(session = 2160)
+getSessionPeople(sessionID = 2160)
 } # }
 ```

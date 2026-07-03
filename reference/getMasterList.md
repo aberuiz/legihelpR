@@ -6,12 +6,12 @@ recent regular session if only state is provided
 ## Usage
 
 ``` r
-getMasterList(session = NULL, state = NULL, legiKey = NULL)
+getMasterList(sessionID = NULL, state = NULL, legiKey = NULL)
 ```
 
 ## Arguments
 
-- session:
+- sessionID:
 
   Session id integer value. Can be found with \`getSessions\`
 
@@ -31,7 +31,7 @@ Master List in dataframe format
 
 ``` r
 if (FALSE) { # \dontrun{
-getMasterList(session = 2108)
+getMasterList(sessionID = 2108)
 getMasterList(state = "TX")
 } # }
 ```

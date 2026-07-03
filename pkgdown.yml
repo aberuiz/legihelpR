@@ -1,8 +1,9 @@
 pandoc: 3.8.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
-articles: {}
-last_built: 2026-07-03T22:06Z
+articles:
+  change-detection: change-detection.html
+last_built: 2026-07-03T22:46Z
 urls:
   reference: https://aberuiz.github.io/legihelpR/reference
   article: https://aberuiz.github.io/legihelpR/articles

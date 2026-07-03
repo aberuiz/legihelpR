@@ -5,12 +5,12 @@ Return an individual record with basic information
 ## Usage
 
 ``` r
-getPerson(PeopleID = NULL, legiKey = NULL)
+getPerson(peopleID = NULL, legiKey = NULL)
 ```
 
 ## Arguments
 
-- PeopleID:
+- peopleID:
 
   integer value from legiscan
 
@@ -26,6 +26,6 @@ Individual record in dataframe format
 
 ``` r
 if (FALSE) { # \dontrun{
-getPerson(PeopleID = 5997)
+getPerson(peopleID = 5997)
 } # }
 ```

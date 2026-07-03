@@ -6,12 +6,12 @@ individual votes
 ## Usage
 
 ``` r
-getRollCall(RollCall = NULL, legiKey = NULL)
+getRollCall(rollCallID = NULL, legiKey = NULL)
 ```
 
 ## Arguments
 
-- RollCall:
+- rollCallID:
 
   Roll Call ID integer
 
@@ -27,6 +27,6 @@ Summary of Vote and nested list of individual votes by people id
 
 ``` r
 if (FALSE) { # \dontrun{
-getRollCall(RollCall = 1361957)
+getRollCall(rollCallID = 1361957)
 } # }
 ```
