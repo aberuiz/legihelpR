@@ -31,9 +31,11 @@ Master List in dataframe format
 
 ``` r
 getMasterList(session = 2108)
-#> Warning: Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`
-#> [1] "Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`"
+#> Error: Invalid API Key: 
+#> Register <https://legiscan.com/user/register>
+#> Store with `setlegiKey`
 getMasterList(state = "TX")
-#> Warning: Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`
-#> [1] "Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`"
+#> Error: Invalid API Key: 
+#> Register <https://legiscan.com/user/register>
+#> Store with `setlegiKey`
 ```

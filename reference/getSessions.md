@@ -27,6 +27,7 @@ A dataframe of all state legislative session ids
 
 ``` r
 getSessions(state = "MA")
-#> Warning: Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`
-#> [1] "Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`"
+#> Error: Invalid API Key: 
+#> Register <https://legiscan.com/user/register>
+#> Store with `setlegiKey`
 ```

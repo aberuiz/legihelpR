@@ -31,13 +31,11 @@ Dataset archive with metadata and base64 encoded ZIP file
 
 ``` r
 getDataset(sessionID = 1234)
-#> Warning: Invalid API Key: 
+#> Error: Invalid API Key: 
 #> Register <https://legiscan.com/user/register>
 #> Store with `setlegiKey`
-#> [1] "Invalid API Key: \nRegister <https://legiscan.com/user/register>\nStore with `setlegiKey`"
 getDataset(accessKey = "abc123def456")
-#> Warning: Invalid API Key: 
+#> Error: Invalid API Key: 
 #> Register <https://legiscan.com/user/register>
 #> Store with `setlegiKey`
-#> [1] "Invalid API Key: \nRegister <https://legiscan.com/user/register>\nStore with `setlegiKey`"
 ```

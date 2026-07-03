@@ -27,6 +27,7 @@ Bills sponsored by a specified individual
 
 ``` r
 getSponsoredList(peopleID = 5997)
-#> Warning: Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`
-#> [1] "Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`"
+#> Error: Invalid API Key: 
+#> Register <https://legiscan.com/user/register>
+#> Store with `setlegiKey`
 ```

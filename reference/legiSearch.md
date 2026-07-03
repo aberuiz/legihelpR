@@ -49,12 +49,14 @@ legiSearch(
   query = "action:yesterday AND 'workers compensation'",
   state = "TX"
 )
-#> Warning: Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`
-#> [1] "Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`"
+#> Error: Invalid API Key: 
+#> Register <https://legiscan.com/user/register>
+#> Store with `setlegiKey`
 
 legiSearch(
 query = "intro:month AND wage theft"
 )
-#> Warning: Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`
-#> [1] "Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`"
+#> Error: Invalid API Key: 
+#> Register <https://legiscan.com/user/register>
+#> Store with `setlegiKey`
 ```

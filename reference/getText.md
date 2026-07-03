@@ -26,8 +26,7 @@ Bill text document with metadata and base64 encoded document
 
 ``` r
 getText(textID = 1234567)
-#> Warning: Invalid API Key: 
+#> Error: Invalid API Key: 
 #> Register <https://legiscan.com/user/register>
 #> Store with `setlegiKey`
-#> [1] "Invalid API Key: \nRegister <https://legiscan.com/user/register>\nStore with `setlegiKey`"
 ```

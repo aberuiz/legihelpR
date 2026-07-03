@@ -22,6 +22,7 @@ getSessionPeople(session = NULL, legiKey = NULL)
 
 ``` r
 getSessionPeople(session = 2160)
-#> Warning: Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`
-#> [1] "Invalid API Key:  Register <https://legiscan.com/user/register> Store with `setlegiKey`"
+#> Error: Invalid API Key: 
+#> Register <https://legiscan.com/user/register>
+#> Store with `setlegiKey`
 ```
