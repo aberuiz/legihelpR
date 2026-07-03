@@ -6,7 +6,7 @@
 #' @export
 getlegiKey <- function(){
   legiKey <- Sys.getenv("legiKey")
-  if (is.na(legiKey)){
+  if (!nzchar(legiKey)){
     return(NULL)
   }
   return(legiKey)
