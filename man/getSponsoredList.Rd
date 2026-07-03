@@ -18,6 +18,8 @@ Bills sponsored by a specified individual
 Returns a dataframe of bills that an indiviual legislator has sponsored, as specified using their people_id
 }
 \examples{
+\dontrun{
 getSponsoredList(peopleID = 5997)
+}
 
 }

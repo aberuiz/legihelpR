@@ -18,6 +18,8 @@ Amendment document with metadata and base64 encoded document
 Return amendment document in base64 encoded format based on an amendment_id
 }
 \examples{
+\dontrun{
 getAmendment(amendmentID = 1234567)
+}
 
 }

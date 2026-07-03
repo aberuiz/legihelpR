@@ -11,10 +11,15 @@ getSessionPeople(session = NULL, legiKey = NULL)
 
 \item{legiKey}{32 character string provided by legiscan}
 }
+\value{
+People active in the specified session in dataframe format
+}
 \description{
 Return a dataframe of people from the specified session
 }
 \examples{
+\dontrun{
 getSessionPeople(session = 2160)
+}
 
 }

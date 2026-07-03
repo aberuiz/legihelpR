@@ -2,3 +2,38 @@ url: https://aberuiz.github.io/legihelpR/
 template:
   bootstrap: 5
 
+reference:
+- title: API Key
+  contents:
+  - setlegiKey
+  - getlegiKey
+- title: Sessions & Bills
+  contents:
+  - getSessions
+  - getMasterList
+  - getMasterListRaw
+  - getBill
+  - getText
+  - getAmendment
+  - getSupplement
+  - getRollCall
+- title: People
+  contents:
+  - getPerson
+  - getSessionPeople
+  - getSponsoredList
+- title: Search
+  contents:
+  - legiSearch
+  - legiSearchRaw
+- title: Datasets
+  contents:
+  - getDatasetList
+  - getDataset
+  - getDatasetRaw
+- title: Monitoring
+  contents:
+  - getMonitorList
+  - getMonitorListRaw
+  - setMonitor
+

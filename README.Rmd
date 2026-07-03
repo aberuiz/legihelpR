@@ -81,10 +81,16 @@ getSessionPeople(session = 2108)
 ```
 
 
-# Up Next, In Order
+# Full API Coverage
 
-    getRollCall
-    getAmendement
-    getSupplement
+legihelpR covers every operation in the legiscan Pull API:
+
+| Area | Functions |
+|------|-----------|
+| Sessions & Bills | `getSessions`, `getMasterList`, `getMasterListRaw`, `getBill`, `getText`, `getAmendment`, `getSupplement`, `getRollCall` |
+| People | `getPerson`, `getSessionPeople`, `getSponsoredList` |
+| Search | `legiSearch`, `legiSearchRaw` |
+| Datasets | `getDatasetList`, `getDataset`, `getDatasetRaw` |
+| Monitoring | `getMonitorList`, `getMonitorListRaw`, `setMonitor` |
 
 Last Update `r format(Sys.Date(), "%D")`

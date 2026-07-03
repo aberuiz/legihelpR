@@ -2,6 +2,7 @@
 # legihelpR
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 This R package, legihelpR, is meant to use the legiscan API to help
@@ -47,18 +48,19 @@ Receive a dataframe of all sessions in legiscan’s database using
 
 ``` r
 getSessions(state = "MA")
-#> # A tibble: 8 × 14
-#>   session_id state_id year_start year_end prefile sine_die prior special
-#>        <int>    <int>      <int>    <int>   <int>    <int> <int>   <int>
-#> 1       2026       21       2023     2024       0        0     0       0
-#> 2       1807       21       2021     2022       0        1     1       0
-#> 3       1637       21       2019     2020       0        1     1       0
-#> 4       1413       21       2017     2018       0        1     1       0
-#> 5       1134       21       2015     2016       0        1     1       0
-#> 6       1006       21       2013     2014       0        1     1       0
-#> 7         99       21       2011     2012       0        1     1       0
-#> 8         28       21       2009     2010       0        1     1       0
-#> # ℹ 6 more variables: session_tag <chr>, session_title <chr>,
+#> # A tibble: 9 × 15
+#>   session_id state_id state_abbr year_start year_end prefile sine_die prior
+#>        <int>    <int> <chr>           <int>    <int>   <int>    <int> <int>
+#> 1       2182       21 MA               2025     2026       0        0     0
+#> 2       2026       21 MA               2023     2024       0        1     1
+#> 3       1807       21 MA               2021     2022       0        1     1
+#> 4       1637       21 MA               2019     2020       0        1     1
+#> 5       1413       21 MA               2017     2018       0        1     1
+#> 6       1134       21 MA               2015     2016       0        1     1
+#> 7       1006       21 MA               2013     2014       0        1     1
+#> 8         99       21 MA               2011     2012       0        1     1
+#> 9         28       21 MA               2009     2010       0        1     1
+#> # ℹ 7 more variables: special <int>, session_tag <chr>, session_title <chr>,
 #> #   session_name <chr>, dataset_hash <chr>, session_hash <chr>, name <chr>
 ```
 
@@ -102,21 +104,21 @@ legiSearch(
   query = "workers compensation",
   state = "TX"
 )
-#> 126 Results Found
-#> # A tibble: 126 × 11
+#> 108 Results Found
+#> # A tibble: 108 × 11
 #>    relevance state bill_number bill_id change_hash   url   text_url research_url
 #>        <int> <chr> <chr>         <int> <chr>         <chr> <chr>    <chr>       
-#>  1       100 TX    HB351       1632612 dd8a4d0ce42d… http… https:/… https://leg…
-#>  2        99 TX    HB4389      1731515 0cead4ca815c… http… https:/… https://leg…
-#>  3        99 TX    HB778       1633853 15f1b71b4aa3… http… https:/… https://leg…
-#>  4        99 TX    HB3335      1726032 aa237860109e… http… https:/… https://leg…
-#>  5        98 TX    HB4147      1730763 f0d956d2c38e… http… https:/… https://leg…
-#>  6        98 TX    HB790       1634033 f24304e018fb… http… https:/… https://leg…
-#>  7        98 TX    HB102       1632560 e63dc9a79415… http… https:/… https://leg…
-#>  8        98 TX    HB2314      1706966 999038a29872… http… https:/… https://leg…
-#>  9        98 TX    HB2702      1719196 41789a475d09… http… https:/… https://leg…
-#> 10        98 TX    SB1776      1729262 9cf2c498fd6d… http… https:/… https://leg…
-#> # ℹ 116 more rows
+#>  1       100 TX    SB1455      1976056 ef4cd00a3f52… http… https:/… https://leg…
+#>  2        99 TX    HB4483      2002338 e21037c74f19… http… https:/… https://leg…
+#>  3        99 TX    SB2077      1994907 36b04ee1b8be… http… https:/… https://leg…
+#>  4        99 TX    HB3914      1993351 b865bd54a9dd… http… https:/… https://leg…
+#>  5        99 TX    HB4464      2000135 6420227e8d3c… http… https:/… https://leg…
+#>  6        99 TX    HB5545      2008375 d47eb1a3432f… http… https:/… https://leg…
+#>  7        99 TX    HB2488      1957337 dae9ad9cd064… http… https:/… https://leg…
+#>  8        99 TX    HB4067      1994949 c24af9052b24… http… https:/… https://leg…
+#>  9        98 TX    HB2414      1954268 a8b730069476… http… https:/… https://leg…
+#> 10        98 TX    HB1667      1897368 f1068ef0e375… http… https:/… https://leg…
+#> # ℹ 98 more rows
 #> # ℹ 3 more variables: last_action_date <chr>, last_action <chr>, title <chr>
 ```
 
@@ -128,31 +130,37 @@ session id.
 ``` r
 getSessionPeople(session = 2108)
 #> [1] "88th Legislature 4th Special Session"
-#> # A tibble: 180 × 23
+#> # A tibble: 537 × 24
 #>    people_id person_hash party_id state_id party role_id role  name   first_name
 #>        <int> <chr>       <chr>       <int> <chr>   <int> <chr> <chr>  <chr>     
 #>  1      5848 3b040ho3    1              43 D           1 Rep   Alma … Alma      
-#>  2      5850 mcnms1e8    1              43 D           2 Sen   Carol… Carol     
-#>  3      5851 i5zt5f3s    1              43 D           1 Rep   Rafae… Rafael    
-#>  4      5852 0iywahqt    2              43 R           1 Rep   Charl… Charles   
-#>  5      5862 2oz7ngk6    2              43 R           1 Rep   Angie… Angie     
-#>  6      5874 afzjvlgk    2              43 R           1 Rep   Tom C… Tom       
-#>  7      5875 d8zu56yg    2              43 R           2 Sen   Charl… Charles   
-#>  8      5877 x0l0s73o    2              43 R           1 Rep   Drew … Drew      
-#>  9      5879 gel8m81o    1              43 D           1 Rep   Yvonn… Yvonne    
-#> 10      5884 1pzqjv8g    1              43 D           1 Rep   Harol… Harold    
-#> # ℹ 170 more rows
-#> # ℹ 14 more variables: middle_name <chr>, last_name <chr>, suffix <chr>,
+#>  2      5848 3b040ho3    1              43 D           1 Rep   Alma … Alma      
+#>  3      5848 3b040ho3    1              43 D           1 Rep   Alma … Alma      
+#>  4      5850 mcnms1e8    1              43 D           2 Sen   Carol… Carol     
+#>  5      5850 mcnms1e8    1              43 D           2 Sen   Carol… Carol     
+#>  6      5850 mcnms1e8    1              43 D           2 Sen   Carol… Carol     
+#>  7      5851 i5zt5f3s    1              43 D           1 Rep   Rafae… Rafael    
+#>  8      5851 i5zt5f3s    1              43 D           1 Rep   Rafae… Rafael    
+#>  9      5851 i5zt5f3s    1              43 D           1 Rep   Rafae… Rafael    
+#> 10      5852 0iywahqt    2              43 R           1 Rep   Charl… Charles   
+#> # ℹ 527 more rows
+#> # ℹ 15 more variables: middle_name <chr>, last_name <chr>, suffix <chr>,
 #> #   nickname <chr>, district <chr>, ftm_eid <int>, votesmart_id <int>,
 #> #   opensecrets_id <chr>, knowwho_pid <int>, ballotpedia <chr>,
 #> #   bioguide_id <chr>, committee_sponsor <int>, committee_id <int>,
-#> #   state_federal <int>
+#> #   state_federal <int>, bio <named list>
 ```
 
-# Up Next, In Order
+# Full API Coverage
 
-    getRollCall
-    getAmendement
-    getSupplement
+legihelpR covers every operation in the legiscan Pull API:
 
-Last Update 09/03/24
+| Area | Functions |
+|----|----|
+| Sessions & Bills | `getSessions`, `getMasterList`, `getMasterListRaw`, `getBill`, `getText`, `getAmendment`, `getSupplement`, `getRollCall` |
+| People | `getPerson`, `getSessionPeople`, `getSponsoredList` |
+| Search | `legiSearch`, `legiSearchRaw` |
+| Datasets | `getDatasetList`, `getDataset`, `getDatasetRaw` |
+| Monitoring | `getMonitorList`, `getMonitorListRaw`, `setMonitor` |
+
+Last Update 07/03/26

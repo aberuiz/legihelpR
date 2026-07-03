@@ -11,6 +11,15 @@ getPerson(PeopleID = NULL, legiKey = NULL)
 
 \item{legiKey}{32 character string provided by legiscan}
 }
+\value{
+Individual record in dataframe format
+}
 \description{
 Return an individual record with basic information
+}
+\examples{
+\dontrun{
+getPerson(PeopleID = 5997)
+}
+
 }

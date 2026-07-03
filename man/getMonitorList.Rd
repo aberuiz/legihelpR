@@ -4,11 +4,23 @@
 \alias{getMonitorList}
 \title{Return associated monitor list}
 \usage{
-getMonitorList(legiKey = NULL)
+getMonitorList(record = "current", legiKey = NULL)
 }
 \arguments{
+\item{record}{Record filter: "current" or "archived", or an exact year >= 2010}
+
 \item{legiKey}{32 character API key from legiscan}
+}
+\value{
+Monitored bills in dataframe format
 }
 \description{
 Return items from the monitor list from the account associated with the legiKey provided
+}
+\examples{
+\dontrun{
+getMonitorList()
+getMonitorList(record = "archived")
+}
+
 }

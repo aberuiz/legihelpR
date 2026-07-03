@@ -18,6 +18,8 @@ Summary of Vote and nested list of individual votes by people id
 Return vote detail summary for provided Roll Call and a nested list of individual votes
 }
 \examples{
+\dontrun{
 getRollCall(RollCall = 1361957)
+}
 
 }

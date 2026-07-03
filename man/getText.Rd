@@ -18,6 +18,8 @@ Bill text document with metadata and base64 encoded document
 Return bill text document in base64 encoded format based on a text_id
 }
 \examples{
+\dontrun{
 getText(textID = 1234567)
+}
 
 }

@@ -8,11 +8,18 @@ getBill(billID = NULL, legiKey = NULL)
 }
 \arguments{
 \item{billID}{bill_id integer value}
+
+\item{legiKey}{32 character string provided by legiscan}
+}
+\value{
+Bill detail information including sponsors, history, texts, and roll calls
 }
 \description{
 Return a specific bill based on a legiscan bill_id
 }
 \examples{
+\dontrun{
 getBill(billID = 1633853)
+}
 
 }

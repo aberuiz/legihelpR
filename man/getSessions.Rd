@@ -18,6 +18,8 @@ A dataframe of all state legislative session ids
 Return a dataframe for all session ids of specified state in legiscan's database
 }
 \examples{
+\dontrun{
 getSessions(state = "MA")
+}
 
 }

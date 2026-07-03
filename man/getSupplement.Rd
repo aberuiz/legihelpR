@@ -18,6 +18,8 @@ Supplement document with metadata and base64 encoded document
 Return supplement document in base64 encoded format based on a supplement_id
 }
 \examples{
+\dontrun{
 getSupplement(supplementID = 1234567)
+}
 
 }

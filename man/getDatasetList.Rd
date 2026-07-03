@@ -19,3 +19,9 @@ available datasets for download
 \description{
 Return a list of available datasets, available to filter by state and year
 }
+\examples{
+\dontrun{
+getDatasetList(state = "TX", year = 2023)
+}
+
+}

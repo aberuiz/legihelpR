@@ -1,7 +1,7 @@
 Package: legihelpR
 Type: Package
 Title: LegiScan R assistant
-Version: 0.1.0
+Version: 0.2.0
 Author: Abraham Ruiz
 Maintainer: Abraham Ruiz <abraham@graycompass.com>
 Description: legihelpR uses the LegiScan api to read in data and put it into a dataframe.
@@ -11,6 +11,7 @@ LazyData: true
 Imports:
   httr2,
   dplyr,
-  rlang
-RoxygenNote: 7.3.3
+  rlang,
+  utils
 URL: https://aberuiz.github.io/legihelpR/
+Config/roxygen2/version: 8.0.0
