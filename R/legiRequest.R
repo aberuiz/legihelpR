@@ -32,6 +32,9 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
       ...,
       .multi = "explode"
     ) |>
+    httr2::req_user_agent("legihelpR (https://github.com/aberuiz/legihelpR)") |>
+    httr2::req_retry(max_tries = 3) |>
+    httr2::req_throttle(capacity = 30, fill_time_s = 60) |>
     httr2::req_perform()
 
   # error responses come back as JSON even for raw operations
