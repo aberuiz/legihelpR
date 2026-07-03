@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">legihelpR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +43,7 @@
 <span>  year <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  session <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  page <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  maxPages <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  legiKey <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -69,6 +70,11 @@
 
 <dt id="arg-page">page<a class="anchor" aria-label="anchor" href="#arg-page"></a></dt>
 <dd><p>Default is set to return Page 1. `legiSearch` will paginate and include results.</p></dd>
+
+
+<dt id="arg-maxpages">maxPages<a class="anchor" aria-label="anchor" href="#arg-maxpages"></a></dt>
+<dd><p>Maximum number of pages to fetch. Each page is one API query
+against your monthly quota. Use `Inf` to fetch every page.</p></dd>
 
 
 <dt id="arg-legikey">legiKey<a class="anchor" aria-label="anchor" href="#arg-legikey"></a></dt>

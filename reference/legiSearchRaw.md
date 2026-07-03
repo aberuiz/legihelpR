@@ -14,6 +14,7 @@ legiSearchRaw(
   year = 2,
   session = NULL,
   page = 1,
+  maxPages = 10,
   legiKey = NULL
 )
 ```
@@ -43,6 +44,11 @@ legiSearchRaw(
 
   Default is set to return Page 1. \`legiSearchRaw\` will paginate and
   include results.
+
+- maxPages:
+
+  Maximum number of pages to fetch. Each page is one API query against
+  your monthly quota. Use \`Inf\` to fetch every page.
 
 - legiKey:
 
