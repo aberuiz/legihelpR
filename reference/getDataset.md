@@ -1,7 +1,7 @@
 # Download dataset archive
 
 Return a base64 encoded ZIP archive of a specific dataset based on
-session_id or access_key
+session_id and access_key
 
 ## Usage
 
@@ -30,12 +30,7 @@ Dataset archive with metadata and base64 encoded ZIP file
 ## Examples
 
 ``` r
-getDataset(sessionID = 1234)
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
-getDataset(accessKey = "abc123def456")
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
+if (FALSE) { # \dontrun{
+getDataset(sessionID = 1234, accessKey = "abc123def456")
+} # }
 ```

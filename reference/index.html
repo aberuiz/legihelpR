@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">legihelpR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="api-key">API Key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
 
 
 
@@ -41,31 +41,33 @@
 
       <dl><dt>
 
-          <code><a href="getAmendment.html">getAmendment()</a></code>
+          <code><a href="setlegiKey.html">setlegiKey()</a></code>
 
         </dt>
-        <dd>Return amendment document</dd>
+        <dd>Set a legiscan api key</dd>
 
         <dt>
 
-          <code><a href="getBill.html">getBill()</a></code>
+          <code><a href="getlegiKey.html">getlegiKey()</a></code>
 
         </dt>
-        <dd>Return a specific bill</dd>
+        <dd>Return legiscan API key</dd>
+      </dl></div><div class="section level2">
+      <h2 id="sessions-bills">Sessions &amp; Bills<a class="anchor" aria-label="anchor" href="#sessions-bills"></a></h2>
 
-        <dt>
 
-          <code><a href="getDataset.html">getDataset()</a></code>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="getSessions.html">getSessions()</a></code>
 
         </dt>
-        <dd>Download dataset archive</dd>
-
-        <dt>
-
-          <code><a href="getDatasetList.html">getDatasetList()</a></code>
-
-        </dt>
-        <dd>Return list of available datasets</dd>
+        <dd>Return legislative session ids</dd>
 
         <dt>
 
@@ -76,52 +78,17 @@
 
         <dt>
 
-          <code><a href="getMonitorList.html">getMonitorList()</a></code>
+          <code><a href="getMasterListRaw.html">getMasterListRaw()</a></code>
 
         </dt>
-        <dd>Return associated monitor list</dd>
+        <dd>Return legiscan Master List for change detection</dd>
 
         <dt>
 
-          <code><a href="getPerson.html">getPerson()</a></code>
+          <code><a href="getBill.html">getBill()</a></code>
 
         </dt>
-        <dd>Return record on Person</dd>
-
-        <dt>
-
-          <code><a href="getRollCall.html">getRollCall()</a></code>
-
-        </dt>
-        <dd>Voting information for provided Roll Call</dd>
-
-        <dt>
-
-          <code><a href="getSessionPeople.html">getSessionPeople()</a></code>
-
-        </dt>
-        <dd>People from specified session</dd>
-
-        <dt>
-
-          <code><a href="getSessions.html">getSessions()</a></code>
-
-        </dt>
-        <dd>Return legislative session ids</dd>
-
-        <dt>
-
-          <code><a href="getSponsoredList.html">getSponsoredList()</a></code>
-
-        </dt>
-        <dd>Return df of bills an individual has sponsored</dd>
-
-        <dt>
-
-          <code><a href="getSupplement.html">getSupplement()</a></code>
-
-        </dt>
-        <dd>Return supplement document</dd>
+        <dd>Return a specific bill</dd>
 
         <dt>
 
@@ -132,12 +99,65 @@
 
         <dt>
 
-          <code><a href="getlegiKey.html">getlegiKey()</a></code>
+          <code><a href="getAmendment.html">getAmendment()</a></code>
 
         </dt>
-        <dd>Return legiscan API key</dd>
+        <dd>Return amendment document</dd>
 
         <dt>
+
+          <code><a href="getSupplement.html">getSupplement()</a></code>
+
+        </dt>
+        <dd>Return supplement document</dd>
+
+        <dt>
+
+          <code><a href="getRollCall.html">getRollCall()</a></code>
+
+        </dt>
+        <dd>Voting information for provided Roll Call</dd>
+      </dl></div><div class="section level2">
+      <h2 id="people">People<a class="anchor" aria-label="anchor" href="#people"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="getPerson.html">getPerson()</a></code>
+
+        </dt>
+        <dd>Return record on Person</dd>
+
+        <dt>
+
+          <code><a href="getSessionPeople.html">getSessionPeople()</a></code>
+
+        </dt>
+        <dd>People from specified session</dd>
+
+        <dt>
+
+          <code><a href="getSponsoredList.html">getSponsoredList()</a></code>
+
+        </dt>
+        <dd>Return df of bills an individual has sponsored</dd>
+      </dl></div><div class="section level2">
+      <h2 id="search">Search<a class="anchor" aria-label="anchor" href="#search"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
 
           <code><a href="legiSearch.html">legiSearch()</a></code>
 
@@ -146,12 +166,73 @@
 
         <dt>
 
-          <code><a href="setlegiKey.html">setlegiKey()</a></code>
+          <code><a href="legiSearchRaw.html">legiSearchRaw()</a></code>
 
         </dt>
-        <dd>Set a legiscan api key</dd>
+        <dd>Return raw search results from legiscan's database</dd>
+      </dl></div><div class="section level2">
+      <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="getDatasetList.html">getDatasetList()</a></code>
+
+        </dt>
+        <dd>Return list of available datasets</dd>
+
+        <dt>
+
+          <code><a href="getDataset.html">getDataset()</a></code>
+
+        </dt>
+        <dd>Download dataset archive</dd>
+
+        <dt>
+
+          <code><a href="getDatasetRaw.html">getDatasetRaw()</a></code>
+
+        </dt>
+        <dd>Download dataset archive as a ZIP file</dd>
+      </dl></div><div class="section level2">
+      <h2 id="monitoring">Monitoring<a class="anchor" aria-label="anchor" href="#monitoring"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="getMonitorList.html">getMonitorList()</a></code>
+
+        </dt>
+        <dd>Return associated monitor list</dd>
+
+        <dt>
+
+          <code><a href="getMonitorListRaw.html">getMonitorListRaw()</a></code>
+
+        </dt>
+        <dd>Return associated monitor list for change detection</dd>
+
+        <dt>
+
+          <code><a href="setMonitor.html">setMonitor()</a></code>
+
+        </dt>
+        <dd>Add or remove bills from the monitor list</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

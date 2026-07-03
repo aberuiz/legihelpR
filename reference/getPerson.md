@@ -17,3 +17,15 @@ getPerson(PeopleID = NULL, legiKey = NULL)
 - legiKey:
 
   32 character string provided by legiscan
+
+## Value
+
+Individual record in dataframe format
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+getPerson(PeopleID = 5997)
+} # }
+```

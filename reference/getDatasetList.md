@@ -26,3 +26,11 @@ getDatasetList(state = NULL, year = NULL, legiKey = NULL)
 ## Value
 
 available datasets for download
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+getDatasetList(state = "TX", year = 2023)
+} # }
+```

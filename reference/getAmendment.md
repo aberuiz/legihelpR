@@ -26,8 +26,7 @@ Amendment document with metadata and base64 encoded document
 ## Examples
 
 ``` r
+if (FALSE) { # \dontrun{
 getAmendment(amendmentID = 1234567)
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
+} # }
 ```

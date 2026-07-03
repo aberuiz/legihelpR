@@ -1,14 +1,18 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://aberuiz.github.io/legihelpR/404.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/LICENSE-text.html</loc></url>
+<url><loc>https://aberuiz.github.io/legihelpR/LICENSE.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/authors.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/index.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getAmendment.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getBill.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getDataset.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getDatasetList.html</loc></url>
+<url><loc>https://aberuiz.github.io/legihelpR/reference/getDatasetRaw.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getMasterList.html</loc></url>
+<url><loc>https://aberuiz.github.io/legihelpR/reference/getMasterListRaw.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getMonitorList.html</loc></url>
+<url><loc>https://aberuiz.github.io/legihelpR/reference/getMonitorListRaw.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getPerson.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getRollCall.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getSessionPeople.html</loc></url>
@@ -19,6 +23,8 @@
 <url><loc>https://aberuiz.github.io/legihelpR/reference/getlegiKey.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/index.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/legiSearch.html</loc></url>
+<url><loc>https://aberuiz.github.io/legihelpR/reference/legiSearchRaw.html</loc></url>
+<url><loc>https://aberuiz.github.io/legihelpR/reference/setMonitor.html</loc></url>
 <url><loc>https://aberuiz.github.io/legihelpR/reference/setlegiKey.html</loc></url>
 </urlset>
 

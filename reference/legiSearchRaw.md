@@ -1,12 +1,14 @@
-# Return search results from legiscan's database
+# Return raw search results from legiscan's database
 
-Return search results from legiscan's database. Check legiscan.com for
-specific search syntax for more details.
+Return search results from legiscan's full text engine with simplified
+details, 2000 results at a time. Returns relevance, bill_id, and
+change_hash only, appropriate for automated keyword monitoring. Check
+legiscan.com for specific search syntax for more details.
 
 ## Usage
 
 ``` r
-legiSearch(
+legiSearchRaw(
   query = NULL,
   state = "ALL",
   year = 2,
@@ -39,7 +41,7 @@ legiSearch(
 
 - page:
 
-  Default is set to return Page 1. \`legiSearch\` will paginate and
+  Default is set to return Page 1. \`legiSearchRaw\` will paginate and
   include results.
 
 - legiKey:
@@ -48,19 +50,16 @@ legiSearch(
 
 ## Value
 
-Search results in dataframe format
+Search results with relevance, bill_id, and change_hash in dataframe
+format
 
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
-legiSearch(
-  query = "action:yesterday AND 'workers compensation'",
+legiSearchRaw(
+  query = "intro:month AND wage theft",
   state = "TX"
-)
-
-legiSearch(
-  query = "intro:month AND wage theft"
 )
 } # }
 ```

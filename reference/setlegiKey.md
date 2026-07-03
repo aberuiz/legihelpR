@@ -1,7 +1,7 @@
 # Set a legiscan api key
 
-@description Every request requires a legiscan api key to be set in
-order to complete a request.
+Every request requires a legiscan api key to be set in order to complete
+a request.
 
 ## Usage
 
@@ -14,6 +14,14 @@ setlegiKey(APIkey, install = FALSE, overwrite = FALSE)
 - APIkey:
 
   32 character string given to you by legiscan.com
+
+- install:
+
+  Store the key in your .Renviron file for use across sessions
+
+- overwrite:
+
+  Overwrite a previously installed key in your .Renviron file
 
 ## Value
 

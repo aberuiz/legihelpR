@@ -26,8 +26,7 @@ Summary of Vote and nested list of individual votes by people id
 ## Examples
 
 ``` r
+if (FALSE) { # \dontrun{
 getRollCall(RollCall = 1361957)
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
+} # }
 ```

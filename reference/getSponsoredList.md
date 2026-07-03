@@ -26,8 +26,7 @@ Bills sponsored by a specified individual
 ## Examples
 
 ``` r
+if (FALSE) { # \dontrun{
 getSponsoredList(peopleID = 5997)
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
+} # }
 ```

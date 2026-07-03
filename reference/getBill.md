@@ -14,11 +14,19 @@ getBill(billID = NULL, legiKey = NULL)
 
   bill_id integer value
 
+- legiKey:
+
+  32 character string provided by legiscan
+
+## Value
+
+Bill detail information including sponsors, history, texts, and roll
+calls
+
 ## Examples
 
 ``` r
+if (FALSE) { # \dontrun{
 getBill(billID = 1633853)
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
+} # }
 ```

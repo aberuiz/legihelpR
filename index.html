@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">legihelpR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,18 +77,19 @@
 <p>Receive a dataframe of all sessions in legiscan’s database using <code>getSessions</code> to return unique Session IDs for the provided state.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/getSessions.html">getSessions</a></span><span class="op">(</span>state <span class="op">=</span> <span class="st">"MA"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 8 × 14</span></span>
-<span><span class="co">#&gt;   session_id state_id year_start year_end prefile sine_die prior special</span></span>
-<span><span class="co">#&gt;        &lt;int&gt;    &lt;int&gt;      &lt;int&gt;    &lt;int&gt;   &lt;int&gt;    &lt;int&gt; &lt;int&gt;   &lt;int&gt;</span></span>
-<span><span class="co">#&gt; 1       2026       21       2023     2024       0        0     0       0</span></span>
-<span><span class="co">#&gt; 2       1807       21       2021     2022       0        1     1       0</span></span>
-<span><span class="co">#&gt; 3       1637       21       2019     2020       0        1     1       0</span></span>
-<span><span class="co">#&gt; 4       1413       21       2017     2018       0        1     1       0</span></span>
-<span><span class="co">#&gt; 5       1134       21       2015     2016       0        1     1       0</span></span>
-<span><span class="co">#&gt; 6       1006       21       2013     2014       0        1     1       0</span></span>
-<span><span class="co">#&gt; 7         99       21       2011     2012       0        1     1       0</span></span>
-<span><span class="co">#&gt; 8         28       21       2009     2010       0        1     1       0</span></span>
-<span><span class="co">#&gt; # ℹ 6 more variables: session_tag &lt;chr&gt;, session_title &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; # A tibble: 9 × 15</span></span>
+<span><span class="co">#&gt;   session_id state_id state_abbr year_start year_end prefile sine_die prior</span></span>
+<span><span class="co">#&gt;        &lt;int&gt;    &lt;int&gt; &lt;chr&gt;           &lt;int&gt;    &lt;int&gt;   &lt;int&gt;    &lt;int&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1       2182       21 MA               2025     2026       0        0     0</span></span>
+<span><span class="co">#&gt; 2       2026       21 MA               2023     2024       0        1     1</span></span>
+<span><span class="co">#&gt; 3       1807       21 MA               2021     2022       0        1     1</span></span>
+<span><span class="co">#&gt; 4       1637       21 MA               2019     2020       0        1     1</span></span>
+<span><span class="co">#&gt; 5       1413       21 MA               2017     2018       0        1     1</span></span>
+<span><span class="co">#&gt; 6       1134       21 MA               2015     2016       0        1     1</span></span>
+<span><span class="co">#&gt; 7       1006       21 MA               2013     2014       0        1     1</span></span>
+<span><span class="co">#&gt; 8         99       21 MA               2011     2012       0        1     1</span></span>
+<span><span class="co">#&gt; 9         28       21 MA               2009     2010       0        1     1</span></span>
+<span><span class="co">#&gt; # ℹ 7 more variables: special &lt;int&gt;, session_tag &lt;chr&gt;, session_title &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   session_name &lt;chr&gt;, dataset_hash &lt;chr&gt;, session_hash &lt;chr&gt;, name &lt;chr&gt;</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -123,21 +124,21 @@
 <span>  query <span class="op">=</span> <span class="st">"workers compensation"</span>,</span>
 <span>  state <span class="op">=</span> <span class="st">"TX"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; 126 Results Found</span></span>
-<span><span class="co">#&gt; # A tibble: 126 × 11</span></span>
+<span><span class="co">#&gt; 108 Results Found</span></span>
+<span><span class="co">#&gt; # A tibble: 108 × 11</span></span>
 <span><span class="co">#&gt;    relevance state bill_number bill_id change_hash   url   text_url research_url</span></span>
 <span><span class="co">#&gt;        &lt;int&gt; &lt;chr&gt; &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;       </span></span>
-<span><span class="co">#&gt;  1       100 TX    HB351       1632612 dd8a4d0ce42d… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt;  2        99 TX    HB4389      1731515 0cead4ca815c… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt;  3        99 TX    HB778       1633853 15f1b71b4aa3… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt;  4        99 TX    HB3335      1726032 aa237860109e… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt;  5        98 TX    HB4147      1730763 f0d956d2c38e… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt;  6        98 TX    HB790       1634033 f24304e018fb… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt;  7        98 TX    HB102       1632560 e63dc9a79415… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt;  8        98 TX    HB2314      1706966 999038a29872… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt;  9        98 TX    HB2702      1719196 41789a475d09… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt; 10        98 TX    SB1776      1729262 9cf2c498fd6d… http… https:/… https://leg…</span></span>
-<span><span class="co">#&gt; # ℹ 116 more rows</span></span>
+<span><span class="co">#&gt;  1       100 TX    SB1455      1976056 ef4cd00a3f52… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt;  2        99 TX    HB4483      2002338 e21037c74f19… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt;  3        99 TX    SB2077      1994907 36b04ee1b8be… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt;  4        99 TX    HB3914      1993351 b865bd54a9dd… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt;  5        99 TX    HB4464      2000135 6420227e8d3c… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt;  6        99 TX    HB5545      2008375 d47eb1a3432f… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt;  7        99 TX    HB2488      1957337 dae9ad9cd064… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt;  8        99 TX    HB4067      1994949 c24af9052b24… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt;  9        98 TX    HB2414      1954268 a8b730069476… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt; 10        98 TX    HB1667      1897368 f1068ef0e375… http… https:/… https://leg…</span></span>
+<span><span class="co">#&gt; # ℹ 98 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 3 more variables: last_action_date &lt;chr&gt;, last_action &lt;chr&gt;, title &lt;chr&gt;</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -147,42 +148,81 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/getSessionPeople.html">getSessionPeople</a></span><span class="op">(</span>session <span class="op">=</span> <span class="fl">2108</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "88th Legislature 4th Special Session"</span></span>
-<span><span class="co">#&gt; # A tibble: 180 × 23</span></span>
+<span><span class="co">#&gt; # A tibble: 537 × 24</span></span>
 <span><span class="co">#&gt;    people_id person_hash party_id state_id party role_id role  name   first_name</span></span>
 <span><span class="co">#&gt;        &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     </span></span>
 <span><span class="co">#&gt;  1      5848 3b040ho3    1              43 D           1 Rep   Alma … Alma      </span></span>
-<span><span class="co">#&gt;  2      5850 mcnms1e8    1              43 D           2 Sen   Carol… Carol     </span></span>
-<span><span class="co">#&gt;  3      5851 i5zt5f3s    1              43 D           1 Rep   Rafae… Rafael    </span></span>
-<span><span class="co">#&gt;  4      5852 0iywahqt    2              43 R           1 Rep   Charl… Charles   </span></span>
-<span><span class="co">#&gt;  5      5862 2oz7ngk6    2              43 R           1 Rep   Angie… Angie     </span></span>
-<span><span class="co">#&gt;  6      5874 afzjvlgk    2              43 R           1 Rep   Tom C… Tom       </span></span>
-<span><span class="co">#&gt;  7      5875 d8zu56yg    2              43 R           2 Sen   Charl… Charles   </span></span>
-<span><span class="co">#&gt;  8      5877 x0l0s73o    2              43 R           1 Rep   Drew … Drew      </span></span>
-<span><span class="co">#&gt;  9      5879 gel8m81o    1              43 D           1 Rep   Yvonn… Yvonne    </span></span>
-<span><span class="co">#&gt; 10      5884 1pzqjv8g    1              43 D           1 Rep   Harol… Harold    </span></span>
-<span><span class="co">#&gt; # ℹ 170 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 14 more variables: middle_name &lt;chr&gt;, last_name &lt;chr&gt;, suffix &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt;  2      5848 3b040ho3    1              43 D           1 Rep   Alma … Alma      </span></span>
+<span><span class="co">#&gt;  3      5848 3b040ho3    1              43 D           1 Rep   Alma … Alma      </span></span>
+<span><span class="co">#&gt;  4      5850 mcnms1e8    1              43 D           2 Sen   Carol… Carol     </span></span>
+<span><span class="co">#&gt;  5      5850 mcnms1e8    1              43 D           2 Sen   Carol… Carol     </span></span>
+<span><span class="co">#&gt;  6      5850 mcnms1e8    1              43 D           2 Sen   Carol… Carol     </span></span>
+<span><span class="co">#&gt;  7      5851 i5zt5f3s    1              43 D           1 Rep   Rafae… Rafael    </span></span>
+<span><span class="co">#&gt;  8      5851 i5zt5f3s    1              43 D           1 Rep   Rafae… Rafael    </span></span>
+<span><span class="co">#&gt;  9      5851 i5zt5f3s    1              43 D           1 Rep   Rafae… Rafael    </span></span>
+<span><span class="co">#&gt; 10      5852 0iywahqt    2              43 R           1 Rep   Charl… Charles   </span></span>
+<span><span class="co">#&gt; # ℹ 527 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 15 more variables: middle_name &lt;chr&gt;, last_name &lt;chr&gt;, suffix &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   nickname &lt;chr&gt;, district &lt;chr&gt;, ftm_eid &lt;int&gt;, votesmart_id &lt;int&gt;,</span></span>
 <span><span class="co">#&gt; #   opensecrets_id &lt;chr&gt;, knowwho_pid &lt;int&gt;, ballotpedia &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   bioguide_id &lt;chr&gt;, committee_sponsor &lt;int&gt;, committee_id &lt;int&gt;,</span></span>
-<span><span class="co">#&gt; #   state_federal &lt;int&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; #   state_federal &lt;int&gt;, bio &lt;named list&gt;</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level1">
-<h1 id="up-next-in-order">Up Next, In Order<a class="anchor" aria-label="anchor" href="#up-next-in-order"></a>
+<h1 id="full-api-coverage">Full API Coverage<a class="anchor" aria-label="anchor" href="#full-api-coverage"></a>
 </h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>getRollCall</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>getAmendement</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>getSupplement</span></code></pre></div>
-<p>Last Update 09/03/24</p>
+<p>legihelpR covers every operation in the legiscan Pull API:</p>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr>
+<th>Area</th>
+<th>Functions</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Sessions &amp; Bills</td>
+<td>
+<code>getSessions</code>, <code>getMasterList</code>, <code>getMasterListRaw</code>, <code>getBill</code>, <code>getText</code>, <code>getAmendment</code>, <code>getSupplement</code>, <code>getRollCall</code>
+</td>
+</tr>
+<tr>
+<td>People</td>
+<td>
+<code>getPerson</code>, <code>getSessionPeople</code>, <code>getSponsoredList</code>
+</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>
+<code>legiSearch</code>, <code>legiSearchRaw</code>
+</td>
+</tr>
+<tr>
+<td>Datasets</td>
+<td>
+<code>getDatasetList</code>, <code>getDataset</code>, <code>getDatasetRaw</code>
+</td>
+</tr>
+<tr>
+<td>Monitoring</td>
+<td>
+<code>getMonitorList</code>, <code>getMonitorListRaw</code>, <code>setMonitor</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Last Update 07/03/26</p>
 </div>
 
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 

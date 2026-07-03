@@ -18,11 +18,14 @@ getSessionPeople(session = NULL, legiKey = NULL)
 
   32 character string provided by legiscan
 
+## Value
+
+People active in the specified session in dataframe format
+
 ## Examples
 
 ``` r
+if (FALSE) { # \dontrun{
 getSessionPeople(session = 2160)
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
+} # }
 ```

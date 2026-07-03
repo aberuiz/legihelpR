@@ -26,8 +26,7 @@ A dataframe of all state legislative session ids
 ## Examples
 
 ``` r
+if (FALSE) { # \dontrun{
 getSessions(state = "MA")
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
+} # }
 ```

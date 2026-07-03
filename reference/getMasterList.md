@@ -30,12 +30,8 @@ Master List in dataframe format
 ## Examples
 
 ``` r
+if (FALSE) { # \dontrun{
 getMasterList(session = 2108)
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
 getMasterList(state = "TX")
-#> Error: Invalid API Key: 
-#> Register <https://legiscan.com/user/register>
-#> Store with `setlegiKey`
+} # }
 ```
