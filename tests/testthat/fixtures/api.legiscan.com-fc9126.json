@@ -1,0 +1,20 @@
+{
+    "status": "OK",
+    "roll_call": {
+        "roll_call_id": 1361957,
+        "bill_id": 1785838,
+        "date": "2023-12-01",
+        "desc": "Read 3rd time",
+        "yea": 31,
+        "nay": 0,
+        "nv": 0,
+        "absent": 0,
+        "total": 31,
+        "passed": 1,
+        "chamber": "S",
+        "chamber_id": 92,
+        "votes": [
+
+        ]
+    }
+}

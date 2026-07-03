@@ -1,0 +1,6 @@
+{
+    "status": "ERROR",
+    "alert": {
+        "message": "Invalid bill id"
+    }
+}

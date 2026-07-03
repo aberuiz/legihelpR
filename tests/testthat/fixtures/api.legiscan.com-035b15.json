@@ -1,0 +1,411 @@
+{
+    "status": "OK",
+    "bill": {
+        "bill_id": 1633853,
+        "change_hash": "15f1b71b4aa3a141ac99fc759bd16971",
+        "session_id": 2003,
+        "session": {
+            "session_id": 2003,
+            "state_id": 43,
+            "year_start": 2023,
+            "year_end": 2024,
+            "prefile": 0,
+            "sine_die": 1,
+            "prior": 1,
+            "special": 0,
+            "session_tag": "Regular Session",
+            "session_title": "2023 Regular Session",
+            "session_name": "88th Legislature Regular Session"
+        },
+        "url": "https://legiscan.com/TX/bill/HB778/2023",
+        "state_link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=88R&Bill=HB778",
+        "completed": 0,
+        "status": 1,
+        "status_date": "2022-11-21",
+        "progress": [
+            {
+                "date": "2022-11-21",
+                "event": 1
+            },
+            {
+                "date": "2023-02-28",
+                "event": 9
+            },
+            {
+                "date": "2023-05-05",
+                "event": 10
+            }
+        ],
+        "state": "TX",
+        "state_id": 43,
+        "bill_number": "HB778",
+        "bill_type": "B",
+        "bill_type_id": "1",
+        "body": "H",
+        "body_id": 91,
+        "current_body": "H",
+        "current_body_id": 91,
+        "title": "Relating to required provision of workers' compensation insurance coverage for employees of building and construction contractors and subcontractors.",
+        "description": "Relating to required provision of workers' compensation insurance coverage for employees of building and construction contractors and subcontractors.",
+        "pending_committee_id": 0,
+        "committee": [
+
+        ],
+        "referrals": [
+            {
+                "date": "2023-02-28",
+                "committee_id": 1866,
+                "chamber": "H",
+                "chamber_id": 91,
+                "name": "Business & Industry"
+            }
+        ],
+        "history": [
+            {
+                "date": "2022-11-21",
+                "action": "Filed",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 1
+            },
+            {
+                "date": "2023-02-28",
+                "action": "Read first time",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 0
+            },
+            {
+                "date": "2023-02-28",
+                "action": "Referred to Business & Industry",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 1
+            },
+            {
+                "date": "2023-04-24",
+                "action": "Scheduled for public hearing on . . .",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 0
+            },
+            {
+                "date": "2023-04-24",
+                "action": "Considered in public hearing",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 0
+            },
+            {
+                "date": "2023-04-24",
+                "action": "Testimony taken/registration(s) recorded in committee",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 0
+            },
+            {
+                "date": "2023-04-24",
+                "action": "Left pending in committee",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 0
+            },
+            {
+                "date": "2023-05-05",
+                "action": "Considered in formal meeting",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 0
+            },
+            {
+                "date": "2023-05-05",
+                "action": "Reported favorably w/o amendment(s)",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 1
+            },
+            {
+                "date": "2023-05-08",
+                "action": "Comte report filed with Committee Coordinator",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 0
+            },
+            {
+                "date": "2023-05-09",
+                "action": "Committee report distributed",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 0
+            },
+            {
+                "date": "2023-05-09",
+                "action": "Committee report sent to Calendars",
+                "chamber": "H",
+                "chamber_id": 91,
+                "importance": 0
+            }
+        ],
+        "sponsors": [
+            {
+                "people_id": 5997,
+                "person_hash": "o5kbqihs",
+                "party_id": "1",
+                "state_id": 43,
+                "party": "D",
+                "role_id": 1,
+                "role": "Rep",
+                "name": "Armando Walle",
+                "first_name": "Armando",
+                "middle_name": "Lucio",
+                "last_name": "Walle",
+                "suffix": "",
+                "nickname": "",
+                "district": "HD-140",
+                "ftm_eid": 6487235,
+                "votesmart_id": 102289,
+                "opensecrets_id": "",
+                "knowwho_pid": 231619,
+                "ballotpedia": "Armando_Walle",
+                "bioguide_id": "",
+                "sponsor_type_id": 1,
+                "sponsor_order": 1,
+                "committee_sponsor": 0,
+                "committee_id": 0,
+                "state_federal": 0,
+                "bio": {
+                    "social": {
+                        "capitol_phone": "512-463-0924",
+                        "district_phone": "",
+                        "email": "",
+                        "webmail": "https://house.texas.gov/members/4930/email",
+                        "biography": "https://house.texas.gov/members/4930",
+                        "image": "https://house.texas.gov/members/images/members/4930.jpg?v=1",
+                        "ballotpedia": "https://ballotpedia.org/Armando_Walle",
+                        "votesmart": "https://justfacts.votesmart.org/candidate/biography/102289"
+                    },
+                    "capitol_address": {
+                        "address1": "State Capitol, Room GW.16",
+                        "address2": "1100 Congress Ave.",
+                        "city": "Austin",
+                        "state": "TX",
+                        "zip": "78701"
+                    },
+                    "links": {
+                        "official": {
+                            "bluesky": "",
+                            "facebook": "https://www.facebook.com/RepWalle/",
+                            "instagram": "",
+                            "linkedin": "",
+                            "tiktok": "",
+                            "twitter": "",
+                            "website": "https://house.texas.gov/members/4930",
+                            "youtube": ""
+                        },
+                        "personal": {
+                            "bluesky": "",
+                            "facebook": "https://www.facebook.com/alwalle",
+                            "instagram": "https://www.instagram.com/repwalletx/",
+                            "linkedin": "",
+                            "tiktok": "",
+                            "twitter": "",
+                            "website": "",
+                            "youtube": ""
+                        }
+                    }
+                }
+            },
+            {
+                "people_id": 11598,
+                "person_hash": "75f108sm",
+                "party_id": "1",
+                "state_id": 43,
+                "party": "D",
+                "role_id": 1,
+                "role": "Rep",
+                "name": "Ron Reynolds",
+                "first_name": "Ron",
+                "middle_name": "",
+                "last_name": "Reynolds",
+                "suffix": "",
+                "nickname": "",
+                "district": "HD-027",
+                "ftm_eid": 13006845,
+                "votesmart_id": 102294,
+                "opensecrets_id": "",
+                "knowwho_pid": 292903,
+                "ballotpedia": "Ron_Reynolds",
+                "bioguide_id": "",
+                "sponsor_type_id": 1,
+                "sponsor_order": 2,
+                "committee_sponsor": 0,
+                "committee_id": 0,
+                "state_federal": 0,
+                "bio": {
+                    "social": {
+                        "capitol_phone": "512-463-0494",
+                        "district_phone": "",
+                        "email": "",
+                        "webmail": "https://house.texas.gov/members/2040/email",
+                        "biography": "https://house.texas.gov/members/2040",
+                        "image": "https://house.texas.gov/members/images/members/2040.jpg?v=1",
+                        "ballotpedia": "https://ballotpedia.org/Ron_Reynolds",
+                        "votesmart": "https://justfacts.votesmart.org/candidate/biography/102294"
+                    },
+                    "capitol_address": {
+                        "address1": "State Capitol, Room 4N.7",
+                        "address2": "1100 Congress Ave.",
+                        "city": "Austin",
+                        "state": "TX",
+                        "zip": "78701"
+                    },
+                    "links": {
+                        "official": {
+                            "bluesky": "",
+                            "facebook": "",
+                            "instagram": "",
+                            "linkedin": "",
+                            "tiktok": "",
+                            "twitter": "",
+                            "website": "https://house.texas.gov/members/2040",
+                            "youtube": ""
+                        },
+                        "personal": {
+                            "bluesky": "",
+                            "facebook": "https://www.facebook.com/ron.reynolds.315",
+                            "instagram": "",
+                            "linkedin": "",
+                            "tiktok": "",
+                            "twitter": "",
+                            "website": "",
+                            "youtube": ""
+                        }
+                    }
+                }
+            }
+        ],
+        "sasts": [
+            {
+                "type_id": 1,
+                "type": "Same As",
+                "sast_bill_number": "SB283",
+                "sast_bill_id": 1638671
+            }
+        ],
+        "subjects": [
+            {
+                "subject_id": 5374,
+                "subject_name": "Labor"
+            },
+            {
+                "subject_id": 5377,
+                "subject_name": "Labor--Workers' Compensation"
+            },
+            {
+                "subject_id": 5783,
+                "subject_name": "BUILDING CONSTRUCTION"
+            },
+            {
+                "subject_id": 5646,
+                "subject_name": "CONTRACTORS & SUBCONTRACTORS"
+            }
+        ],
+        "texts": [
+            {
+                "doc_id": 2614108,
+                "date": "2022-11-21",
+                "type": "Introduced",
+                "type_id": 1,
+                "mime": "text/html",
+                "mime_id": 1,
+                "url": "https://legiscan.com/TX/text/HB778/id/2614108",
+                "state_link": "https://capitol.texas.gov/tlodocs/88R/billtext/html/HB00778I.htm",
+                "text_size": 14084,
+                "text_hash": "17ea82125e5e415143f1a07446d85007",
+                "alt_bill_text": 0,
+                "alt_mime": "",
+                "alt_mime_id": 0,
+                "alt_state_link": "",
+                "alt_text_size": 0,
+                "alt_text_hash": ""
+            },
+            {
+                "doc_id": 2803578,
+                "date": "2023-05-09",
+                "type": "Comm Sub",
+                "type_id": 2,
+                "mime": "text/html",
+                "mime_id": 1,
+                "url": "https://legiscan.com/TX/text/HB778/id/2803578",
+                "state_link": "https://capitol.texas.gov/tlodocs/88R/billtext/html/HB00778H.htm",
+                "text_size": 14094,
+                "text_hash": "18b3bb2147df1d32d755409c4017d85d",
+                "alt_bill_text": 0,
+                "alt_mime": "",
+                "alt_mime_id": 0,
+                "alt_state_link": "",
+                "alt_text_size": 0,
+                "alt_text_hash": ""
+            }
+        ],
+        "votes": [
+
+        ],
+        "amendments": [
+
+        ],
+        "supplements": [
+            {
+                "supplement_id": 360271,
+                "date": "2023-04-21",
+                "type": "Misc",
+                "type_id": 7,
+                "title": "Fiscal Note",
+                "description": "Fiscal Note (Introduced)",
+                "mime": "text/html",
+                "mime_id": 1,
+                "url": "https://legiscan.com/TX/supplement/HB778/id/360271",
+                "state_link": "https://capitol.texas.gov/tlodocs/88R/fiscalnotes/html/HB00778I.htm",
+                "supplement_size": 5443,
+                "supplement_hash": "db97d85692b2a09fb4c542a23ea713ec",
+                "alt_supplement": 0,
+                "alt_mime": "",
+                "alt_mime_id": 0,
+                "alt_state_link": "",
+                "alt_supplement_size": 0,
+                "alt_supplement_hash": ""
+            },
+            {
+                "supplement_id": 370080,
+                "date": "2023-05-08",
+                "type": "Veto Letter",
+                "type_id": 8,
+                "title": "Analysis",
+                "description": "Analysis (House Committee Report)",
+                "mime": "text/html",
+                "mime_id": 1,
+                "url": "https://legiscan.com/TX/supplement/HB778/id/370080",
+                "state_link": "https://capitol.texas.gov/tlodocs/88R/analysis/html/HB00778H.htm",
+                "supplement_size": 6516,
+                "supplement_hash": "74407c6a38615fc4a87e64d05bf1a74f",
+                "alt_supplement": 0,
+                "alt_mime": "",
+                "alt_mime_id": 0,
+                "alt_state_link": "",
+                "alt_supplement_size": 0,
+                "alt_supplement_hash": ""
+            }
+        ],
+        "calendar": [
+            {
+                "type_id": 1,
+                "event_hash": "03c0815c",
+                "type": "Hearing",
+                "date": "2023-04-24",
+                "time": "08:30",
+                "location": "E2.012",
+                "description": "House Business & Industry Committee Hearing"
+            }
+        ]
+    }
+}

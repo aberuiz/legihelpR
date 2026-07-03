@@ -1,0 +1,69 @@
+{
+    "status": "OK",
+    "person": {
+        "people_id": 5997,
+        "person_hash": "o5kbqihs",
+        "party_id": "1",
+        "state_id": 43,
+        "party": "D",
+        "role_id": 1,
+        "role": "Rep",
+        "name": "Armando Walle",
+        "first_name": "Armando",
+        "middle_name": "Lucio",
+        "last_name": "Walle",
+        "suffix": "",
+        "nickname": "",
+        "district": "HD-140",
+        "ftm_eid": 6487235,
+        "votesmart_id": 102289,
+        "opensecrets_id": "",
+        "knowwho_pid": 231619,
+        "ballotpedia": "Armando_Walle",
+        "bioguide_id": "",
+        "committee_sponsor": 0,
+        "committee_id": 0,
+        "state_federal": 0,
+        "bio": {
+            "social": {
+                "capitol_phone": "512-463-0924",
+                "district_phone": "",
+                "email": "",
+                "webmail": "https://house.texas.gov/members/4930/email",
+                "biography": "https://house.texas.gov/members/4930",
+                "image": "https://house.texas.gov/members/images/members/4930.jpg?v=1",
+                "ballotpedia": "https://ballotpedia.org/Armando_Walle",
+                "votesmart": "https://justfacts.votesmart.org/candidate/biography/102289"
+            },
+            "capitol_address": {
+                "address1": "State Capitol, Room GW.16",
+                "address2": "1100 Congress Ave.",
+                "city": "Austin",
+                "state": "TX",
+                "zip": "78701"
+            },
+            "links": {
+                "official": {
+                    "bluesky": "",
+                    "facebook": "https://www.facebook.com/RepWalle/",
+                    "instagram": "",
+                    "linkedin": "",
+                    "tiktok": "",
+                    "twitter": "",
+                    "website": "https://house.texas.gov/members/4930",
+                    "youtube": ""
+                },
+                "personal": {
+                    "bluesky": "",
+                    "facebook": "https://www.facebook.com/alwalle",
+                    "instagram": "https://www.instagram.com/repwalletx/",
+                    "linkedin": "",
+                    "tiktok": "",
+                    "twitter": "",
+                    "website": "",
+                    "youtube": ""
+                }
+            }
+        }
+    }
+}

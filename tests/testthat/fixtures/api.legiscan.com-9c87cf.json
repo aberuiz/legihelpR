@@ -1,0 +1,131 @@
+{
+    "status": "OK",
+    "searchresult": {
+        "summary": {
+            "page": "1 of 1",
+            "range": "1 - 23",
+            "relevancy": "100% - 52%",
+            "count": 23,
+            "page_current": "1",
+            "page_total": 1,
+            "query": "((Zwage:(pos=1) AND Ztheft:(pos=2)))"
+        },
+        "results": [
+            {
+                "relevance": 100,
+                "bill_id": 1998859,
+                "change_hash": "becec8cc5b8a5db57f3d662c85999d5a"
+            },
+            {
+                "relevance": 97,
+                "bill_id": 2001469,
+                "change_hash": "8ed0ea1bf30a2c7031cdf60985495940"
+            },
+            {
+                "relevance": 97,
+                "bill_id": 1998357,
+                "change_hash": "99f2aa0894d09465062f67f9b019675d"
+            },
+            {
+                "relevance": 96,
+                "bill_id": 2058371,
+                "change_hash": "46fb699a7331c2005465d57644e32a19"
+            },
+            {
+                "relevance": 91,
+                "bill_id": 2002508,
+                "change_hash": "084af60fa505a86ef47bc9fa39057511"
+            },
+            {
+                "relevance": 87,
+                "bill_id": 2151253,
+                "change_hash": "e06aec338667db2afbb8d58d8c4831b4"
+            },
+            {
+                "relevance": 87,
+                "bill_id": 2111905,
+                "change_hash": "d45109de694734355701068440389531"
+            },
+            {
+                "relevance": 85,
+                "bill_id": 2039970,
+                "change_hash": "a332efb51b19e96925a66a98ac2a31b3"
+            },
+            {
+                "relevance": 85,
+                "bill_id": 2040704,
+                "change_hash": "5f214cd9e307ea442b62f01e4f411c81"
+            },
+            {
+                "relevance": 85,
+                "bill_id": 1998465,
+                "change_hash": "d174abe2fdad6084317b1f39ccfc43f2"
+            },
+            {
+                "relevance": 85,
+                "bill_id": 2002931,
+                "change_hash": "7a86408becf60bde8a3265b894c97b07"
+            },
+            {
+                "relevance": 77,
+                "bill_id": 2124005,
+                "change_hash": "42e461deadae789000f47a7cf5275588"
+            },
+            {
+                "relevance": 72,
+                "bill_id": 2138604,
+                "change_hash": "e24e7acf00d172ccd17d99b55c2ebe2f"
+            },
+            {
+                "relevance": 72,
+                "bill_id": 1998184,
+                "change_hash": "2024ecd77b24934ec8701cffb7dbc626"
+            },
+            {
+                "relevance": 70,
+                "bill_id": 2137146,
+                "change_hash": "a946b6bd87c01e1a3657537bd03af272"
+            },
+            {
+                "relevance": 68,
+                "bill_id": 2148831,
+                "change_hash": "1265d638675dc2df271d395516618dce"
+            },
+            {
+                "relevance": 67,
+                "bill_id": 2137517,
+                "change_hash": "74fa9b88e54cd438a4afcc9b4a3cfefd"
+            },
+            {
+                "relevance": 66,
+                "bill_id": 2138611,
+                "change_hash": "d97275ff03d1cfeea70b0098955f9c2c"
+            },
+            {
+                "relevance": 59,
+                "bill_id": 2146924,
+                "change_hash": "b87b5bd2f2a5d7a25b84435caaf21423"
+            },
+            {
+                "relevance": 56,
+                "bill_id": 2149604,
+                "change_hash": "9af4200774e5d49d9818f9c4d6c75cf1"
+            },
+            {
+                "relevance": 54,
+                "bill_id": 2154428,
+                "change_hash": "c79de210c7a76ad588f159d24e6aa801"
+            },
+            {
+                "relevance": 52,
+                "bill_id": 2001578,
+                "change_hash": "a85fa52595d4b8bf69df41ef79580022"
+            },
+            {
+                "relevance": 52,
+                "bill_id": 1997972,
+                "change_hash": "6cd009e3560e235f52866c4af5dae935"
+            }
+        ]
+    }
+}
