@@ -61,6 +61,8 @@ For receiving a Master List from legiscan's API you can use `getMasterlist`. You
 getMasterList(sessionID = 2108)
 ```
 
+To track a session over time without burning API quota, use `getMasterListRaw` — it returns each bill's `change_hash` so you can detect which bills changed and re-fetch only those with `getBill`. See the [change detection vignette](https://aberuiz.github.io/legihelpR/articles/change-detection.html) (`vignette("change-detection")`) for the full workflow.
+
 ## legiSearch
 
 Return a dataframe of search results from legiscan using the `legiSearch` function. Reference [legiscan's documentation](https://legiscan.com/fulltext-search) for assistance with additional search syntax. You can specify dates, status, type, & more using legiscan's search filters in the 'query' argument.

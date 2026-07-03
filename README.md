@@ -91,6 +91,13 @@ getMasterList(sessionID = 2108)
 #> # ℹ 3 more variables: last_action <chr>, title <chr>, description <chr>
 ```
 
+To track a session over time without burning API quota, use
+`getMasterListRaw` — it returns each bill’s `change_hash` so you can
+detect which bills changed and re-fetch only those with `getBill`. See
+the [change detection
+vignette](https://aberuiz.github.io/legihelpR/articles/change-detection.html)
+(`vignette("change-detection")`) for the full workflow.
+
 ## legiSearch
 
 Return a dataframe of search results from legiscan using the
