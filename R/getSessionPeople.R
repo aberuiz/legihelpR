@@ -3,7 +3,7 @@
 #' @description
 #' Return a dataframe of people from the specified session
 #'
-#' @param session Session ID. Can be found with `getSessions`
+#' @param sessionID Session ID. Can be found with `getSessions`
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
@@ -11,15 +11,15 @@
 #'
 #' @examples
 #' \dontrun{
-#' getSessionPeople(session = 2160)
+#' getSessionPeople(sessionID = 2160)
 #' }
 #'
 #' @export
-getSessionPeople <- function(session = NULL, legiKey = NULL){
+getSessionPeople <- function(sessionID = NULL, legiKey = NULL){
 
   response <- legiRequest(
     op = "getSessionPeople",
-    id = session,
+    id = sessionID,
     legiKey = legiKey
   )
 

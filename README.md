@@ -72,8 +72,8 @@ the state abbreviation to return the most recent regular session from
 that state.
 
 ``` r
-getMasterList(session = 2108)
-#> [1] "88th Legislature 4th Special Session"
+getMasterList(sessionID = 2108)
+#> 88th Legislature 4th Special Session
 #> # A tibble: 399 × 10
 #>    bill_id number change_hash          url   status_date status last_action_date
 #>      <int> <chr>  <chr>                <chr> <chr>        <int> <chr>           
@@ -128,8 +128,8 @@ Return a dataframe of basic information for people from the provided
 session id.
 
 ``` r
-getSessionPeople(session = 2108)
-#> [1] "88th Legislature 4th Special Session"
+getSessionPeople(sessionID = 2108)
+#> 88th Legislature 4th Special Session
 #> # A tibble: 537 × 24
 #>    people_id person_hash party_id state_id party role_id role  name   first_name
 #>        <int> <chr>       <chr>       <int> <chr>   <int> <chr> <chr>  <chr>     

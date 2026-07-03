@@ -4,10 +4,10 @@
 \alias{getMasterListRaw}
 \title{Return legiscan Master List for change detection}
 \usage{
-getMasterListRaw(session = NULL, state = NULL, legiKey = NULL)
+getMasterListRaw(sessionID = NULL, state = NULL, legiKey = NULL)
 }
 \arguments{
-\item{session}{Session id integer value. Can be found with `getSessions`}
+\item{sessionID}{Session id integer value. Can be found with `getSessions`}
 
 \item{state}{US state abbreviation}
 
@@ -23,7 +23,7 @@ detecting which bills have changed and need updating via `getBill`.
 }
 \examples{
 \dontrun{
-getMasterListRaw(session = 2108)
+getMasterListRaw(sessionID = 2108)
 getMasterListRaw(state = "TX")
 }
 

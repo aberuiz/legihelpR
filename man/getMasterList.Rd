@@ -4,10 +4,10 @@
 \alias{getMasterList}
 \title{Return legiscan Master List}
 \usage{
-getMasterList(session = NULL, state = NULL, legiKey = NULL)
+getMasterList(sessionID = NULL, state = NULL, legiKey = NULL)
 }
 \arguments{
-\item{session}{Session id integer value. Can be found with `getSessions`}
+\item{sessionID}{Session id integer value. Can be found with `getSessions`}
 
 \item{state}{US state abbreviation}
 
@@ -21,7 +21,7 @@ Returns a legiscan Master List for a specified session or the most recent regula
 }
 \examples{
 \dontrun{
-getMasterList(session = 2108)
+getMasterList(sessionID = 2108)
 getMasterList(state = "TX")
 }
 

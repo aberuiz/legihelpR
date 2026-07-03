@@ -4,10 +4,10 @@
 \alias{getPerson}
 \title{Return record on Person}
 \usage{
-getPerson(PeopleID = NULL, legiKey = NULL)
+getPerson(peopleID = NULL, legiKey = NULL)
 }
 \arguments{
-\item{PeopleID}{integer value from legiscan}
+\item{peopleID}{integer value from legiscan}
 
 \item{legiKey}{32 character string provided by legiscan}
 }
@@ -19,7 +19,7 @@ Return an individual record with basic information
 }
 \examples{
 \dontrun{
-getPerson(PeopleID = 5997)
+getPerson(peopleID = 5997)
 }
 
 }

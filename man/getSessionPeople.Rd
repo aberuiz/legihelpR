@@ -4,10 +4,10 @@
 \alias{getSessionPeople}
 \title{People from specified session}
 \usage{
-getSessionPeople(session = NULL, legiKey = NULL)
+getSessionPeople(sessionID = NULL, legiKey = NULL)
 }
 \arguments{
-\item{session}{Session ID. Can be found with `getSessions`}
+\item{sessionID}{Session ID. Can be found with `getSessions`}
 
 \item{legiKey}{32 character string provided by legiscan}
 }
@@ -19,7 +19,7 @@ Return a dataframe of people from the specified session
 }
 \examples{
 \dontrun{
-getSessionPeople(session = 2160)
+getSessionPeople(sessionID = 2160)
 }
 
 }

@@ -9,7 +9,7 @@
 #'
 #' @param year Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior, >1900=Exact Year
 #'
-#' @param session Limit search to specific session with a session_id
+#' @param sessionID Limit search to specific session with a session_id
 #'
 #' @param page Default is set to return Page 1. `legiSearch` will paginate and include results.
 #'
@@ -33,7 +33,7 @@
 #' }
 #'
 #' @export
-legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, page = 1, maxPages = 10, legiKey = NULL){
+legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, page = 1, maxPages = 10, legiKey = NULL){
 
   all_data <- list()
 
@@ -43,7 +43,7 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, session = NULL, pa
       state = state,
       query = query,
       year = year,
-      id = session,
+      id = sessionID,
       page = page,
       legiKey = legiKey
     )

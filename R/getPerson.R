@@ -3,7 +3,7 @@
 #' @description
 #' Return an individual record with basic information
 #'
-#' @param PeopleID integer value from legiscan
+#' @param peopleID integer value from legiscan
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
@@ -11,15 +11,15 @@
 #'
 #' @examples
 #' \dontrun{
-#' getPerson(PeopleID = 5997)
+#' getPerson(peopleID = 5997)
 #' }
 #'
 #' @export
-getPerson <- function(PeopleID = NULL, legiKey = NULL){
+getPerson <- function(peopleID = NULL, legiKey = NULL){
 
   response <- legiRequest(
     op = "getPerson",
-    id = PeopleID,
+    id = peopleID,
     legiKey = legiKey
   )
 

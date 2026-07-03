@@ -4,10 +4,10 @@
 \alias{getRollCall}
 \title{Voting information for provided Roll Call}
 \usage{
-getRollCall(RollCall = NULL, legiKey = NULL)
+getRollCall(rollCallID = NULL, legiKey = NULL)
 }
 \arguments{
-\item{RollCall}{Roll Call ID integer}
+\item{rollCallID}{Roll Call ID integer}
 
 \item{legiKey}{32 character string provided by legiscan}
 }
@@ -19,7 +19,7 @@ Return vote detail summary for provided Roll Call and a nested list of individua
 }
 \examples{
 \dontrun{
-getRollCall(RollCall = 1361957)
+getRollCall(rollCallID = 1361957)
 }
 
 }

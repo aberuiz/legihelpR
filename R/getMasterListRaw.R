@@ -5,7 +5,7 @@
 #' or the most recent regular session if only state is provided. Optimized for
 #' detecting which bills have changed and need updating via `getBill`.
 #'
-#' @param session Session id integer value. Can be found with `getSessions`
+#' @param sessionID Session id integer value. Can be found with `getSessions`
 #'
 #' @param state US state abbreviation
 #'
@@ -15,21 +15,21 @@
 #'
 #' @examples
 #' \dontrun{
-#' getMasterListRaw(session = 2108)
+#' getMasterListRaw(sessionID = 2108)
 #' getMasterListRaw(state = "TX")
 #' }
 #'
 #' @export
-getMasterListRaw <- function(session = NULL, state = NULL, legiKey = NULL){
+getMasterListRaw <- function(sessionID = NULL, state = NULL, legiKey = NULL){
 
-  if (is.null(session) && is.null(state)){
+  if (is.null(sessionID) && is.null(state)){
     stop("Specify a Session or a State to return a Master List")
   }
 
   response <- legiRequest(
     op = "getMasterListRaw",
     state = state,
-    id = session,
+    id = sessionID,
     legiKey = legiKey
   )
 

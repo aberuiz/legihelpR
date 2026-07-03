@@ -58,7 +58,7 @@ getSessions(state = "MA")
 For receiving a Master List from legiscan's API you can use `getMasterlist`. You can provide a unique session ID or you can provide the state abbreviation to return the most recent regular session from that state.
 
 ```{r}
-getMasterList(session = 2108)
+getMasterList(sessionID = 2108)
 ```
 
 ## legiSearch
@@ -77,7 +77,7 @@ legiSearch(
 Return a dataframe of basic information for people from the provided session id.
 
 ```{r}
-getSessionPeople(session = 2108)
+getSessionPeople(sessionID = 2108)
 ```
 
 

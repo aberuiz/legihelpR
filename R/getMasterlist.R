@@ -3,7 +3,7 @@
 #' @description
 #' Returns a legiscan Master List for a specified session or the most recent regular session if only state is provided
 #'
-#' @param session Session id integer value. Can be found with `getSessions`
+#' @param sessionID Session id integer value. Can be found with `getSessions`
 #'
 #' @param state US state abbreviation
 #'
@@ -13,21 +13,21 @@
 #'
 #' @examples
 #' \dontrun{
-#' getMasterList(session = 2108)
+#' getMasterList(sessionID = 2108)
 #' getMasterList(state = "TX")
 #' }
 #'
 #' @export
-getMasterList <- function(session = NULL, state = NULL, legiKey = NULL){
+getMasterList <- function(sessionID = NULL, state = NULL, legiKey = NULL){
 
-  if (is.null(session) && is.null(state)){
+  if (is.null(sessionID) && is.null(state)){
     stop("Specify a Session or a State to return a Master List")
   }
 
   response <- legiRequest(
     op = "getMasterList",
     state = state,
-    id = session,
+    id = sessionID,
     legiKey = legiKey
   )
 

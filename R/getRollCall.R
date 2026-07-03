@@ -3,7 +3,7 @@
 #' @description
 #' Return vote detail summary for provided Roll Call and a nested list of individual votes
 #'
-#' @param RollCall Roll Call ID integer
+#' @param rollCallID Roll Call ID integer
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
@@ -11,15 +11,15 @@
 #'
 #' @examples
 #' \dontrun{
-#' getRollCall(RollCall = 1361957)
+#' getRollCall(rollCallID = 1361957)
 #' }
 #'
 #' @export
-getRollCall <- function(RollCall = NULL, legiKey = NULL){
+getRollCall <- function(rollCallID = NULL, legiKey = NULL){
 
   response <- legiRequest(
     op = "getRollcall",
-    id = RollCall,
+    id = rollCallID,
     legiKey = legiKey
   )
 

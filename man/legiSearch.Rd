@@ -8,7 +8,7 @@ legiSearch(
   query = NULL,
   state = "ALL",
   year = 2,
-  session = NULL,
+  sessionID = NULL,
   page = 1,
   maxPages = 10,
   legiKey = NULL
@@ -21,7 +21,7 @@ legiSearch(
 
 \item{year}{Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior, >1900=Exact Year}
 
-\item{session}{Limit search to specific session with a session_id}
+\item{sessionID}{Limit search to specific session with a session_id}
 
 \item{page}{Default is set to return Page 1. `legiSearch` will paginate and include results.}
 
