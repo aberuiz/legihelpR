@@ -1,0 +1,49 @@
+#' Perform a legiscan API request
+#'
+#' @description
+#' Internal helper for all API functions. Validates the API key, performs the
+#' request against api.legiscan.com, and checks the API status of the response.
+#'
+#' @param op legiscan API operation name
+#'
+#' @param ... Query parameters for the operation (e.g. id, state, query)
+#'
+#' @param legiKey 32 character string provided by legiscan
+#'
+#' @param raw Return the raw response body instead of parsed JSON.
+#' Used by `getDatasetRaw` which returns a binary ZIP stream.
+#'
+#' @returns Parsed JSON response as a list, or a raw vector when raw = TRUE
+#'
+#' @noRd
+legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
+
+  if (is.null(legiKey)){
+    legiKey <- getlegiKey()
+  }
+  if (is.null(legiKey) || nchar(legiKey)!=32){
+    stop(paste0("Invalid API Key: ",legiKey,"\nRegister <https://legiscan.com/user/register>\nStore with `setlegiKey`"), call. = FALSE)
+  }
+
+  req <- httr2::request("https://api.legiscan.com") |>
+    httr2::req_url_query(
+      key = legiKey,
+      op = op,
+      ...,
+      .multi = "explode"
+    ) |>
+    httr2::req_perform()
+
+  # error responses come back as JSON even for raw operations
+  if (raw && !grepl("json", httr2::resp_content_type(req))){
+    return(httr2::resp_body_raw(req))
+  }
+
+  response <- httr2::resp_body_json(req)
+
+  if (!is.null(response$status) && response$status != "OK"){
+    stop(sprintf("API returned error: %s", response$alert$message), call. = FALSE)
+  }
+
+  return(response)
+}

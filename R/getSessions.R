@@ -10,30 +10,18 @@
 #' @returns A dataframe of all state legislative session ids
 #'
 #' @examples
+#' \dontrun{
 #' getSessions(state = "MA")
+#' }
 #'
 #' @export
 getSessions <- function(state = NULL, legiKey = NULL){
-  op <- "getSessionlist"
 
-  if (is.null(legiKey)){
-    legiKey <- getlegiKey()
-  }
-  if (nchar(legiKey)!=32){
-    warning(paste0("Invalid API Key: ",legiKey," Register <https://legiscan.com/user/register> Store with `setlegiKey`"))
-    return(paste0("Invalid API Key: ",legiKey," Register <https://legiscan.com/user/register> Store with `setlegiKey`"))
-  }
+  response <- legiRequest(
+    op = "getSessionList",
+    state = state,
+    legiKey = legiKey
+  )
 
-  req <- httr2::request(
-    "https://api.legiscan.com"
-  ) |>
-    httr2::req_url_query(
-      key = legiKey,
-      op = op,
-      state = state,
-      .multi = "explode"
-    ) |>
-    httr2::req_perform() |>
-    httr2::resp_body_json()
-  return(dplyr::bind_rows(req$sessions))
+  return(dplyr::bind_rows(response$sessions))
 }

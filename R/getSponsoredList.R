@@ -10,38 +10,26 @@
 #' @returns Bills sponsored by a specified individual
 #'
 #' @examples
+#' \dontrun{
 #' getSponsoredList(peopleID = 5997)
+#' }
 #'
 #' @export
 getSponsoredList <- function(peopleID = NULL, legiKey = NULL){
-  op <- "getSponsoredList"
 
-  if (is.null(legiKey)){
-    legiKey <- getlegiKey()
-  }
-  if (nchar(legiKey)!=32){
-    warning(paste0("Invalid API Key: ",legiKey," Register <https://legiscan.com/user/register> Store with `setlegiKey`"))
-    return(paste0("Invalid API Key: ",legiKey," Register <https://legiscan.com/user/register> Store with `setlegiKey`"))
-  }
+  response <- legiRequest(
+    op = "getSponsoredList",
+    id = peopleID,
+    legiKey = legiKey
+  )
 
-  req <- httr2::request(
-    "https://api.legiscan.com"
-  ) |>
-    httr2::req_url_query(
-      key = legiKey,
-      op = op,
-      id = peopleID,
-      .multi = "explode"
-    ) |>
-    httr2::req_perform() |>
-    httr2::resp_body_json()
   cat(
     paste0(
-      "Individual: ", req$sponsoredbills$sponsor$name, '\n',
-      "District: ", req$sponsoredbills$sponsor$district, '\n',
-      "First Active: ", tail(dplyr::bind_rows(req$sponsoredbills$sessions),n=1)$session_title, '\n',
-      "Last Active: ", head(dplyr::bind_rows(req$sponsoredbills$sessions), n=1)$session_title, '\n'
+      "Individual: ", response$sponsoredbills$sponsor$name, '\n',
+      "District: ", response$sponsoredbills$sponsor$district, '\n',
+      "First Active: ", utils::tail(dplyr::bind_rows(response$sponsoredbills$sessions),n=1)$session_title, '\n',
+      "Last Active: ", utils::head(dplyr::bind_rows(response$sponsoredbills$sessions), n=1)$session_title, '\n'
     )
   )
-  return(dplyr::bind_rows(req$sponsoredbills$bills))
+  return(dplyr::bind_rows(response$sponsoredbills$bills))
 }
