@@ -22,8 +22,12 @@
 #' @export
 getDataset <- function(sessionID = NULL, accessKey = NULL, file = NULL, legiKey = NULL){
 
-  if (is.null(sessionID) && is.null(accessKey)){
-    stop("Specify either a sessionID or accessKey to download a dataset")
+  # LegiScan's getDataset operation requires BOTH the session_id and the
+  # access_key (the two are issued together by getDatasetList). Guard with `||`
+  # so a call missing either one fails locally with a clear message rather than
+  # firing a malformed request. Mirrors the check in getDatasetRaw().
+  if (is.null(sessionID) || is.null(accessKey)){
+    stop("Specify both a sessionID and accessKey from `getDatasetList` to download a dataset")
   }
 
   response <- legiRequest(

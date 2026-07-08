@@ -11,3 +11,12 @@ with_mock_dir("fixtures", {
     expect_contains(names(bill), c("sponsors", "history", "texts"))
   })
 })
+
+test_that("getBill rejects a missing billID before any request", {
+  without_internet({
+    expect_error(
+      getBill(legiKey = fakeKey),
+      "`billID` is required"
+    )
+  })
+})

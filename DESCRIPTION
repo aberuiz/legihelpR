@@ -2,8 +2,9 @@ Package: legihelpR
 Type: Package
 Title: LegiScan R assistant
 Version: 0.3.1
-Author: Abraham Ruiz
-Maintainer: Abraham Ruiz <abraham@graycompass.com>
+Authors@R:
+    person("Abraham", "Ruiz", email = "abraham@graycompass.com",
+           role = c("aut", "cre"))
 Description: legihelpR uses the LegiScan api to read in data and put it into a dataframe.
 License: MIT + file LICENSE
 Encoding: UTF-8

@@ -20,6 +20,8 @@
 #' @export
 getSupplement <- function(supplementID = NULL, file = NULL, legiKey = NULL){
 
+  requireArg(supplementID, "supplementID")
+
   response <- legiRequest(
     op = "getSupplement",
     id = supplementID,

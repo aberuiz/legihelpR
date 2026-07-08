@@ -20,6 +20,8 @@
 #' @export
 getText <- function(textID = NULL, file = NULL, legiKey = NULL){
 
+  requireArg(textID, "textID")
+
   response <- legiRequest(
     op = "getBillText",
     id = textID,

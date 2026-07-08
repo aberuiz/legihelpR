@@ -18,6 +18,10 @@
 #' @noRd
 legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
 
+  # legiRequest cannot enforce required parameters itself: which ones matter is
+  # per-operation (some need an id, others a state, query, etc.). The callers
+  # own that check via requireArg() below.
+
   if (is.null(legiKey)){
     legiKey <- getlegiKey()
   }
@@ -49,4 +53,26 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
   }
 
   return(response)
+}
+
+#' Require that a mandatory argument was supplied
+#'
+#' @description
+#' Guard clause for endpoints that take a single mandatory identifier (bill_id,
+#' people_id, text_id, ...). LegiScan answers a missing id with a generic error
+#' after a full network round-trip; checking locally fails fast with a message
+#' that names the offending argument and spares the caller's monthly quota.
+#'
+#' @param value The argument value to check.
+#'
+#' @param name The argument name, used verbatim in the error message.
+#'
+#' @returns Invisibly `NULL`; called for its side effect of erroring on `NULL`.
+#'
+#' @noRd
+requireArg <- function(value, name){
+  if (is.null(value)){
+    stop(sprintf("`%s` is required", name), call. = FALSE)
+  }
+  invisible(NULL)
 }

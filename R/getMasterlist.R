@@ -31,6 +31,12 @@ getMasterList <- function(sessionID = NULL, state = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  message(response$masterlist$session$session_name)
-  return(dplyr::bind_rows(response$masterlist[-1]))
+  # The masterlist object holds a `session` block alongside the numbered bill
+  # entries. Remove it by name rather than by position (`[-1]`): a positional
+  # drop silently discards the wrong element if LegiScan ever reorders the
+  # object. Matches the approach in getMasterListRaw().
+  masterlist <- response$masterlist
+  message(masterlist$session$session_name)
+  masterlist$session <- NULL
+  return(dplyr::bind_rows(masterlist))
 }

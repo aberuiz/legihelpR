@@ -60,7 +60,12 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, 
 
     all_data <- dplyr::bind_rows(all_data, df)
 
-    if (nrow(df) < 50) {
+    # `summary$page_total` is the authoritative page count. Prefer it over the
+    # old "final page has < 50 rows" heuristic, which fired one extra empty
+    # request whenever the result count was an exact multiple of the 50-row
+    # page size. Guard against a missing summary so we never loop forever.
+    page_total <- response$searchresult$summary$page_total
+    if (is.null(page_total) || page >= page_total) {
       break
     }
 

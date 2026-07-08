@@ -17,6 +17,8 @@
 #' @export
 getBill <- function(billID = NULL, legiKey = NULL){
 
+  requireArg(billID, "billID")
+
   response <- legiRequest(
     op = "getBill",
     id = billID,

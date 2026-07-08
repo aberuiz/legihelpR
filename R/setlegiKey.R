@@ -24,16 +24,17 @@ setlegiKey <- function(APIkey, install = FALSE, overwrite = FALSE){
   if (install) {
     home <- Sys.getenv("HOME")
     renv <- file.path(home, ".Renviron")
-    if(file.exists(renv)){
-      # Backup original .Renviron
-      file.copy(renv, file.path(home, ".Renviron_backup"))
-    }
     if(!file.exists(renv)){
       file.create(renv)
     }
     else{
       if(isTRUE(overwrite)){
+        # Back up only when overwriting, i.e. when we are about to rewrite the
+        # file to strip the old key. The non-overwrite path merely appends and
+        # leaves the original intact, so backing up there would needlessly
+        # clobber any existing .Renviron_backup with no benefit.
         message("Your original .Renviron will be backed up in R HOME directory.")
+        file.copy(renv, file.path(home, ".Renviron_backup"), overwrite = TRUE)
         oldenv <- readLines(renv)
         newenv <- oldenv[!grepl("legiKey", oldenv)]
         writeLines(newenv, renv)

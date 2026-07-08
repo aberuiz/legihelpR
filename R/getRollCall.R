@@ -17,6 +17,8 @@
 #' @export
 getRollCall <- function(rollCallID = NULL, legiKey = NULL){
 
+  requireArg(rollCallID, "rollCallID")
+
   response <- legiRequest(
     op = "getRollcall",
     id = rollCallID,

@@ -20,6 +20,8 @@
 #' @export
 getAmendment <- function(amendmentID = NULL, file = NULL, legiKey = NULL){
 
+  requireArg(amendmentID, "amendmentID")
+
   response <- legiRequest(
     op = "getAmendment",
     id = amendmentID,

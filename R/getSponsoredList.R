@@ -17,6 +17,8 @@
 #' @export
 getSponsoredList <- function(peopleID = NULL, legiKey = NULL){
 
+  requireArg(peopleID, "peopleID")
+
   response <- legiRequest(
     op = "getSponsoredList",
     id = peopleID,
