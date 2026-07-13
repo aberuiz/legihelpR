@@ -15,7 +15,7 @@
 setlegiKey <- function(APIkey, install = FALSE, overwrite = FALSE){
 
   if (!rlang::is_string(APIkey)){
-    stop("'APIkey` must be a string.")
+    stop("`APIkey` must be a string.")
   }
   if (nchar(APIkey)!=32){
     stop(paste0("'Invalid API Key: ",APIkey," Register @ <https://legiscan.com/user/register>'"))
