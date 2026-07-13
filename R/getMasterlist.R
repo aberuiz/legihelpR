@@ -36,7 +36,9 @@ getMasterList <- function(sessionID = NULL, state = NULL, legiKey = NULL){
   # drop silently discards the wrong element if LegiScan ever reorders the
   # object. Matches the approach in getMasterListRaw().
   masterlist <- response$masterlist
-  message(masterlist$session$session_name)
-  masterlist$session <- NULL
+  if (!is.null(masterlist$session)){
+    message(masterlist$session$session_name)
+    masterlist$session <- NULL
+  }
   return(dplyr::bind_rows(masterlist))
 }

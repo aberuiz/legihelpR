@@ -34,6 +34,7 @@
 legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, page = 1, maxPages = 10, legiKey = NULL){
 
   all_data <- list()
+  pagesFetched <- 0
 
   while (TRUE) {
     response <- legiRequest(
@@ -45,6 +46,7 @@ legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, sessionID = NUL
       page = page,
       legiKey = legiKey
     )
+    pagesFetched <- pagesFetched + 1
 
     results <- response$searchresult$results
     if (is.null(results) || length(results) == 0) {
@@ -53,12 +55,17 @@ legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, sessionID = NUL
 
     all_data <- dplyr::bind_rows(all_data, dplyr::bind_rows(results))
 
-    if (page >= response$searchresult$summary$page_total) {
+    # Guard against a missing summary so we never loop forever or error on a
+    # zero-length comparison. Mirrors the check in legiSearch().
+    page_total <- response$searchresult$summary$page_total
+    if (is.null(page_total) || page >= page_total) {
       break
     }
 
-    if (page >= maxPages) {
-      message(response$searchresult$summary$page_total, " pages of results exist; stopped at page ", page, ". Raise `maxPages` to fetch them.")
+    # maxPages caps API queries spent, so count pages fetched rather than
+    # comparing against the page number, which overshoots when `page` > 1.
+    if (pagesFetched >= maxPages) {
+      message(page_total, " pages of results exist; stopped at page ", page, ". Raise `maxPages` to fetch them.")
       break
     }
 

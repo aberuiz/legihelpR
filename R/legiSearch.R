@@ -36,6 +36,7 @@
 legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, page = 1, maxPages = 10, legiKey = NULL){
 
   all_data <- list()
+  pagesFetched <- 0
 
   while (TRUE) {
     response <- legiRequest(
@@ -47,12 +48,20 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, 
       page = page,
       legiKey = legiKey
     )
+    pagesFetched <- pagesFetched + 1
 
-    if (is.null(response$searchresult) || length(response$searchresult) == 0) {
+    searchresult <- response$searchresult
+    if (is.null(searchresult) || length(searchresult) == 0) {
       break
     }
 
-    df <- dplyr::bind_rows(response$searchresult[-1])
+    # The searchresult object holds a `summary` block alongside the numbered
+    # bill entries. Remove it by name rather than by position (`[-1]`): a
+    # positional drop silently discards the wrong element if LegiScan ever
+    # reorders the object. Matches the approach in getMasterList().
+    page_total <- searchresult$summary$page_total
+    searchresult$summary <- NULL
+    df <- dplyr::bind_rows(searchresult)
 
     if (nrow(df) == 0) {
       break
@@ -64,12 +73,13 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, 
     # old "final page has < 50 rows" heuristic, which fired one extra empty
     # request whenever the result count was an exact multiple of the 50-row
     # page size. Guard against a missing summary so we never loop forever.
-    page_total <- response$searchresult$summary$page_total
     if (is.null(page_total) || page >= page_total) {
       break
     }
 
-    if (page >= maxPages) {
+    # maxPages caps API queries spent, so count pages fetched rather than
+    # comparing against the page number, which overshoots when `page` > 1.
+    if (pagesFetched >= maxPages) {
       message("Stopped at page ", page, "; more results exist. Raise `maxPages` to fetch them.")
       break
     }
