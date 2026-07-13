@@ -8,9 +8,8 @@ Authors@R:
 Description: legihelpR uses the LegiScan api to read in data and put it into a dataframe.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Imports:
-  httr2,
+  httr2 (>= 1.1.0),
   dplyr,
   rlang,
   utils,
