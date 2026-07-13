@@ -31,7 +31,8 @@ against your monthly quota. Use `Inf` to fetch every page.}
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Search results in dataframe format
+Search results in dataframe format. When the search matches
+nothing, a zero-row dataframe with the same columns is returned with a warning
 }
 \description{
 Return search results from legiscan's database. Check legiscan.com for specific search syntax for more details.

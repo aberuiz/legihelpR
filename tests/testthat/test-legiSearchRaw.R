@@ -19,4 +19,14 @@ with_mock_dir("fixtures", {
     )
     expect_equal(nrow(results), 4)
   })
+
+  test_that("legiSearchRaw returns a zero-row data frame when nothing matches", {
+    expect_warning(
+      results <- legiSearchRaw(query = "nohits", state = "MA", legiKey = fakeKey),
+      "No results found"
+    )
+    expect_s3_class(results, "data.frame")
+    expect_equal(nrow(results), 0)
+    expect_named(results, c("relevance", "bill_id", "change_hash"))
+  })
 })

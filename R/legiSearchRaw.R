@@ -20,7 +20,9 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Search results with relevance, bill_id, and change_hash in dataframe format
+#' @returns Search results with relevance, bill_id, and change_hash in dataframe format.
+#' When the search matches nothing, a zero-row dataframe with the same columns
+#' is returned with a warning
 #'
 #' @examples
 #' \dontrun{
@@ -73,7 +75,14 @@ legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, sessionID = NUL
   }
   if (length(all_data) == 0) {
     warning("No results found. Reference <https://legiscan.com/fulltext-search> for help with search syntax.")
-    return(NULL)
+    # Return a zero-row frame with the documented getSearchRaw columns instead
+    # of NULL, so downstream code (nrow, column selection, bind_rows) handles
+    # an empty result without special-casing.
+    return(dplyr::tibble(
+      relevance = integer(),
+      bill_id = integer(),
+      change_hash = character()
+    ))
   } else {
     message(paste0(nrow(all_data), " Results Found"))
     return(all_data)

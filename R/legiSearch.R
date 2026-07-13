@@ -18,7 +18,8 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Search results in dataframe format
+#' @returns Search results in dataframe format. When the search matches
+#' nothing, a zero-row dataframe with the same columns is returned with a warning
 #'
 #' @examples
 #' \dontrun{
@@ -88,7 +89,22 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, 
   }
   if (length(all_data) == 0) {
     warning("No results found. Reference <https://legiscan.com/fulltext-search> for help with search syntax.")
-    return(NULL)
+    # Return a zero-row frame with the documented getSearch columns instead of
+    # NULL, so downstream code (nrow, column selection, bind_rows) handles an
+    # empty result without special-casing.
+    return(dplyr::tibble(
+      relevance = integer(),
+      state = character(),
+      bill_number = character(),
+      bill_id = integer(),
+      change_hash = character(),
+      url = character(),
+      text_url = character(),
+      research_url = character(),
+      last_action_date = character(),
+      last_action = character(),
+      title = character()
+    ))
   } else {
     message(paste0(nrow(all_data), " Results Found"))
     return(all_data)

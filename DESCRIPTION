@@ -1,7 +1,7 @@
 Package: legihelpR
 Type: Package
 Title: LegiScan R assistant
-Version: 0.3.1
+Version: 0.3.2
 Authors@R:
     person("Abraham", "Ruiz", email = "abraham@graycompass.com",
            role = c("aut", "cre"))
