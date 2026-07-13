@@ -54,7 +54,8 @@ legiSearch(
 
 ## Value
 
-Search results in dataframe format
+Search results in dataframe format. When the search matches nothing, a
+zero-row dataframe with the same columns is returned with a warning
 
 ## Examples
 

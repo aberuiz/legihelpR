@@ -57,7 +57,8 @@ legiSearchRaw(
 ## Value
 
 Search results with relevance, bill_id, and change_hash in dataframe
-format
+format. When the search matches nothing, a zero-row dataframe with the
+same columns is returned with a warning
 
 ## Examples
 
