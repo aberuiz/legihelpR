@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">legihelpR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,14 +121,14 @@ dropped off the list.</p>
 <code class="sourceCode R"><span><span class="va">stored</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"bill_hashes.rds"</span><span class="op">)</span></span>
 <span><span class="va">current</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getMasterListRaw.html">getMasterListRaw</a></span><span class="op">(</span>sessionID <span class="op">=</span> <span class="va">sessionID</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">comparison</span> <span class="op">&lt;-</span> <span class="va">current</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
-<span>    <span class="va">stored</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">bill_id</span>, old_hash <span class="op">=</span> <span class="va">change_hash</span><span class="op">)</span>,</span>
-<span>    by <span class="op">=</span> <span class="st">"bill_id"</span></span>
-<span>  <span class="op">)</span></span>
+<span><span class="va">comparison</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
+<span>  <span class="va">current</span>,</span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">stored</span>, <span class="va">bill_id</span>, old_hash <span class="op">=</span> <span class="va">change_hash</span><span class="op">)</span>,</span>
+<span>  by <span class="op">=</span> <span class="st">"bill_id"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">newBills</span> <span class="op">&lt;-</span> <span class="va">comparison</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">old_hash</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">changedBills</span> <span class="op">&lt;-</span> <span class="va">comparison</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">old_hash</span><span class="op">)</span>, <span class="va">change_hash</span> <span class="op">!=</span> <span class="va">old_hash</span><span class="op">)</span></span>
+<span><span class="va">newBills</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">comparison</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">old_hash</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">changedBills</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">comparison</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">old_hash</span><span class="op">)</span>, <span class="va">change_hash</span> <span class="op">!=</span> <span class="va">old_hash</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">newBills</span><span class="op">)</span>, <span class="st">" new, "</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">changedBills</span><span class="op">)</span>, <span class="st">" changed"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -140,7 +140,7 @@ quiet day this loop does nothing at all.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">toFetch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">newBills</span><span class="op">$</span><span class="va">bill_id</span>, <span class="va">changedBills</span><span class="op">$</span><span class="va">bill_id</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">updatedBills</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">toFetch</span>, \<span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="fu"><a href="../reference/getBill.html">getBill</a></span><span class="op">(</span>billID <span class="op">=</span> <span class="va">id</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">updatedBills</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">toFetch</span>, <span class="kw">function</span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="fu"><a href="../reference/getBill.html">getBill</a></span><span class="op">(</span>billID <span class="op">=</span> <span class="va">id</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><code>getBill</code> returns the full bill record — status, progress,
 sponsors, votes, and document metadata — so whatever you store
 downstream can be refreshed from it. If you also archive bill text, the

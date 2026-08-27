@@ -19,7 +19,7 @@ getMasterListRaw(sessionID = NULL, state = NULL, legiKey = NULL)
 
 - state:
 
-  US state abbreviation
+  US state abbreviation. Ignored when \`sessionID\` is supplied
 
 - legiKey:
 

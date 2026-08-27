@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">legihelpR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +35,20 @@
 
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="legihelpr-development-version">legihelpR (development version)<a class="anchor" aria-label="anchor" href="#legihelpr-development-version"></a></h2>
+<ul><li>Search functions now validate <code>query</code>, <code>page</code>, and <code>maxPages</code> before making quota-consuming requests, and session-scoped searches omit incompatible state and year filters.</li>
+<li>
+<code><a href="../reference/getDataset.html">getDataset()</a></code> now supports LegiScan’s <code>format</code> parameter; both dataset download functions accept <code>json</code> or <code>csv</code> case-insensitively and reject invalid formats before making a request.</li>
+<li>API response and key validation now handle malformed values cleanly without including a supplied key in error logs.</li>
+<li>
+<code><a href="../reference/setlegiKey.html">setlegiKey()</a></code> matches only actual <code>legiKey=</code> entries in <code>.Renviron</code>, checks setup and backup failures, and safely quotes the stored value.</li>
+<li>Document and sponsored-session messages now use fields present in LegiScan’s documented response schema.</li>
+<li>
+<code><a href="../reference/getDatasetRaw.html">getDatasetRaw()</a></code> now takes <code>format</code> after <code>legiKey</code>, matching the argument order of <code><a href="../reference/getDataset.html">getDataset()</a></code>. Positional calls that passed <code>format</code> third must be updated to name the argument.</li>
+<li>Internal request building no longer uses R’s native pipe. This is a style change only: <code>httr2</code> and <code>dplyr</code> both require R &gt;= 4.1, so the package’s effective minimum R version is unchanged.</li>
+<li>Expanded offline regression coverage and declared the testthat version used by the test helpers.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.2" id="legihelpr-032">legihelpR 0.3.2<a class="anchor" aria-label="anchor" href="#legihelpr-032"></a></h2>
 <ul><li>

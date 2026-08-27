@@ -6,7 +6,13 @@ session_id and access_key
 ## Usage
 
 ``` r
-getDataset(sessionID = NULL, accessKey = NULL, file = NULL, legiKey = NULL)
+getDataset(
+  sessionID = NULL,
+  accessKey = NULL,
+  file = NULL,
+  legiKey = NULL,
+  format = "json"
+)
 ```
 
 ## Arguments
@@ -28,6 +34,11 @@ getDataset(sessionID = NULL, accessKey = NULL, file = NULL, legiKey = NULL)
 
   32 character string provided by legiscan
 
+- format:
+
+  File format of the ZIP contents, either "json" or "csv"
+  (case-insensitive)
+
 ## Value
 
 Dataset archive with metadata and base64 encoded ZIP file, or the file
@@ -38,6 +49,6 @@ path invisibly when \`file\` is supplied
 ``` r
 if (FALSE) { # \dontrun{
 getDataset(sessionID = 1234, accessKey = "abc123def456")
-getDataset(sessionID = 1234, accessKey = "abc123def456", file = "dataset.zip")
+getDataset(sessionID = 1234, accessKey = "abc123def456", format = "csv", file = "dataset.zip")
 } # }
 ```

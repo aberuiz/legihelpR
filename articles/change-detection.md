@@ -67,14 +67,14 @@ the list.
 stored <- readRDS("bill_hashes.rds")
 current <- getMasterListRaw(sessionID = sessionID)
 
-comparison <- current |>
-  dplyr::left_join(
-    stored |> dplyr::select(bill_id, old_hash = change_hash),
-    by = "bill_id"
-  )
+comparison <- dplyr::left_join(
+  current,
+  dplyr::select(stored, bill_id, old_hash = change_hash),
+  by = "bill_id"
+)
 
-newBills <- comparison |> dplyr::filter(is.na(old_hash))
-changedBills <- comparison |> dplyr::filter(!is.na(old_hash), change_hash != old_hash)
+newBills <- dplyr::filter(comparison, is.na(old_hash))
+changedBills <- dplyr::filter(comparison, !is.na(old_hash), change_hash != old_hash)
 
 message(nrow(newBills), " new, ", nrow(changedBills), " changed")
 ```
@@ -88,7 +88,7 @@ loop does nothing at all.
 
 toFetch <- c(newBills$bill_id, changedBills$bill_id)
 
-updatedBills <- lapply(toFetch, \(id) getBill(billID = id))
+updatedBills <- lapply(toFetch, function(id) getBill(billID = id))
 ```
 
 `getBill` returns the full bill record — status, progress, sponsors,

@@ -10,9 +10,9 @@ session
 getDatasetRaw(
   sessionID = NULL,
   accessKey = NULL,
-  format = "json",
   file = NULL,
-  legiKey = NULL
+  legiKey = NULL,
+  format = "json"
 )
 ```
 
@@ -26,10 +26,6 @@ getDatasetRaw(
 
   access_key string value (use access_key from getDatasetList)
 
-- format:
-
-  File format of the ZIP contents, either "json" or "csv"
-
 - file:
 
   File path to write the ZIP archive to. Defaults to
@@ -38,6 +34,11 @@ getDatasetRaw(
 - legiKey:
 
   32 character string provided by legiscan
+
+- format:
+
+  File format of the ZIP contents, either "json" or "csv"
+  (case-insensitive)
 
 ## Value
 

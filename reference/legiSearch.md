@@ -27,12 +27,12 @@ legiSearch(
 - state:
 
   Search the entire nation by default with 'ALL' or specify state using
-  letter abbreviations
+  letter abbreviations. Ignored when \`sessionID\` is supplied
 
 - year:
 
   Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior,
-  \>1900=Exact Year
+  \>1900=Exact Year. Ignored when \`sessionID\` is supplied
 
 - sessionID:
 

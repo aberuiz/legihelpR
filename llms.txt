@@ -64,8 +64,8 @@ getSessions(state = "MA")
 
 ## Master List
 
-For receiving a Master List from legiscan’s API you can use
-`getMasterlist`. You can provide a unique session ID or you can provide
+For receiving a Master List from LegiScan’s API you can use
+`getMasterList`. You can provide a unique session ID or you can provide
 the state abbreviation to return the most recent regular session from
 that state.
 

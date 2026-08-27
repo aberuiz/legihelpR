@@ -9,7 +9,7 @@ containing all bills, votes, and people data for the specified session"></head><
 
     <a class="navbar-brand me-2" href="../index.html">legihelpR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,9 +48,9 @@ containing all bills, votes, and people data for the specified session</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getDatasetRaw</span><span class="op">(</span></span>
 <span>  sessionID <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  accessKey <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  format <span class="op">=</span> <span class="st">"json"</span>,</span>
 <span>  file <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  legiKey <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  legiKey <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  format <span class="op">=</span> <span class="st">"json"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -66,16 +66,17 @@ containing all bills, votes, and people data for the specified session</p>
 <dd><p>access_key string value (use access_key from getDatasetList)</p></dd>
 
 
-<dt id="arg-format">format<a class="anchor" aria-label="anchor" href="#arg-format"></a></dt>
-<dd><p>File format of the ZIP contents, either "json" or "csv"</p></dd>
-
-
 <dt id="arg-file">file<a class="anchor" aria-label="anchor" href="#arg-file"></a></dt>
 <dd><p>File path to write the ZIP archive to. Defaults to legiscan_dataset_&lt;sessionID&gt;.zip in the working directory</p></dd>
 
 
 <dt id="arg-legikey">legiKey<a class="anchor" aria-label="anchor" href="#arg-legikey"></a></dt>
 <dd><p>32 character string provided by legiscan</p></dd>
+
+
+<dt id="arg-format">format<a class="anchor" aria-label="anchor" href="#arg-format"></a></dt>
+<dd><p>File format of the ZIP contents, either "json" or "csv"
+(case-insensitive)</p></dd>
 
 </dl></div>
     <div class="section level2">

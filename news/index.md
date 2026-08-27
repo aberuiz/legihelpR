@@ -1,5 +1,32 @@
 # Changelog
 
+## legihelpR (development version)
+
+- Search functions now validate `query`, `page`, and `maxPages` before
+  making quota-consuming requests, and session-scoped searches omit
+  incompatible state and year filters.
+- [`getDataset()`](https://aberuiz.github.io/legihelpR/reference/getDataset.md)
+  now supports LegiScan’s `format` parameter; both dataset download
+  functions accept `json` or `csv` case-insensitively and reject invalid
+  formats before making a request.
+- API response and key validation now handle malformed values cleanly
+  without including a supplied key in error logs.
+- [`setlegiKey()`](https://aberuiz.github.io/legihelpR/reference/setlegiKey.md)
+  matches only actual `legiKey=` entries in `.Renviron`, checks setup
+  and backup failures, and safely quotes the stored value.
+- Document and sponsored-session messages now use fields present in
+  LegiScan’s documented response schema.
+- [`getDatasetRaw()`](https://aberuiz.github.io/legihelpR/reference/getDatasetRaw.md)
+  now takes `format` after `legiKey`, matching the argument order of
+  [`getDataset()`](https://aberuiz.github.io/legihelpR/reference/getDataset.md).
+  Positional calls that passed `format` third must be updated to name
+  the argument.
+- Internal request building no longer uses R’s native pipe. This is a
+  style change only: `httr2` and `dplyr` both require R \>= 4.1, so the
+  package’s effective minimum R version is unchanged.
+- Expanded offline regression coverage and declared the testthat version
+  used by the test helpers.
+
 ## legihelpR 0.3.2
 
 - [`legiSearch()`](https://aberuiz.github.io/legihelpR/reference/legiSearch.md)
