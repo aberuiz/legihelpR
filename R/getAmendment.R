@@ -28,7 +28,7 @@ getAmendment <- function(amendmentID = NULL, file = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  message(paste0(response$amendment$bill_number, " - ", response$amendment$title))
+  message("Amendment ", response$amendment$amendment_id, " - ", response$amendment$title)
   if (!is.null(file)){
     writeBin(openssl::base64_decode(response$amendment$doc), file)
     message(paste0("Document saved to ", file))

@@ -23,13 +23,13 @@
 #' @export
 setMonitor <- function(billIDs = NULL, action = NULL, stance = "watch", legiKey = NULL){
 
-  if (is.null(billIDs)){
+  if (is.null(billIDs) || length(billIDs) == 0L || anyNA(billIDs)){
     stop("Specify one or more billIDs to operate on")
   }
-  if (is.null(action) || !action %in% c("monitor", "remove", "set")){
+  if (!rlang::is_string(action) || !action %in% c("monitor", "remove", "set")){
     stop("action must be one of 'monitor', 'remove', or 'set'")
   }
-  if (!stance %in% c("watch", "support", "oppose")){
+  if (!rlang::is_string(stance) || !stance %in% c("watch", "support", "oppose")){
     stop("stance must be one of 'watch', 'support', or 'oppose'")
   }
 

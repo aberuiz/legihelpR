@@ -25,12 +25,23 @@ getSponsoredList <- function(peopleID = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
+  sessions <- dplyr::bind_rows(response$sponsoredbills$sessions)
+  if ("session_title" %in% names(sessions)){
+    sessionNames <- sessions$session_title
+  } else if ("session_name" %in% names(sessions)){
+    sessionNames <- sessions$session_name
+  } else {
+    sessionNames <- character()
+  }
+  firstActive <- if (length(sessionNames)) utils::tail(sessionNames, n = 1) else "Unknown"
+  lastActive <- if (length(sessionNames)) utils::head(sessionNames, n = 1) else "Unknown"
+
   message(
     paste0(
       "Individual: ", response$sponsoredbills$sponsor$name, '\n',
       "District: ", response$sponsoredbills$sponsor$district, '\n',
-      "First Active: ", utils::tail(dplyr::bind_rows(response$sponsoredbills$sessions),n=1)$session_title, '\n',
-      "Last Active: ", utils::head(dplyr::bind_rows(response$sponsoredbills$sessions), n=1)$session_title
+      "First Active: ", firstActive, '\n',
+      "Last Active: ", lastActive
     )
   )
   return(dplyr::bind_rows(response$sponsoredbills$bills))

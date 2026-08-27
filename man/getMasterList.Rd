@@ -9,7 +9,7 @@ getMasterList(sessionID = NULL, state = NULL, legiKey = NULL)
 \arguments{
 \item{sessionID}{Session id integer value. Can be found with `getSessions`}
 
-\item{state}{US state abbreviation}
+\item{state}{US state abbreviation. Ignored when `sessionID` is supplied}
 
 \item{legiKey}{32 character string provided by legiscan}
 }

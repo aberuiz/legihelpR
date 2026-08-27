@@ -7,9 +7,9 @@
 getDatasetRaw(
   sessionID = NULL,
   accessKey = NULL,
-  format = "json",
   file = NULL,
-  legiKey = NULL
+  legiKey = NULL,
+  format = "json"
 )
 }
 \arguments{
@@ -17,11 +17,12 @@ getDatasetRaw(
 
 \item{accessKey}{access_key string value (use access_key from getDatasetList)}
 
-\item{format}{File format of the ZIP contents, either "json" or "csv"}
-
 \item{file}{File path to write the ZIP archive to. Defaults to legiscan_dataset_<sessionID>.zip in the working directory}
 
 \item{legiKey}{32 character string provided by legiscan}
+
+\item{format}{File format of the ZIP contents, either "json" or "csv"
+(case-insensitive)}
 }
 \value{
 File path of the downloaded ZIP archive, invisibly

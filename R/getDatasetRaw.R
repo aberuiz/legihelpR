@@ -8,11 +8,12 @@
 #'
 #' @param accessKey access_key string value (use access_key from getDatasetList)
 #'
-#' @param format File format of the ZIP contents, either "json" or "csv"
-#'
 #' @param file File path to write the ZIP archive to. Defaults to legiscan_dataset_<sessionID>.zip in the working directory
 #'
 #' @param legiKey 32 character string provided by legiscan
+#'
+#' @param format File format of the ZIP contents, either "json" or "csv"
+#' (case-insensitive)
 #'
 #' @returns File path of the downloaded ZIP archive, invisibly
 #'
@@ -23,11 +24,12 @@
 #' }
 #'
 #' @export
-getDatasetRaw <- function(sessionID = NULL, accessKey = NULL, format = "json", file = NULL, legiKey = NULL){
+getDatasetRaw <- function(sessionID = NULL, accessKey = NULL, file = NULL, legiKey = NULL, format = "json"){
 
   if (is.null(sessionID) || is.null(accessKey)){
     stop("Specify both a sessionID and accessKey from `getDatasetList` to download a dataset")
   }
+  format <- normalizeDatasetFormat(format)
 
   response <- legiRequest(
     op = "getDatasetRaw",

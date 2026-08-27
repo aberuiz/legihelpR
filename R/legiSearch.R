@@ -5,9 +5,11 @@
 #'
 #' @param query Enter your search text. Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.
 #'
-#' @param state Search the entire nation by default with 'ALL' or specify state using letter abbreviations
+#' @param state Search the entire nation by default with 'ALL' or specify state
+#' using letter abbreviations. Ignored when `sessionID` is supplied
 #'
-#' @param year Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior, >1900=Exact Year
+#' @param year Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior,
+#' >1900=Exact Year. Ignored when `sessionID` is supplied
 #'
 #' @param sessionID Limit search to specific session with a session_id
 #'
@@ -36,15 +38,19 @@
 #' @export
 legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, page = 1, maxPages = 10, legiKey = NULL){
 
+  validateSearchArgs(query, page, maxPages)
+
   all_data <- list()
   pagesFetched <- 0
+  requestState <- if (is.null(sessionID)) state else NULL
+  requestYear <- if (is.null(sessionID)) year else NULL
 
   while (TRUE) {
     response <- legiRequest(
       op = "getSearch",
-      state = state,
+      state = requestState,
       query = query,
-      year = year,
+      year = requestYear,
       id = sessionID,
       page = page,
       legiKey = legiKey

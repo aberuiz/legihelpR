@@ -17,9 +17,11 @@ legiSearchRaw(
 \arguments{
 \item{query}{Enter your search text. Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.}
 
-\item{state}{Search the entire nation by default with 'ALL' or specify state using letter abbreviations}
+\item{state}{Search the entire nation by default with 'ALL' or specify state
+using letter abbreviations. Ignored when `sessionID` is supplied}
 
-\item{year}{Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior, >1900=Exact Year}
+\item{year}{Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior,
+>1900=Exact Year. Ignored when `sessionID` is supplied}
 
 \item{sessionID}{Limit search to specific session with a session_id}
 

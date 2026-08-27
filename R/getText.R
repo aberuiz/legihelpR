@@ -28,7 +28,7 @@ getText <- function(textID = NULL, file = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  message(paste0(response$text$bill_number, " - ", response$text$type_desc))
+  message("Bill text ", response$text$doc_id, " - ", response$text$type)
   if (!is.null(file)){
     writeBin(openssl::base64_decode(response$text$doc), file)
     message(paste0("Document saved to ", file))

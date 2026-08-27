@@ -1,7 +1,7 @@
 Package: legihelpR
 Type: Package
 Title: LegiScan R assistant
-Version: 0.3.2
+Version: 0.3.2.9000
 Authors@R:
     person("Abraham", "Ruiz", email = "abraham@graycompass.com",
            role = c("aut", "cre"))
@@ -15,7 +15,7 @@ Imports:
   utils,
   openssl
 Suggests:
-  testthat (>= 3.0.0),
+  testthat (>= 3.2.0),
   httptest2,
   withr,
   knitr,

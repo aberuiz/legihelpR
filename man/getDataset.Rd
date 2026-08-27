@@ -4,7 +4,13 @@
 \alias{getDataset}
 \title{Download dataset archive}
 \usage{
-getDataset(sessionID = NULL, accessKey = NULL, file = NULL, legiKey = NULL)
+getDataset(
+  sessionID = NULL,
+  accessKey = NULL,
+  file = NULL,
+  legiKey = NULL,
+  format = "json"
+)
 }
 \arguments{
 \item{sessionID}{session_id integer value (use session_id from getDatasetList)}
@@ -14,6 +20,9 @@ getDataset(sessionID = NULL, accessKey = NULL, file = NULL, legiKey = NULL)
 \item{file}{Optional file path to write the decoded ZIP archive to. When supplied, the base64 zip is decoded and saved to disk}
 
 \item{legiKey}{32 character string provided by legiscan}
+
+\item{format}{File format of the ZIP contents, either "json" or "csv"
+(case-insensitive)}
 }
 \value{
 Dataset archive with metadata and base64 encoded ZIP file, or the file path invisibly when `file` is supplied
@@ -24,7 +33,7 @@ Return a base64 encoded ZIP archive of a specific dataset based on session_id an
 \examples{
 \dontrun{
 getDataset(sessionID = 1234, accessKey = "abc123def456")
-getDataset(sessionID = 1234, accessKey = "abc123def456", file = "dataset.zip")
+getDataset(sessionID = 1234, accessKey = "abc123def456", format = "csv", file = "dataset.zip")
 }
 
 }

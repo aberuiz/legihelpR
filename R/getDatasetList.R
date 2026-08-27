@@ -20,8 +20,9 @@
 getDatasetList <- function(state = NULL, year = NULL, legiKey = NULL){
 
   if (!is.null(year)){
-    if(nchar(year) !=4){
-      warning("year should be 4 digits")
+    yearText <- as.character(year)
+    if(length(yearText) != 1L || is.na(yearText) || !grepl("^[[:digit:]]{4}$", yearText)){
+      warning("year should be 4 digits", call. = FALSE)
     }
   }
 

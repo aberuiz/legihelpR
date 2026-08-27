@@ -7,11 +7,23 @@ test_that("setMonitor validates its inputs before any request", {
       "Specify one or more billIDs"
     )
     expect_error(
+      setMonitor(billIDs = integer(), action = "monitor"),
+      "Specify one or more billIDs"
+    )
+    expect_error(
+      setMonitor(billIDs = NA_integer_, action = "monitor"),
+      "Specify one or more billIDs"
+    )
+    expect_error(
       setMonitor(billIDs = 12345),
       "action must be one of"
     )
     expect_error(
       setMonitor(billIDs = 12345, action = "delete"),
+      "action must be one of"
+    )
+    expect_error(
+      setMonitor(billIDs = 12345, action = c("monitor", "remove")),
       "action must be one of"
     )
     expect_error(

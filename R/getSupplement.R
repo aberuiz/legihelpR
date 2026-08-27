@@ -28,7 +28,7 @@ getSupplement <- function(supplementID = NULL, file = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  message(paste0(response$supplement$bill_number, " - ", response$supplement$type_desc))
+  message("Supplement ", response$supplement$supplement_id, " - ", response$supplement$title)
   if (!is.null(file)){
     writeBin(openssl::base64_decode(response$supplement$doc), file)
     message(paste0("Document saved to ", file))

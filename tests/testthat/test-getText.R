@@ -1,7 +1,8 @@
 with_mock_dir("fixtures", {
   test_that("getText returns document metadata and a base64 encoded doc", {
     expect_message(
-      text <- getText(textID = 2614108, legiKey = fakeKey)
+      text <- getText(textID = 2614108, legiKey = fakeKey),
+      "Bill text 2614108 - Introduced"
     )
     expect_type(text, "list")
     expect_equal(text$doc_id, 2614108)
@@ -14,7 +15,10 @@ with_mock_dir("fixtures", {
   test_that("getText decodes the doc to disk when file is supplied", {
     path <- withr::local_tempfile(fileext = ".html")
     expect_message(
-      result <- getText(textID = 2614108, file = path, legiKey = fakeKey),
+      expect_message(
+        result <- getText(textID = 2614108, file = path, legiKey = fakeKey),
+        "Bill text 2614108 - Introduced"
+      ),
       "Document saved to "
     )
     expect_equal(result, path)

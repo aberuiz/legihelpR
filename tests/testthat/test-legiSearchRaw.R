@@ -30,3 +30,45 @@ with_mock_dir("fixtures", {
     expect_named(results, c("relevance", "bill_id", "change_hash"))
   })
 })
+
+test_that("legiSearchRaw validates query and pagination before any request", {
+  without_internet({
+    expect_error(
+      legiSearchRaw(query = "", legiKey = fakeKey),
+      "`query` must be a non-empty string"
+    )
+    expect_error(
+      legiSearchRaw(query = "test", page = 1.5, legiKey = fakeKey),
+      "`page` must be a positive whole number"
+    )
+    expect_error(
+      legiSearchRaw(query = "test", maxPages = 0, legiKey = fakeKey),
+      "`maxPages` must be a positive whole number or `Inf`"
+    )
+  })
+})
+
+test_that("session-scoped legiSearchRaw omits state and year filters", {
+  requestArgs <- NULL
+  local_mocked_bindings(
+    legiRequest = function(...){
+      requestArgs <<- list(...)
+      list(searchresult = list())
+    },
+    .package = "legihelpR"
+  )
+
+  expect_warning(
+    legiSearchRaw(
+      query = "test",
+      state = "TX",
+      year = 2024,
+      sessionID = 1234,
+      legiKey = fakeKey
+    ),
+    "No results found"
+  )
+  expect_null(requestArgs$state)
+  expect_null(requestArgs$year)
+  expect_equal(requestArgs$id, 1234)
+})
