@@ -16,7 +16,9 @@ setMonitor(billIDs = NULL, action = NULL, stance = "watch", legiKey = NULL)
 \item{legiKey}{32 character API key from legiscan}
 }
 \value{
-Status of each bill_id and the action taken in dataframe format
+A base data frame containing \code{bill_id} and \code{result} for returned
+bills. Bill IDs are character strings taken from the response names; results
+contain the API values for the requested action.
 }
 \description{
 Interact with GAITS to add or remove bills from the monitor list of the

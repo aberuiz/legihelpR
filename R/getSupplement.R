@@ -9,7 +9,9 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Supplement document with metadata and base64 encoded document, or the file path invisibly when `file` is supplied
+#' @returns A list containing supplement document metadata and a base64 encoded
+#' \code{doc} field. When \code{file} is supplied, the decoded content is written to disk
+#' and \code{file} is returned invisibly instead of the list.
 #'
 #' @examples
 #' \dontrun{

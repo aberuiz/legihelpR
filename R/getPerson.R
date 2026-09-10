@@ -7,7 +7,8 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Individual record in dataframe format
+#' @returns A data frame (tibble) containing the individual record. Columns
+#' come from the API response.
 #'
 #' @examples
 #' \dontrun{

@@ -12,7 +12,8 @@ getBill(billID = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Bill detail information including sponsors, history, texts, and roll calls
+A list of bill details, including nested sponsors, history, texts,
+roll calls, and session information.
 }
 \description{
 Return a specific bill based on a legiscan bill_id

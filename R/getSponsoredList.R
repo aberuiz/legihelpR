@@ -7,7 +7,9 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Bills sponsored by a specified individual
+#' @returns A data frame (tibble) of sponsored bills, excluding sponsor and
+#' session metadata. Columns come from the API response. An empty bill list
+#' returns zero rows and zero columns.
 #'
 #' @examples
 #' \dontrun{

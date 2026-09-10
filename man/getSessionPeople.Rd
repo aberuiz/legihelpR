@@ -12,7 +12,9 @@ getSessionPeople(sessionID = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-People active in the specified session in dataframe format
+A data frame (tibble) of people active in the session, excluding
+session metadata. Columns come from the API response. An empty people list
+returns zero rows and zero columns.
 }
 \description{
 Return a dataframe of people from the specified session

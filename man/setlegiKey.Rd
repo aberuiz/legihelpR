@@ -14,7 +14,9 @@ setlegiKey(APIkey, install = FALSE, overwrite = FALSE)
 \item{overwrite}{Overwrite a previously installed key in your .Renviron file}
 }
 \value{
-Your legiscan API key is set for data requests
+With \code{install = TRUE}, the supplied API key is returned invisibly
+after writing it to \code{.Renviron}. Otherwise, an invisible logical value
+indicates whether setting the environment variable succeeded.
 }
 \description{
 Every request requires a legiscan api key to be set in order to complete a request.

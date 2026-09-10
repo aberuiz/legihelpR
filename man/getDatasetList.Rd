@@ -14,7 +14,9 @@ getDatasetList(state = NULL, year = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-available datasets for download
+A data frame (tibble) of available datasets and their download
+metadata. Columns come from the API response. An empty dataset list returns
+zero rows and zero columns.
 }
 \description{
 Return a list of available datasets, available to filter by state and year

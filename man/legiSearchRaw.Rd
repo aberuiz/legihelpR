@@ -33,9 +33,9 @@ against your monthly quota. Use `Inf` to fetch every page.}
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Search results with relevance, bill_id, and change_hash in dataframe format.
-When the search matches nothing, a zero-row dataframe with the same columns
-is returned with a warning
+A data frame (tibble) of search results combined across fetched
+pages, with \code{relevance}, \code{bill_id}, and \code{change_hash}. When no results are
+found, a warning is issued and a zero-row tibble with these columns is returned.
 }
 \description{
 Return search results from legiscan's full text engine with simplified details,

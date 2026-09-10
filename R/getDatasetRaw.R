@@ -15,7 +15,8 @@
 #' @param format File format of the ZIP contents, either "json" or "csv"
 #' (case-insensitive)
 #'
-#' @returns File path of the downloaded ZIP archive, invisibly
+#' @returns The path of the downloaded ZIP archive as a character string,
+#' returned invisibly. The archive is written to disk.
 #'
 #' @examples
 #' \dontrun{

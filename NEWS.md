@@ -1,5 +1,19 @@
 # legihelpR (development version)
 
+- Compatibility: empty `getMasterListRaw()` and `getMonitorListRaw()` results
+  now have typed columns matching their documented API fields, rather than
+  zero columns. Use `nrow(x) == 0` to detect no bills; `length(x) == 0`,
+  `ncol(x) == 0`, and column-presence checks no longer detect emptiness.
+  Nonempty responses and API error handling are unchanged.
+
+- Vignette API examples are explicitly unevaluated so extracted code does not
+  make live requests during package checks.
+- `setlegiKey(install = TRUE)` now separates the new assignment from an
+  existing final line without a newline, preserving existing settings and
+  ensuring the key is not swallowed by a comment.
+- Search functions now collect pages before combining results, avoiding
+  repeated copies of previously fetched rows while preserving result order
+  and columns.
 - Search functions now validate `query`, `page`, and `maxPages` before making
   quota-consuming requests, and session-scoped searches omit incompatible
   state and year filters.

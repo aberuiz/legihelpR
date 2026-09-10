@@ -22,9 +22,9 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Search results with relevance, bill_id, and change_hash in dataframe format.
-#' When the search matches nothing, a zero-row dataframe with the same columns
-#' is returned with a warning
+#' @returns A data frame (tibble) of search results combined across fetched
+#' pages, with \code{relevance}, \code{bill_id}, and \code{change_hash}. When no results are
+#' found, a warning is issued and a zero-row tibble with these columns is returned.
 #'
 #' @examples
 #' \dontrun{
@@ -61,17 +61,15 @@ legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, sessionID = NUL
       break
     }
 
-    all_data <- dplyr::bind_rows(all_data, dplyr::bind_rows(results))
+    all_data[[length(all_data) + 1L]] <- dplyr::bind_rows(results)
 
-    # Guard against a missing summary so we never loop forever or error on a
-    # zero-length comparison. Mirrors the check in legiSearch().
+    # Stop at the final page or when the API omits pagination metadata.
     page_total <- response$searchresult$summary$page_total
     if (is.null(page_total) || page >= page_total) {
       break
     }
 
-    # maxPages caps API queries spent, so count pages fetched rather than
-    # comparing against the page number, which overshoots when `page` > 1.
+    # Count fetched pages independently of the starting page number.
     if (pagesFetched >= maxPages) {
       message(page_total, " pages of results exist; stopped at page ", page, ". Raise `maxPages` to fetch them.")
       break
@@ -79,11 +77,10 @@ legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, sessionID = NUL
 
     page <- page + 1
   }
+  all_data <- dplyr::bind_rows(all_data)
   if (length(all_data) == 0) {
     warning("No results found. Reference <https://legiscan.com/fulltext-search> for help with search syntax.")
-    # Return a zero-row frame with the documented getSearchRaw columns instead
-    # of NULL, so downstream code (nrow, column selection, bind_rows) handles
-    # an empty result without special-casing.
+    # Preserve columns for downstream operations on empty results.
     return(dplyr::tibble(
       relevance = integer(),
       bill_id = integer(),

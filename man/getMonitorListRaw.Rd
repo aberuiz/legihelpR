@@ -12,7 +12,11 @@ getMonitorListRaw(record = "current", legiKey = NULL)
 \item{legiKey}{32 character API key from legiscan}
 }
 \value{
-Monitored bills with bill_id and change_hash in dataframe format
+A data frame (tibble) of monitored bill IDs and change hashes.
+Nonempty results retain the API columns. An empty monitor list returns zero
+rows with integer \code{bill_id}, \code{stance}, and \code{status} columns
+and character \code{state}, \code{number}, and \code{change_hash} columns.
+Use \code{nrow()} to test whether there are any bills.
 }
 \description{
 Return bill_id and change_hash values from the monitor list of the account

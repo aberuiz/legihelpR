@@ -18,9 +18,7 @@
 #' @noRd
 legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
 
-  # legiRequest cannot enforce required parameters itself: which ones matter is
-  # per-operation (some need an id, others a state, query, etc.). The callers
-  # own that check via requireArg() below.
+  # Callers validate operation-specific arguments.
 
   if (is.null(legiKey)){
     legiKey <- getlegiKey()
@@ -40,11 +38,7 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
   req <- httr2::req_throttle(req, capacity = 30, fill_time_s = 60)
   req <- httr2::req_perform(req)
 
-  # error responses come back as JSON even for raw operations. Match the
-  # content type case-insensitively without `fixed = TRUE`, which R silently
-  # ignores `ignore.case` for (and warns about); "json" has no regex
-  # metacharacters, so a plain pattern is equivalent. A missing header yields
-  # `NA_character_`, which does not match, so the raw body is returned.
+  # Raw downloads can still return JSON errors.
   if (raw && !grepl("json", httr2::resp_content_type(req), ignore.case = TRUE)){
     return(httr2::resp_body_raw(req))
   }
@@ -74,7 +68,7 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
 #'
 #' @param key API key to validate.
 #'
-#' @returns Invisibly `NULL`; called for its side effect of erroring on invalid
+#' @returns Invisibly \code{NULL}; called for its side effect of erroring on invalid
 #' input.
 #'
 #' @noRd
@@ -98,7 +92,7 @@ validateApiKey <- function(key){
 #' @param page First result page to fetch.
 #' @param maxPages Maximum number of pages to fetch.
 #'
-#' @returns Invisibly `NULL`.
+#' @returns Invisibly \code{NULL}.
 #'
 #' @noRd
 validateSearchArgs <- function(query, page, maxPages){
@@ -159,7 +153,7 @@ normalizeDatasetFormat <- function(format){
 #'
 #' @param name The argument name, used verbatim in the error message.
 #'
-#' @returns Invisibly `NULL`; called for its side effect of erroring on `NULL`.
+#' @returns Invisibly \code{NULL}; called for its side effect of erroring on \code{NULL}.
 #'
 #' @noRd
 requireArg <- function(value, name){

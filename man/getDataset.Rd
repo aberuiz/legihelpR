@@ -25,7 +25,9 @@ getDataset(
 (case-insensitive)}
 }
 \value{
-Dataset archive with metadata and base64 encoded ZIP file, or the file path invisibly when `file` is supplied
+A list containing dataset archive metadata and a base64 encoded
+\code{zip} field. When \code{file} is supplied, the decoded content is written to disk
+and \code{file} is returned invisibly instead of the list.
 }
 \description{
 Return a base64 encoded ZIP archive of a specific dataset based on session_id and access_key

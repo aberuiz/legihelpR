@@ -9,7 +9,9 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns available datasets for download
+#' @returns A data frame (tibble) of available datasets and their download
+#' metadata. Columns come from the API response. An empty dataset list returns
+#' zero rows and zero columns.
 #'
 #' @examples
 #' \dontrun{

@@ -41,7 +41,7 @@ Pull the raw master list for the session you're tracking (find session IDs
 with `getSessions`) and store it locally. `saveRDS` is the simplest store;
 a database table works the same way if you're already using one.
 
-```{r baseline}
+```{r baseline, eval = FALSE}
 sessionID <- 2108
 
 baseline <- getMasterListRaw(sessionID = sessionID)
@@ -55,7 +55,7 @@ shows what's available and `getDataset(file = ...)` writes the ZIP of JSON bill
 records to disk. The archive costs one query no matter how many bills the
 session has.
 
-```{r bulk-load}
+```{r bulk-load, eval = FALSE}
 datasets <- getDatasetList(state = "TX")
 
 getDataset(
@@ -71,7 +71,7 @@ On whatever schedule suits you (daily is typical), fetch the master list again
 — one query — and join it against the stored hashes. Three cases fall out:
 new bills, changed bills, and (rarely) bills that dropped off the list.
 
-```{r diff}
+```{r diff, eval = FALSE}
 stored <- readRDS("bill_hashes.rds")
 current <- getMasterListRaw(sessionID = sessionID)
 
@@ -92,7 +92,7 @@ message(nrow(newBills), " new, ", nrow(changedBills), " changed")
 Each changed or new bill costs one `getBill` query. On a quiet day this loop
 does nothing at all.
 
-```{r refetch}
+```{r refetch, eval = FALSE}
 toFetch <- c(newBills$bill_id, changedBills$bill_id)
 
 updatedBills <- lapply(toFetch, function(id) getBill(billID = id))
@@ -108,7 +108,7 @@ write the document to disk.
 
 Overwrite the stored hashes so the next run diffs against today.
 
-```{r save}
+```{r save, eval = FALSE}
 saveRDS(current, "bill_hashes.rds")
 ```
 
@@ -119,7 +119,7 @@ If you're tracking a topic rather than a session, `legiSearchRaw` returns
 Store the hashes from your last search, re-run the search on a schedule, and
 `getBill` only the hits that are new or changed.
 
-```{r keyword}
+```{r keyword, eval = FALSE}
 hits <- legiSearchRaw(query = "wage theft", state = "TX")
 ```
 

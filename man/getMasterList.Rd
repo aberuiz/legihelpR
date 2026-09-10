@@ -14,7 +14,9 @@ getMasterList(sessionID = NULL, state = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Master List in dataframe format
+A data frame (tibble) of bills, excluding session metadata.
+Columns come from the API response. An empty bill list returns zero rows
+and zero columns.
 }
 \description{
 Returns a legiscan Master List for a specified session or the most recent regular session if only state is provided

@@ -9,7 +9,9 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Master List in dataframe format
+#' @returns A data frame (tibble) of bills, excluding session metadata.
+#' Columns come from the API response. An empty bill list returns zero rows
+#' and zero columns.
 #'
 #' @examples
 #' \dontrun{
@@ -31,10 +33,7 @@ getMasterList <- function(sessionID = NULL, state = NULL, legiKey = NULL){
     legiKey = legiKey
   )
 
-  # The masterlist object holds a `session` block alongside the numbered bill
-  # entries. Remove it by name rather than by position (`[-1]`): a positional
-  # drop silently discards the wrong element if LegiScan ever reorders the
-  # object. Matches the approach in getMasterListRaw().
+  # Remove session metadata by name so response order does not matter.
   masterlist <- response$masterlist
   if (!is.null(masterlist$session)){
     message(masterlist$session$session_name)

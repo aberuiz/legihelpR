@@ -7,7 +7,8 @@
 #'
 #' @param legiKey 32 character string provided by legiscan.com
 #'
-#' @returns A dataframe of all state legislative session ids
+#' @returns A data frame (tibble) of legislative sessions. Columns come from
+#' the API response. An empty session list returns zero rows and zero columns.
 #'
 #' @examples
 #' \dontrun{

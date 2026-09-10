@@ -9,7 +9,9 @@
 #'
 #' @param overwrite Overwrite a previously installed key in your .Renviron file
 #'
-#' @return Your legiscan API key is set for data requests
+#' @returns With \code{install = TRUE}, the supplied API key is returned invisibly
+#' after writing it to \code{.Renviron}. Otherwise, an invisible logical value
+#' indicates whether setting the environment variable succeeded.
 #'
 #' @export
 setlegiKey <- function(APIkey, install = FALSE, overwrite = FALSE){
@@ -30,10 +32,7 @@ setlegiKey <- function(APIkey, install = FALSE, overwrite = FALSE){
     else{
       keyLine <- "^[[:space:]]*legiKey[[:space:]]*="
       if(isTRUE(overwrite)){
-        # Back up only when overwriting, i.e. when we are about to rewrite the
-        # file to strip the old key. The non-overwrite path merely appends and
-        # leaves the original intact, so backing up there would needlessly
-        # clobber any existing .Renviron_backup with no benefit.
+        # Preserve the original file before replacing an installed key.
         message("Your original .Renviron will be backed up in R HOME directory.")
         backedUp <- file.copy(
           renv,
@@ -56,6 +55,11 @@ setlegiKey <- function(APIkey, install = FALSE, overwrite = FALSE){
     }
 
     newKey <- paste0("legiKey=", encodeString(APIkey, quote = "'"))
+    # Existing files may not end in a newline. Separate the appended assignment
+    # so it cannot become part of the previous variable or a trailing comment.
+    if (file.info(renv)$size > 0){
+      newKey <- paste0("\n", newKey)
+    }
     # Append API key to .Renviron file
     write(newKey, renv, sep = "\n", append = TRUE)
     message('Your legiscan API key has been stored in your .Renviron and can be accessed by Sys.getenv("legiKey"). \nTo use now, restart R or run `readRenviron("~/.Renviron")`')

@@ -25,7 +25,8 @@ getDatasetRaw(
 (case-insensitive)}
 }
 \value{
-File path of the downloaded ZIP archive, invisibly
+The path of the downloaded ZIP archive as a character string,
+returned invisibly. The archive is written to disk.
 }
 \description{
 Download a specific dataset as a binary ZIP archive written directly to disk,

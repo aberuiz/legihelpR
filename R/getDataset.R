@@ -7,14 +7,16 @@
 #'
 #' @param accessKey access_key string value (use access_key from getDatasetList)
 #'
-#' @param format File format of the ZIP contents, either "json" or "csv"
-#' (case-insensitive)
-#'
 #' @param file Optional file path to write the decoded ZIP archive to. When supplied, the base64 zip is decoded and saved to disk
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Dataset archive with metadata and base64 encoded ZIP file, or the file path invisibly when `file` is supplied
+#' @param format File format of the ZIP contents, either "json" or "csv"
+#' (case-insensitive)
+#'
+#' @returns A list containing dataset archive metadata and a base64 encoded
+#' \code{zip} field. When \code{file} is supplied, the decoded content is written to disk
+#' and \code{file} is returned invisibly instead of the list.
 #'
 #' @examples
 #' \dontrun{
@@ -25,10 +27,7 @@
 #' @export
 getDataset <- function(sessionID = NULL, accessKey = NULL, file = NULL, legiKey = NULL, format = "json"){
 
-  # LegiScan's getDataset operation requires BOTH the session_id and the
-  # access_key (the two are issued together by getDatasetList). Guard with `||`
-  # so a call missing either one fails locally with a clear message rather than
-  # firing a malformed request. Mirrors the check in getDatasetRaw().
+  # Session ID and access key are issued together by getDatasetList.
   if (is.null(sessionID) || is.null(accessKey)){
     stop("Specify both a sessionID and accessKey from `getDatasetList` to download a dataset")
   }

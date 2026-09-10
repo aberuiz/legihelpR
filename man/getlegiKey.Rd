@@ -6,6 +6,10 @@
 \usage{
 getlegiKey()
 }
+\value{
+The API key as a character string, or \code{NULL} when the environment
+variable is unset or empty.
+}
 \description{
 Returns the legiscan API Key set in the environment
 }

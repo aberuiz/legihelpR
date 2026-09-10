@@ -14,7 +14,9 @@ getText(textID = NULL, file = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Bill text document with metadata and base64 encoded document, or the file path invisibly when `file` is supplied
+A list containing bill text document metadata and a base64 encoded
+\code{doc} field. When \code{file} is supplied, the decoded content is written to disk
+and \code{file} is returned invisibly instead of the list.
 }
 \description{
 Return bill text document in base64 encoded format based on a text_id

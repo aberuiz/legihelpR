@@ -12,7 +12,8 @@ getMonitorList(record = "current", legiKey = NULL)
 \item{legiKey}{32 character API key from legiscan}
 }
 \value{
-Monitored bills in dataframe format
+A data frame (tibble) of monitored bills. Columns come from the
+API response. An empty monitor list returns zero rows and zero columns.
 }
 \description{
 Return items from the monitor list from the account associated with the legiKey provided

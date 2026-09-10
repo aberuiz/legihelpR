@@ -20,8 +20,11 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Search results in dataframe format. When the search matches
-#' nothing, a zero-row dataframe with the same columns is returned with a warning
+#' @returns A data frame (tibble) of search results combined across fetched
+#' pages. Nonempty results retain the columns supplied by the API. When no
+#' results are found, a warning is issued and a zero-row tibble is returned with
+#' columns \code{relevance}, \code{state}, \code{bill_number}, \code{bill_id}, \code{change_hash}, \code{url},
+#' \code{text_url}, \code{research_url}, \code{last_action_date}, \code{last_action}, and \code{title}.
 #'
 #' @examples
 #' \dontrun{
@@ -62,10 +65,7 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, 
       break
     }
 
-    # The searchresult object holds a `summary` block alongside the numbered
-    # bill entries. Remove it by name rather than by position (`[-1]`): a
-    # positional drop silently discards the wrong element if LegiScan ever
-    # reorders the object. Matches the approach in getMasterList().
+    # Remove summary metadata by name so response order does not matter.
     page_total <- searchresult$summary$page_total
     searchresult$summary <- NULL
     df <- dplyr::bind_rows(searchresult)
@@ -74,18 +74,14 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, 
       break
     }
 
-    all_data <- dplyr::bind_rows(all_data, df)
+    all_data[[length(all_data) + 1L]] <- df
 
-    # `summary$page_total` is the authoritative page count. Prefer it over the
-    # old "final page has < 50 rows" heuristic, which fired one extra empty
-    # request whenever the result count was an exact multiple of the 50-row
-    # page size. Guard against a missing summary so we never loop forever.
+    # Stop at the final page or when the API omits pagination metadata.
     if (is.null(page_total) || page >= page_total) {
       break
     }
 
-    # maxPages caps API queries spent, so count pages fetched rather than
-    # comparing against the page number, which overshoots when `page` > 1.
+    # Count fetched pages independently of the starting page number.
     if (pagesFetched >= maxPages) {
       message("Stopped at page ", page, "; more results exist. Raise `maxPages` to fetch them.")
       break
@@ -93,11 +89,10 @@ legiSearch <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, 
 
     page <- page + 1
   }
+  all_data <- dplyr::bind_rows(all_data)
   if (length(all_data) == 0) {
     warning("No results found. Reference <https://legiscan.com/fulltext-search> for help with search syntax.")
-    # Return a zero-row frame with the documented getSearch columns instead of
-    # NULL, so downstream code (nrow, column selection, bind_rows) handles an
-    # empty result without special-casing.
+    # Preserve columns for downstream operations on empty results.
     return(dplyr::tibble(
       relevance = integer(),
       state = character(),

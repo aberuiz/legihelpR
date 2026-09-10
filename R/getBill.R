@@ -7,7 +7,8 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Bill detail information including sponsors, history, texts, and roll calls
+#' @returns A list of bill details, including nested sponsors, history, texts,
+#' roll calls, and session information.
 #'
 #' @examples
 #' \dontrun{

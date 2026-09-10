@@ -7,7 +7,8 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Summary of Vote and nested list of individual votes by people id
+#' @returns A list containing the vote summary and a nested \code{votes} list of
+#' individual votes by people ID.
 #'
 #' @examples
 #' \dontrun{

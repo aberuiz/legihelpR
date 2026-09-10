@@ -12,7 +12,9 @@ getSponsoredList(peopleID = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Bills sponsored by a specified individual
+A data frame (tibble) of sponsored bills, excluding sponsor and
+session metadata. Columns come from the API response. An empty bill list
+returns zero rows and zero columns.
 }
 \description{
 Returns a dataframe of bills that an indiviual legislator has sponsored, as specified using their people_id

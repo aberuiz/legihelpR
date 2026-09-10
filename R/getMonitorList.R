@@ -7,7 +7,8 @@
 #'
 #' @param legiKey 32 character API key from legiscan
 #'
-#' @returns Monitored bills in dataframe format
+#' @returns A data frame (tibble) of monitored bills. Columns come from the
+#' API response. An empty monitor list returns zero rows and zero columns.
 #'
 #' @examples
 #' \dontrun{

@@ -12,7 +12,8 @@ getSessions(state = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan.com}
 }
 \value{
-A dataframe of all state legislative session ids
+A data frame (tibble) of legislative sessions. Columns come from
+the API response. An empty session list returns zero rows and zero columns.
 }
 \description{
 Return a dataframe for all session ids of specified state in legiscan's database

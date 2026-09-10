@@ -12,7 +12,8 @@ getPerson(peopleID = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Individual record in dataframe format
+A data frame (tibble) containing the individual record. Columns
+come from the API response.
 }
 \description{
 Return an individual record with basic information

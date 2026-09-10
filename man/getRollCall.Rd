@@ -12,7 +12,8 @@ getRollCall(rollCallID = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Summary of Vote and nested list of individual votes by people id
+A list containing the vote summary and a nested \code{votes} list of
+individual votes by people ID.
 }
 \description{
 Return vote detail summary for provided Roll Call and a nested list of individual votes

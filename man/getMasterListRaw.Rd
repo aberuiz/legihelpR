@@ -14,7 +14,11 @@ getMasterListRaw(sessionID = NULL, state = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Master List of bill_id and change_hash in dataframe format
+A data frame (tibble) of bill IDs and change hashes, excluding
+session metadata. Nonempty results retain the API columns. An empty bill
+list returns zero rows with integer \code{bill_id} and character
+\code{number} and \code{change_hash} columns. Use \code{nrow()} to test
+whether there are any bills.
 }
 \description{
 Returns a Master List of bill_id and change_hash values for a specified session

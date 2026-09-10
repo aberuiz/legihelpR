@@ -64,3 +64,19 @@ test_that("setlegiKey fails safely when HOME is unavailable", {
     "HOME is not set"
   )
 })
+
+test_that("installing a key preserves an unterminated Renviron entry", {
+  testHome <- withr::local_tempdir()
+  withr::local_envvar(c(HOME = testHome, legiKey = NA, LEGIHELP_TEST = NA))
+  renv <- file.path(testHome, ".Renviron")
+
+  for (lastLine in c("LEGIHELP_TEST=preserved", "# trailing comment")){
+    writeChar(lastLine, renv, eos = NULL)
+    suppressMessages(setlegiKey(fakeKey, install = TRUE))
+    lines <- readLines(renv, warn = FALSE)
+    expect_identical(lines, c(lastLine, paste0("legiKey='", fakeKey, "'")))
+    readRenviron(renv)
+    expect_identical(Sys.getenv("legiKey"), fakeKey)
+  }
+  expect_identical(Sys.getenv("LEGIHELP_TEST"), "preserved")
+})

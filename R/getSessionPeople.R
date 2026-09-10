@@ -7,7 +7,9 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns People active in the specified session in dataframe format
+#' @returns A data frame (tibble) of people active in the session, excluding
+#' session metadata. Columns come from the API response. An empty people list
+#' returns zero rows and zero columns.
 #'
 #' @examples
 #' \dontrun{

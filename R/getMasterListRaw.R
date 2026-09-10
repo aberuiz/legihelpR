@@ -11,7 +11,11 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns Master List of bill_id and change_hash in dataframe format
+#' @returns A data frame (tibble) of bill IDs and change hashes, excluding
+#' session metadata. Nonempty results retain the API columns. An empty bill
+#' list returns zero rows with integer \code{bill_id} and character
+#' \code{number} and \code{change_hash} columns. Use \code{nrow()} to test
+#' whether there are any bills.
 #'
 #' @examples
 #' \dontrun{
@@ -37,6 +41,13 @@ getMasterListRaw <- function(sessionID = NULL, state = NULL, legiKey = NULL){
   if (!is.null(masterlist$session)){
     message(masterlist$session$session_name)
     masterlist$session <- NULL
+  }
+  if (length(masterlist) == 0L){
+    return(dplyr::tibble(
+      bill_id = integer(),
+      number = character(),
+      change_hash = character()
+    ))
   }
   return(dplyr::bind_rows(masterlist))
 }

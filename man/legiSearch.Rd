@@ -33,8 +33,11 @@ against your monthly quota. Use `Inf` to fetch every page.}
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-Search results in dataframe format. When the search matches
-nothing, a zero-row dataframe with the same columns is returned with a warning
+A data frame (tibble) of search results combined across fetched
+pages. Nonempty results retain the columns supplied by the API. When no
+results are found, a warning is issued and a zero-row tibble is returned with
+columns \code{relevance}, \code{state}, \code{bill_number}, \code{bill_id}, \code{change_hash}, \code{url},
+\code{text_url}, \code{research_url}, \code{last_action_date}, \code{last_action}, and \code{title}.
 }
 \description{
 Return search results from legiscan's database. Check legiscan.com for specific search syntax for more details.
