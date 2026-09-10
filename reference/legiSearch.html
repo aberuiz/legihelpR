@@ -90,8 +90,11 @@ against your monthly quota. Use `Inf` to fetch every page.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Search results in dataframe format. When the search matches
-nothing, a zero-row dataframe with the same columns is returned with a warning</p>
+    <p>A data frame (tibble) of search results combined across fetched
+pages. Nonempty results retain the columns supplied by the API. When no
+results are found, a warning is issued and a zero-row tibble is returned with
+columns <code>relevance</code>, <code>state</code>, <code>bill_number</code>, <code>bill_id</code>, <code>change_hash</code>, <code>url</code>,
+<code>text_url</code>, <code>research_url</code>, <code>last_action_date</code>, <code>last_action</code>, and <code>title</code>.</p>
     </div>
 
     <div class="section level2">

@@ -21,7 +21,8 @@ getSessions(state = NULL, legiKey = NULL)
 
 ## Value
 
-A dataframe of all state legislative session ids
+A data frame (tibble) of legislative sessions. Columns come from the API
+response. An empty session list returns zero rows and zero columns.
 
 ## Examples
 

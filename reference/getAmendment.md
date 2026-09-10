@@ -26,8 +26,9 @@ getAmendment(amendmentID = NULL, file = NULL, legiKey = NULL)
 
 ## Value
 
-Amendment document with metadata and base64 encoded document, or the
-file path invisibly when \`file\` is supplied
+A list containing amendment document metadata and a base64 encoded `doc`
+field. When `file` is supplied, the decoded content is written to disk
+and `file` is returned invisibly instead of the list.
 
 ## Examples
 

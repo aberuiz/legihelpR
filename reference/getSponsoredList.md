@@ -21,7 +21,9 @@ getSponsoredList(peopleID = NULL, legiKey = NULL)
 
 ## Value
 
-Bills sponsored by a specified individual
+A data frame (tibble) of sponsored bills, excluding sponsor and session
+metadata. Columns come from the API response. An empty bill list returns
+zero rows and zero columns.
 
 ## Examples
 

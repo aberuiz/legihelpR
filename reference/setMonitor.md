@@ -30,7 +30,9 @@ setMonitor(billIDs = NULL, action = NULL, stance = "watch", legiKey = NULL)
 
 ## Value
 
-Status of each bill_id and the action taken in dataframe format
+A base data frame containing `bill_id` and `result` for returned bills.
+Bill IDs are character strings taken from the response names; results
+contain the API values for the requested action.
 
 ## Examples
 

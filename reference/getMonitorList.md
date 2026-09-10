@@ -21,7 +21,8 @@ getMonitorList(record = "current", legiKey = NULL)
 
 ## Value
 
-Monitored bills in dataframe format
+A data frame (tibble) of monitored bills. Columns come from the API
+response. An empty monitor list returns zero rows and zero columns.
 
 ## Examples
 

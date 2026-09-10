@@ -25,4 +25,6 @@ setlegiKey(APIkey, install = FALSE, overwrite = FALSE)
 
 ## Value
 
-Your legiscan API key is set for data requests
+With `install = TRUE`, the supplied API key is returned invisibly after
+writing it to `.Renviron`. Otherwise, an invisible logical value
+indicates whether setting the environment variable succeeded.

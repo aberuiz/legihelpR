@@ -69,7 +69,11 @@ detecting which bills have changed and need updating via `getBill`.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Master List of bill_id and change_hash in dataframe format</p>
+    <p>A data frame (tibble) of bill IDs and change hashes, excluding
+session metadata. Nonempty results retain the API columns. An empty bill
+list returns zero rows with integer <code>bill_id</code> and character
+<code>number</code> and <code>change_hash</code> columns. Use <code><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow()</a></code> to test
+whether there are any bills.</p>
     </div>
 
     <div class="section level2">

@@ -20,7 +20,8 @@ getPerson(peopleID = NULL, legiKey = NULL)
 
 ## Value
 
-Individual record in dataframe format
+A data frame (tibble) containing the individual record. Columns come
+from the API response.
 
 ## Examples
 

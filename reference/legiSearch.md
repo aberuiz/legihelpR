@@ -54,8 +54,12 @@ legiSearch(
 
 ## Value
 
-Search results in dataframe format. When the search matches nothing, a
-zero-row dataframe with the same columns is returned with a warning
+A data frame (tibble) of search results combined across fetched pages.
+Nonempty results retain the columns supplied by the API. When no results
+are found, a warning is issued and a zero-row tibble is returned with
+columns `relevance`, `state`, `bill_number`, `bill_id`, `change_hash`,
+`url`, `text_url`, `research_url`, `last_action_date`, `last_action`,
+and `title`.
 
 ## Examples
 

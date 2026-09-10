@@ -25,7 +25,9 @@ getMasterList(sessionID = NULL, state = NULL, legiKey = NULL)
 
 ## Value
 
-Master List in dataframe format
+A data frame (tibble) of bills, excluding session metadata. Columns come
+from the API response. An empty bill list returns zero rows and zero
+columns.
 
 ## Examples
 

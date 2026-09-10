@@ -27,7 +27,11 @@ getMasterListRaw(sessionID = NULL, state = NULL, legiKey = NULL)
 
 ## Value
 
-Master List of bill_id and change_hash in dataframe format
+A data frame (tibble) of bill IDs and change hashes, excluding session
+metadata. Nonempty results retain the API columns. An empty bill list
+returns zero rows with integer `bill_id` and character `number` and
+`change_hash` columns. Use [`nrow()`](https://rdrr.io/r/base/nrow.html)
+to test whether there are any bills.
 
 ## Examples
 

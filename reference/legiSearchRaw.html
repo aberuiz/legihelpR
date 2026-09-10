@@ -96,9 +96,9 @@ against your monthly quota. Use `Inf` to fetch every page.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Search results with relevance, bill_id, and change_hash in dataframe format.
-When the search matches nothing, a zero-row dataframe with the same columns
-is returned with a warning</p>
+    <p>A data frame (tibble) of search results combined across fetched
+pages, with <code>relevance</code>, <code>bill_id</code>, and <code>change_hash</code>. When no results are
+found, a warning is issued and a zero-row tibble with these columns is returned.</p>
     </div>
 
     <div class="section level2">

@@ -41,8 +41,9 @@ getDataset(
 
 ## Value
 
-Dataset archive with metadata and base64 encoded ZIP file, or the file
-path invisibly when \`file\` is supplied
+A list containing dataset archive metadata and a base64 encoded `zip`
+field. When `file` is supplied, the decoded content is written to disk
+and `file` is returned invisibly instead of the list.
 
 ## Examples
 

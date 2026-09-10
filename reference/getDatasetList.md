@@ -25,7 +25,9 @@ getDatasetList(state = NULL, year = NULL, legiKey = NULL)
 
 ## Value
 
-available datasets for download
+A data frame (tibble) of available datasets and their download metadata.
+Columns come from the API response. An empty dataset list returns zero
+rows and zero columns.
 
 ## Examples
 

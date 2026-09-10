@@ -20,8 +20,8 @@ getBill(billID = NULL, legiKey = NULL)
 
 ## Value
 
-Bill detail information including sponsors, history, texts, and roll
-calls
+A list of bill details, including nested sponsors, history, texts, roll
+calls, and session information.
 
 ## Examples
 

@@ -20,7 +20,9 @@ getSessionPeople(sessionID = NULL, legiKey = NULL)
 
 ## Value
 
-People active in the specified session in dataframe format
+A data frame (tibble) of people active in the session, excluding session
+metadata. Columns come from the API response. An empty people list
+returns zero rows and zero columns.
 
 ## Examples
 

@@ -42,7 +42,8 @@ getDatasetRaw(
 
 ## Value
 
-File path of the downloaded ZIP archive, invisibly
+The path of the downloaded ZIP archive as a character string, returned
+invisibly. The archive is written to disk.
 
 ## Examples
 

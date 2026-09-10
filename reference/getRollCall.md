@@ -21,7 +21,8 @@ getRollCall(rollCallID = NULL, legiKey = NULL)
 
 ## Value
 
-Summary of Vote and nested list of individual votes by people id
+A list containing the vote summary and a nested `votes` list of
+individual votes by people ID.
 
 ## Examples
 
