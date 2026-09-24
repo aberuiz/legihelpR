@@ -7,7 +7,8 @@
 #'
 #' @param sessionID Session id integer value. Can be found with `getSessions`
 #'
-#' @param state US state abbreviation. Ignored when `sessionID` is supplied
+#' @param state US state abbreviation, 'DC', or 'US' for Congress (case-insensitive).
+#' Ignored when `sessionID` is supplied
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
@@ -28,6 +29,11 @@ getMasterListRaw <- function(sessionID = NULL, state = NULL, legiKey = NULL){
 
   if (is.null(sessionID) && is.null(state)){
     stop("Specify a Session or a State to return a Master List")
+  }
+  if (is.null(sessionID)){
+    state <- normalizeState(state)
+  } else {
+    validateId(sessionID, "sessionID")
   }
 
   response <- legiRequest(

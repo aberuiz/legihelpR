@@ -3,7 +3,7 @@
 #' @description
 #' Return a dataframe for all session ids of specified state in legiscan's database
 #'
-#' @param state US State abbreviation
+#' @param state US state abbreviation, 'DC', or 'US' for Congress (case-insensitive)
 #'
 #' @param legiKey 32 character string provided by legiscan.com
 #'
@@ -17,6 +17,10 @@
 #'
 #' @export
 getSessions <- function(state = NULL, legiKey = NULL){
+
+  if (!is.null(state)){
+    state <- normalizeState(state)
+  }
 
   response <- legiRequest(
     op = "getSessionList",

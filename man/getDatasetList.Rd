@@ -7,9 +7,9 @@
 getDatasetList(state = NULL, year = NULL, legiKey = NULL)
 }
 \arguments{
-\item{state}{US state 2 character abbreviation}
+\item{state}{US state abbreviation, 'DC', or 'US' for Congress (case-insensitive)}
 
-\item{year}{4 year digit}
+\item{year}{4 digit year}
 
 \item{legiKey}{32 character string provided by legiscan}
 }

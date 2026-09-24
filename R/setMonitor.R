@@ -25,9 +25,7 @@
 #' @export
 setMonitor <- function(billIDs = NULL, action = NULL, stance = "watch", legiKey = NULL){
 
-  if (is.null(billIDs) || length(billIDs) == 0L || anyNA(billIDs)){
-    stop("Specify one or more billIDs to operate on")
-  }
+  validateIds(billIDs, "billIDs")
   if (!rlang::is_string(action) || !action %in% c("monitor", "remove", "set")){
     stop("action must be one of 'monitor', 'remove', or 'set'")
   }

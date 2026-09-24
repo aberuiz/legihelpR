@@ -19,6 +19,8 @@
 #' @export
 getMonitorList <- function(record = "current", legiKey = NULL){
 
+  record <- normalizeRecord(record)
+
   response <- legiRequest(
     op = "getMonitorList",
     record = record,

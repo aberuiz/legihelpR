@@ -3,9 +3,9 @@
 #' @description
 #' Return a list of available datasets, available to filter by state and year
 #'
-#' @param state US state 2 character abbreviation
+#' @param state US state abbreviation, 'DC', or 'US' for Congress (case-insensitive)
 #'
-#' @param year 4 year digit
+#' @param year 4 digit year
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
@@ -21,11 +21,11 @@
 #' @export
 getDatasetList <- function(state = NULL, year = NULL, legiKey = NULL){
 
+  if (!is.null(state)){
+    state <- normalizeState(state)
+  }
   if (!is.null(year)){
-    yearText <- as.character(year)
-    if(length(yearText) != 1L || is.na(yearText) || !grepl("^[[:digit:]]{4}$", yearText)){
-      warning("year should be 4 digits", call. = FALSE)
-    }
+    validateDatasetYear(year)
   }
 
   response <- legiRequest(

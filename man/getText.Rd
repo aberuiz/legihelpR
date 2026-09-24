@@ -9,7 +9,7 @@ getText(textID = NULL, file = NULL, legiKey = NULL)
 \arguments{
 \item{textID}{text_id integer value from bill object}
 
-\item{file}{Optional file path to write the decoded document to. When supplied, the base64 doc is decoded and saved to disk}
+\item{file}{Optional file path to write the decoded document to. When supplied, the base64 doc is decoded and saved to disk. The destination folder must already exist}
 
 \item{legiKey}{32 character string provided by legiscan}
 }

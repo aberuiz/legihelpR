@@ -7,7 +7,7 @@
 #'
 #' @param accessKey access_key string value (use access_key from getDatasetList)
 #'
-#' @param file Optional file path to write the decoded ZIP archive to. When supplied, the base64 zip is decoded and saved to disk
+#' @param file Optional file path to write the decoded ZIP archive to. When supplied, the base64 zip is decoded and saved to disk. The destination folder must already exist
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
@@ -31,7 +31,12 @@ getDataset <- function(sessionID = NULL, accessKey = NULL, file = NULL, legiKey 
   if (is.null(sessionID) || is.null(accessKey)){
     stop("Specify both a sessionID and accessKey from `getDatasetList` to download a dataset")
   }
+  validateId(sessionID, "sessionID")
+  validateAccessKey(accessKey)
   format <- normalizeDatasetFormat(format)
+  if (!is.null(file)){
+    validateOutputFile(file)
+  }
 
   response <- legiRequest(
     op = "getDataset",

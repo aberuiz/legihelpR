@@ -20,7 +20,8 @@ test_that("legiRequest rejects a missing API key before any request", {
 with_mock_dir("fixtures", {
   test_that("legiRequest turns a status ERROR response into an R error", {
     expect_error(
-      getBill(billID = 0, legiKey = fakeKey),
+      # Bypasses local id validation to replay the recorded bill_id 0 error.
+      legiRequest(op = "getBill", id = 0, legiKey = fakeKey),
       "API returned error"
     )
   })

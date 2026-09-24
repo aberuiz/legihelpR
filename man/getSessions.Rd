@@ -7,7 +7,7 @@
 getSessions(state = NULL, legiKey = NULL)
 }
 \arguments{
-\item{state}{US State abbreviation}
+\item{state}{US state abbreviation, 'DC', or 'US' for Congress (case-insensitive)}
 
 \item{legiKey}{32 character string provided by legiscan.com}
 }

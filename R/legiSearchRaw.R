@@ -5,10 +5,12 @@
 #' 2000 results at a time. Returns relevance, bill_id, and change_hash only,
 #' appropriate for automated keyword monitoring. Check legiscan.com for specific search syntax for more details.
 #'
-#' @param query Enter your search text. Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.
+#' @param query Enter your search text, at most 1024 bytes (UTF-8; accented
+#' characters count as 2 or more). Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.
 #'
 #' @param state Search the entire nation by default with 'ALL' or specify state
-#' using letter abbreviations. Ignored when `sessionID` is supplied
+#' using a two letter abbreviation, 'DC', or 'US' for Congress (case-insensitive).
+#' Ignored when `sessionID` is supplied
 #'
 #' @param year Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior,
 #' >1900=Exact Year. Ignored when `sessionID` is supplied
@@ -38,6 +40,12 @@
 legiSearchRaw <- function(query = NULL, state = "ALL", year = 2, sessionID = NULL, page = 1, maxPages = 10, legiKey = NULL){
 
   validateSearchArgs(query, page, maxPages)
+  if (is.null(sessionID)){
+    state <- normalizeState(state, allowAll = TRUE)
+    validateSearchYear(year)
+  } else {
+    validateId(sessionID, "sessionID")
+  }
 
   all_data <- list()
   pagesFetched <- 0

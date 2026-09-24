@@ -5,7 +5,7 @@
 #'
 #' @param textID text_id integer value from bill object
 #'
-#' @param file Optional file path to write the decoded document to. When supplied, the base64 doc is decoded and saved to disk
+#' @param file Optional file path to write the decoded document to. When supplied, the base64 doc is decoded and saved to disk. The destination folder must already exist
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
@@ -22,7 +22,10 @@
 #' @export
 getText <- function(textID = NULL, file = NULL, legiKey = NULL){
 
-  requireArg(textID, "textID")
+  validateId(textID, "textID")
+  if (!is.null(file)){
+    validateOutputFile(file)
+  }
 
   response <- legiRequest(
     op = "getBillText",

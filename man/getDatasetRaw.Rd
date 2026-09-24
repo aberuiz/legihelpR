@@ -17,7 +17,7 @@ getDatasetRaw(
 
 \item{accessKey}{access_key string value (use access_key from getDatasetList)}
 
-\item{file}{File path to write the ZIP archive to. Defaults to legiscan_dataset_<sessionID>.zip in the working directory}
+\item{file}{File path to write the ZIP archive to. Defaults to legiscan_dataset_<sessionID>.zip in the working directory. The destination folder must already exist}
 
 \item{legiKey}{32 character string provided by legiscan}
 

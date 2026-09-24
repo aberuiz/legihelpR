@@ -8,7 +8,7 @@
 #'
 #' @param accessKey access_key string value (use access_key from getDatasetList)
 #'
-#' @param file File path to write the ZIP archive to. Defaults to legiscan_dataset_<sessionID>.zip in the working directory
+#' @param file File path to write the ZIP archive to. Defaults to legiscan_dataset_<sessionID>.zip in the working directory. The destination folder must already exist
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
@@ -30,7 +30,13 @@ getDatasetRaw <- function(sessionID = NULL, accessKey = NULL, file = NULL, legiK
   if (is.null(sessionID) || is.null(accessKey)){
     stop("Specify both a sessionID and accessKey from `getDatasetList` to download a dataset")
   }
+  validateId(sessionID, "sessionID")
+  validateAccessKey(accessKey)
   format <- normalizeDatasetFormat(format)
+  if (is.null(file)){
+    file <- paste0("legiscan_dataset_", sessionID, ".zip")
+  }
+  validateOutputFile(file)
 
   response <- legiRequest(
     op = "getDatasetRaw",
@@ -41,9 +47,6 @@ getDatasetRaw <- function(sessionID = NULL, accessKey = NULL, file = NULL, legiK
     raw = TRUE
   )
 
-  if (is.null(file)){
-    file <- paste0("legiscan_dataset_", sessionID, ".zip")
-  }
   writeBin(response, file)
   message(paste0("Dataset saved to ", file))
   return(invisible(file))

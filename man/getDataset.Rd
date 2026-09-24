@@ -17,7 +17,7 @@ getDataset(
 
 \item{accessKey}{access_key string value (use access_key from getDatasetList)}
 
-\item{file}{Optional file path to write the decoded ZIP archive to. When supplied, the base64 zip is decoded and saved to disk}
+\item{file}{Optional file path to write the decoded ZIP archive to. When supplied, the base64 zip is decoded and saved to disk. The destination folder must already exist}
 
 \item{legiKey}{32 character string provided by legiscan}
 

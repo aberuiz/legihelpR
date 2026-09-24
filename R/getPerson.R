@@ -18,7 +18,7 @@
 #' @export
 getPerson <- function(peopleID = NULL, legiKey = NULL){
 
-  requireArg(peopleID, "peopleID")
+  validateId(peopleID, "peopleID")
 
   response <- legiRequest(
     op = "getPerson",

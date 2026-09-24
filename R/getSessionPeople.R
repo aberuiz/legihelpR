@@ -19,7 +19,7 @@
 #' @export
 getSessionPeople <- function(sessionID = NULL, legiKey = NULL){
 
-  requireArg(sessionID, "sessionID")
+  validateId(sessionID, "sessionID")
 
   response <- legiRequest(
     op = "getSessionPeople",

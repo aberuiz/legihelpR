@@ -15,10 +15,12 @@ legiSearch(
 )
 }
 \arguments{
-\item{query}{Enter your search text. Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.}
+\item{query}{Enter your search text, at most 1024 bytes (UTF-8; accented
+characters count as 2 or more). Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.}
 
 \item{state}{Search the entire nation by default with 'ALL' or specify state
-using letter abbreviations. Ignored when `sessionID` is supplied}
+using a two letter abbreviation, 'DC', or 'US' for Congress (case-insensitive).
+Ignored when `sessionID` is supplied}
 
 \item{year}{Should be an integer. 1=All, 2=Current, 3=Recent, 4=Prior,
 >1900=Exact Year. Ignored when `sessionID` is supplied}
