@@ -21,13 +21,15 @@ legiSearch(
 
 - query:
 
-  Enter your search text. Your query may use grammatically correct
-  spacing. Use legiscan's search syntax for more powerful results.
+  Enter your search text, at most 1024 bytes (UTF-8; accented characters
+  count as 2 or more). Your query may use grammatically correct spacing.
+  Use legiscan's search syntax for more powerful results.
 
 - state:
 
   Search the entire nation by default with 'ALL' or specify state using
-  letter abbreviations. Ignored when \`sessionID\` is supplied
+  a two letter abbreviation, 'DC', or 'US' for Congress
+  (case-insensitive). Ignored when \`sessionID\` is supplied
 
 - year:
 

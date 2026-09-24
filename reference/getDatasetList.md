@@ -13,11 +13,11 @@ getDatasetList(state = NULL, year = NULL, legiKey = NULL)
 
 - state:
 
-  US state 2 character abbreviation
+  US state abbreviation, 'DC', or 'US' for Congress (case-insensitive)
 
 - year:
 
-  4 year digit
+  4 digit year
 
 - legiKey:
 

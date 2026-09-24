@@ -37,7 +37,16 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="legihelpr-development-version">legihelpR (development version)<a class="anchor" aria-label="anchor" href="#legihelpr-development-version"></a></h2>
-<ul><li><p>API requests are now spaced at least 0.6 seconds apart to stay under LegiScan’s ~2 requests/second sliding-window limit (effective October 1, 2026). This replaces the previous throttle, which allowed an initial burst of 30 requests. Pacing covers every endpoint, search pages, and retry attempts, and is shared within one R process. Set <code>options(legihelpR.request_interval = &lt;seconds&gt;)</code> to adjust it.</p></li>
+<ul><li>
+<p>Inputs are now validated locally so predictable mistakes no longer spend API quota:</p>
+<ul><li>Search queries longer than the API’s 1024-byte (UTF-8) limit error with the actual size; queries are never truncated or split. Accented and other non-ASCII characters count as 2-4 bytes. (The legiscan.com search box has a stricter 512-character limit that does not apply to the API.)</li>
+<li>Identifiers (<code>billID</code>, <code>peopleID</code>, <code>sessionID</code>, <code>billIDs</code>, …) must be positive whole numbers or strings of digits.</li>
+<li>
+<code>state</code> must be a US state abbreviation, <code>DC</code>, or <code>US</code> (plus <code>ALL</code> for searches) and is uppercased before sending. Search <code>year</code>, monitor list <code>record</code>, and dataset <code>accessKey</code> are checked against documented values. State and year are not checked when <code>sessionID</code> replaces them.</li>
+<li>Download functions check that <code>file</code> is not a directory and that its folder exists before requesting data.</li>
+</ul></li>
+<li><p>Breaking: <code><a href="../reference/getDatasetList.html">getDatasetList()</a></code> now errors, instead of warning, when <code>year</code> is not a 4 digit year.</p></li>
+<li><p>API requests are now spaced at least 0.6 seconds apart to stay under LegiScan’s ~2 requests/second sliding-window limit (effective October 1, 2026). This replaces the previous throttle, which allowed an initial burst of 30 requests. Pacing covers every endpoint, search pages, and retry attempts, and is shared within one R process. Set <code>options(legihelpR.request_interval = &lt;seconds&gt;)</code> to adjust it.</p></li>
 <li><p>Compatibility: empty <code><a href="../reference/getMasterListRaw.html">getMasterListRaw()</a></code> and <code><a href="../reference/getMonitorListRaw.html">getMonitorListRaw()</a></code> results now have typed columns matching their documented API fields, rather than zero columns. Use <code>nrow(x) == 0</code> to detect no bills; <code>length(x) == 0</code>, <code>ncol(x) == 0</code>, and column-presence checks no longer detect emptiness. Nonempty responses and API error handling are unchanged.</p></li>
 <li><p>Vignette API examples are explicitly unevaluated so extracted code does not make live requests during package checks.</p></li>
 <li><p><code>setlegiKey(install = TRUE)</code> now separates the new assignment from an existing final line without a newline, preserving existing settings and ensuring the key is not swallowed by a comment.</p></li>

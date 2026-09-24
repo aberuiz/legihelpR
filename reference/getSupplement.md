@@ -18,7 +18,8 @@ getSupplement(supplementID = NULL, file = NULL, legiKey = NULL)
 - file:
 
   Optional file path to write the decoded document to. When supplied,
-  the base64 doc is decoded and saved to disk
+  the base64 doc is decoded and saved to disk. The destination folder
+  must already exist
 
 - legiKey:
 

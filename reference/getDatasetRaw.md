@@ -29,7 +29,8 @@ getDatasetRaw(
 - file:
 
   File path to write the ZIP archive to. Defaults to
-  legiscan_dataset\_\<sessionID\>.zip in the working directory
+  legiscan_dataset\_\<sessionID\>.zip in the working directory. The
+  destination folder must already exist
 
 - legiKey:
 

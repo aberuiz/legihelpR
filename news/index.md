@@ -2,6 +2,28 @@
 
 ## legihelpR (development version)
 
+- Inputs are now validated locally so predictable mistakes no longer
+  spend API quota:
+
+  - Search queries longer than the API’s 1024-byte (UTF-8) limit error
+    with the actual size; queries are never truncated or split. Accented
+    and other non-ASCII characters count as 2-4 bytes. (The legiscan.com
+    search box has a stricter 512-character limit that does not apply to
+    the API.)
+  - Identifiers (`billID`, `peopleID`, `sessionID`, `billIDs`, …) must
+    be positive whole numbers or strings of digits.
+  - `state` must be a US state abbreviation, `DC`, or `US` (plus `ALL`
+    for searches) and is uppercased before sending. Search `year`,
+    monitor list `record`, and dataset `accessKey` are checked against
+    documented values. State and year are not checked when `sessionID`
+    replaces them.
+  - Download functions check that `file` is not a directory and that its
+    folder exists before requesting data.
+
+- Breaking:
+  [`getDatasetList()`](https://aberuiz.github.io/legihelpR/reference/getDatasetList.md)
+  now errors, instead of warning, when `year` is not a 4 digit year.
+
 - API requests are now spaced at least 0.6 seconds apart to stay under
   LegiScan’s ~2 requests/second sliding-window limit (effective October
   1, 2026). This replaces the previous throttle, which allowed an

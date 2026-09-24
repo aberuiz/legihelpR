@@ -19,7 +19,8 @@ getMasterListRaw(sessionID = NULL, state = NULL, legiKey = NULL)
 
 - state:
 
-  US state abbreviation. Ignored when \`sessionID\` is supplied
+  US state abbreviation, 'DC', or 'US' for Congress (case-insensitive).
+  Ignored when \`sessionID\` is supplied
 
 - legiKey:
 

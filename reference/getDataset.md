@@ -28,7 +28,8 @@ getDataset(
 - file:
 
   Optional file path to write the decoded ZIP archive to. When supplied,
-  the base64 zip is decoded and saved to disk
+  the base64 zip is decoded and saved to disk. The destination folder
+  must already exist
 
 - legiKey:
 

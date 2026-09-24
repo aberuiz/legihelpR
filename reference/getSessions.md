@@ -13,7 +13,7 @@ getSessions(state = NULL, legiKey = NULL)
 
 - state:
 
-  US State abbreviation
+  US state abbreviation, 'DC', or 'US' for Congress (case-insensitive)
 
 - legiKey:
 

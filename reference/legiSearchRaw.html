@@ -64,12 +64,14 @@ appropriate for automated keyword monitoring. Check legiscan.com for specific se
 
 
 <dl><dt id="arg-query">query<a class="anchor" aria-label="anchor" href="#arg-query"></a></dt>
-<dd><p>Enter your search text. Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.</p></dd>
+<dd><p>Enter your search text, at most 1024 bytes (UTF-8; accented
+characters count as 2 or more). Your query may use grammatically correct spacing. Use legiscan's search syntax for more powerful results.</p></dd>
 
 
 <dt id="arg-state">state<a class="anchor" aria-label="anchor" href="#arg-state"></a></dt>
 <dd><p>Search the entire nation by default with 'ALL' or specify state
-using letter abbreviations. Ignored when `sessionID` is supplied</p></dd>
+using a two letter abbreviation, 'DC', or 'US' for Congress (case-insensitive).
+Ignored when `sessionID` is supplied</p></dd>
 
 
 <dt id="arg-year">year<a class="anchor" aria-label="anchor" href="#arg-year"></a></dt>
