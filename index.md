@@ -38,6 +38,23 @@ Once you have set up your API key all other legihelpR functions will use
 use `getlegiKey` to check which API key you have stored. You can
 overwrite your existing key by using ‘overwrite = TRUE’ in `setlegiKey`.
 
+### Rate limits
+
+Starting October 1, 2026, LegiScan limits the API to about 2 requests
+per second. legihelpR spaces every request, including retries and search
+pages, at least 0.6 seconds apart within an R session. To change the
+spacing, for example on a plan with a different limit, set the
+`legihelpR.request_interval` option in seconds:
+
+``` r
+
+options(legihelpR.request_interval = 1)
+```
+
+The spacing only applies within one R process. Parallel workers or
+separate sessions sharing one API key have to coordinate their combined
+traffic themselves.
+
 ## Sessions
 
 Receive a dataframe of all sessions in legiscan’s database using
