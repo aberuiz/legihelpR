@@ -34,8 +34,20 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
     .multi = "explode"
   )
   req <- httr2::req_user_agent(req, "legihelpR (https://github.com/aberuiz/legihelpR)")
-  req <- httr2::req_retry(req, max_tries = 3)
-  req <- httr2::req_throttle(req, capacity = 30, fill_time_s = 60)
+  # httr2's req_throttle() only paces the first attempt, so retries reserve
+  # their send time from the same pacer as every other request.
+  req <- httr2::req_retry(
+    req,
+    max_tries = 3,
+    after = function(resp){
+      after <- httr2::resp_retry_after(resp)
+      if (is.na(after)) NA else reserveRequestSlot(after)
+    },
+    backoff = function(tries){
+      reserveRequestSlot(round(min(stats::runif(1, 1, 2^tries), 60), 1))
+    }
+  )
+  Sys.sleep(reserveRequestSlot())
   req <- httr2::req_perform(req)
 
   # Raw downloads can still return JSON errors.
@@ -57,6 +69,44 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
   }
 
   return(response)
+}
+
+pacer <- new.env(parent = emptyenv())
+pacer$lastRequest <- -Inf
+
+#' Reserve the next LegiScan request slot
+#'
+#' @description
+#' LegiScan limits the API to about 2 requests per second over a sliding
+#' window. Every attempt, including retries and pagination, reserves a send
+#' time at least `getOption("legihelpR.request_interval", 0.6)` seconds after
+#' the previous one. The pacer is shared within one R process only; parallel
+#' workers or separate sessions using the same key each keep their own.
+#'
+#' @param delay Minimum seconds to wait before sending, e.g. from a retry
+#' backoff or `Retry-After` header.
+#'
+#' @returns Seconds to wait before sending the request.
+#'
+#' @noRd
+reserveRequestSlot <- function(delay = 0){
+  interval <- getOption("legihelpR.request_interval", 0.6)
+  validInterval <- is.numeric(interval) &&
+    length(interval) == 1L &&
+    !is.na(interval) &&
+    is.finite(interval) &&
+    interval >= 0
+  if (!validInterval){
+    stop(
+      "`legihelpR.request_interval` option must be a non-negative number of seconds",
+      call. = FALSE
+    )
+  }
+
+  now <- as.numeric(Sys.time())
+  sendAt <- max(now + delay, pacer$lastRequest + interval)
+  pacer$lastRequest <- sendAt
+  sendAt - now
 }
 
 #' Validate a LegiScan API key

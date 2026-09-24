@@ -1,5 +1,12 @@
 # legihelpR (development version)
 
+- API requests are now spaced at least 0.6 seconds apart to stay under
+  LegiScan's ~2 requests/second sliding-window limit (effective
+  October 1, 2026). This replaces the previous throttle, which allowed an
+  initial burst of 30 requests. Pacing covers every endpoint, search pages,
+  and retry attempts, and is shared within one R process. Set
+  `options(legihelpR.request_interval = <seconds>)` to adjust it.
+
 - Compatibility: empty `getMasterListRaw()` and `getMonitorListRaw()` results
   now have typed columns matching their documented API fields, rather than
   zero columns. Use `nrow(x) == 0` to detect no bills; `length(x) == 0`,

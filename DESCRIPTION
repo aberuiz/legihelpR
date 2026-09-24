@@ -13,6 +13,7 @@ Imports:
   dplyr,
   rlang,
   utils,
+  stats,
   openssl
 Suggests:
   testthat (>= 3.2.0),
