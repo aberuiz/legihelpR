@@ -59,3 +59,8 @@
   : Return associated monitor list for change detection
 - [`setMonitor()`](https://aberuiz.github.io/legihelpR/reference/setMonitor.md)
   : Add or remove bills from the monitor list
+
+## Errors
+
+- [`legihelpR-errors`](https://aberuiz.github.io/legihelpR/reference/legihelpR-errors.md)
+  : Errors raised by legihelpR API functions

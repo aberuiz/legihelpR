@@ -85,12 +85,23 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>legihelpR.request_interval <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>The spacing only applies within one R process. Parallel workers or separate sessions sharing one API key have to coordinate their combined traffic themselves.</p>
 </div>
+<div class="section level3">
+<h3 id="errors">Errors<a class="anchor" aria-label="anchor" href="#errors"></a>
+</h3>
+<p>Temporary failures, such as rate limiting or a brief outage, are retried a few times with backoff, honoring LegiScan’s <code>Retry-After</code> header. Other failures stop right away with a classed error you can catch, such as <code>legihelpR_rate_limited</code>, <code>legihelpR_quota_exceeded</code>, <code>legihelpR_invalid_key</code>, or <code>legihelpR_invalid_request</code>. All of them inherit from <code>legihelpR_error</code>. See <code><a href="reference/legihelpR-errors.html">?"legihelpR-errors"</a></code> for the full list.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/conditions.html" class="external-link">tryCatch</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="reference/getBill.html">getBill</a></span><span class="op">(</span>billID <span class="op">=</span> <span class="fl">1234</span><span class="op">)</span>,</span>
+<span>  legihelpR_quota_exceeded <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"Out of queries this month"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>If LegiScan asks for a wait longer than 60 seconds, legihelpR stops instead of waiting. Change the limit with <code>options(legihelpR.max_retry_wait = &lt;seconds&gt;)</code>.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="sessions">Sessions<a class="anchor" aria-label="anchor" href="#sessions"></a>
 </h2>
 <p>Receive a dataframe of all sessions in legiscan’s database using <code>getSessions</code> to return unique Session IDs for the provided state.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/getSessions.html">getSessions</a></span><span class="op">(</span>state <span class="op">=</span> <span class="st">"MA"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 9 × 15</span></span>
 <span><span class="co">#&gt;   session_id state_id state_abbr year_start year_end prefile sine_die prior</span></span>
@@ -111,7 +122,7 @@
 <h2 id="master-list">Master List<a class="anchor" aria-label="anchor" href="#master-list"></a>
 </h2>
 <p>For receiving a Master List from LegiScan’s API you can use <code>getMasterList</code>. You can provide a unique session ID or you can provide the state abbreviation to return the most recent regular session from that state.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/getMasterList.html">getMasterList</a></span><span class="op">(</span>sessionID <span class="op">=</span> <span class="fl">2108</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 88th Legislature 4th Special Session</span></span>
 <span><span class="co">#&gt; # A tibble: 399 × 10</span></span>
@@ -135,7 +146,7 @@
 <h2 id="legisearch">legiSearch<a class="anchor" aria-label="anchor" href="#legisearch"></a>
 </h2>
 <p>Return a dataframe of search results from legiscan using the <code>legiSearch</code> function. Reference <a href="https://legiscan.com/fulltext-search" class="external-link">legiscan’s documentation</a> for assistance with additional search syntax. You can specify dates, status, type, &amp; more using legiscan’s search filters in the ‘query’ argument.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/legiSearch.html">legiSearch</a></span><span class="op">(</span></span>
 <span>  query <span class="op">=</span> <span class="st">"workers compensation"</span>,</span>
 <span>  state <span class="op">=</span> <span class="st">"TX"</span></span>
@@ -161,7 +172,7 @@
 <h2 id="session-people">Session People<a class="anchor" aria-label="anchor" href="#session-people"></a>
 </h2>
 <p>Return a dataframe of basic information for people from the provided session id.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/getSessionPeople.html">getSessionPeople</a></span><span class="op">(</span>sessionID <span class="op">=</span> <span class="fl">2108</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 88th Legislature 4th Special Session</span></span>
 <span><span class="co">#&gt; # A tibble: 537 × 24</span></span>

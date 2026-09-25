@@ -34,6 +34,12 @@ A base data frame containing `bill_id` and `result` for returned bills.
 Bill IDs are character strings taken from the response names; results
 contain the API values for the requested action.
 
+## Details
+
+Because this changes the account, it is not retried after a network
+failure or gateway error that may have reached LegiScan. See
+[legihelpR-errors](https://aberuiz.github.io/legihelpR/reference/legihelpR-errors.md).
+
 ## Examples
 
 ``` r

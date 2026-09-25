@@ -38,6 +38,17 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="legihelpr-development-version">legihelpR (development version)<a class="anchor" aria-label="anchor" href="#legihelpr-development-version"></a></h2>
 <ul><li>
+<p>API failures now stop with classed errors that separate temporary problems from ones that will fail again. All inherit from <code>legihelpR_error</code>: <code>legihelpR_rate_limited</code>, <code>legihelpR_unavailable</code>, <code>legihelpR_network_error</code>, <code>legihelpR_quota_exceeded</code>, <code>legihelpR_invalid_key</code>, <code>legihelpR_access_denied</code>, <code>legihelpR_invalid_request</code>, <code>legihelpR_invalid_response</code>, plus <code>legihelpR_api_error</code> and <code>legihelpR_http_error</code> on errors from API bodies and HTTP statuses. Conditions carry <code>op</code>, <code>http_status</code>, <code>api_message</code>, and <code>retry_after</code> fields and an actionable hint. See <code><a href="../reference/legihelpR-errors.html">?"legihelpR-errors"</a></code>.</p>
+<ul><li>Retries still depend on the HTTP status (429 and 503), never on message wording, so a rate-limit response is never mistaken for an exhausted allowance and stopped early. Read-only functions now also retry HTTP 502 and 504 and network failures, and an HTTP 200 API error that plainly reports rate limiting is retried. Other API errors, such as an invalid key or id, still stop on the first attempt.</li>
+<li>A <code>Retry-After</code> longer than <code>legihelpR.max_retry_wait</code> (default 60 seconds) stops with the requested wait in <code>retry_after</code>, instead of blocking the session.</li>
+<li>
+<code><a href="../reference/setMonitor.html">setMonitor()</a></code> keeps retrying only HTTP 429, HTTP 503, and rate-limit messages, where LegiScan did not handle the request. After a network failure or gateway error its error says the change may already have been applied.</li>
+<li>API and dataset access keys are removed from error messages. LegiScan echoes the request URL, including the key, in some alerts. Errors no longer carry the httr2 request, whose URL contains the keys.</li>
+<li>
+<code><a href="../reference/getDatasetRaw.html">getDatasetRaw()</a></code> errors instead of saving a file when the download is not a ZIP archive, and responses that are not JSON raise <code>legihelpR_invalid_response</code>.</li>
+</ul></li>
+<li><p>Breaking: HTTP errors no longer have httr2’s <code>httr2_http_&lt;status&gt;</code> classes or its <code>resp</code> and <code>request</code> fields. Catch the legihelpR classes and use <code>http_status</code> instead.</p></li>
+<li>
 <p>Inputs are now validated locally so predictable mistakes no longer spend API quota:</p>
 <ul><li>Search queries longer than the API’s 1024-byte (UTF-8) limit error with the actual size; queries are never truncated or split. Accented and other non-ASCII characters count as 2-4 bytes. (The legiscan.com search box has a stricter 512-character limit that does not apply to the API.)</li>
 <li>Identifiers (<code>billID</code>, <code>peopleID</code>, <code>sessionID</code>, <code>billIDs</code>, …) must be positive whole numbers or strings of digits.</li>
