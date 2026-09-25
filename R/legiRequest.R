@@ -3,6 +3,8 @@
 #' @description
 #' Internal helper for all API functions. Validates the API key, performs the
 #' request against api.legiscan.com, and checks the API status of the response.
+#' Retries temporary failures and stops with the classed conditions described
+#' in `?legihelpR-errors`.
 #'
 #' @param op legiscan API operation name
 #'
@@ -13,7 +15,7 @@
 #' @param raw Return the raw response body instead of parsed JSON.
 #' Used by `getDatasetRaw` which returns a binary ZIP stream.
 #'
-#' @returns Parsed JSON response as a list, or a raw vector when raw = TRUE
+#' @returns Parsed JSON response as a list, or a raw ZIP archive when raw = TRUE
 #'
 #' @noRd
 legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
@@ -24,6 +26,9 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
     legiKey <- getlegiKey()
   }
   validateApiKey(legiKey)
+  # Removed from any error message, since LegiScan can echo the request URL.
+  secrets <- c(legiKey, list(...)$access_key)
+  changesState <- op %in% stateChangingOps
 
   req <- httr2::request("https://api.legiscan.com")
   req <- httr2::req_url_query(
@@ -35,12 +40,15 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
   )
   req <- httr2::req_user_agent(req, "legihelpR (https://github.com/aberuiz/legihelpR)")
   # httr2's req_throttle() only paces the first attempt, so retries reserve
-  # their send time from the same pacer as every other request.
+  # their send time from the same pacer as every other request. See
+  # ?`legihelpR-errors` for which failures are retried.
   req <- httr2::req_retry(
     req,
     max_tries = 3,
+    retry_on_failure = !changesState,
+    is_transient = function(resp) isTransientResponse(resp, changesState),
     after = function(resp){
-      after <- httr2::resp_retry_after(resp)
+      after <- retryAfterSeconds(resp)
       if (is.na(after)) NA else reserveRequestSlot(after)
     },
     backoff = function(tries){
@@ -48,24 +56,49 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
     }
   )
   Sys.sleep(reserveRequestSlot())
-  req <- httr2::req_perform(req)
+  # Conditions are rebuilt without the request, whose URL holds the keys.
+  resp <- tryCatch(
+    httr2::req_perform(req),
+    httr2_http = function(cnd) stopHttpError(cnd$resp, op, secrets),
+    httr2_failure = function(cnd) stopNetworkError(cnd, op, secrets)
+  )
 
   # Raw downloads can still return JSON errors.
-  if (raw && !grepl("json", httr2::resp_content_type(req), ignore.case = TRUE)){
-    return(httr2::resp_body_raw(req))
+  if (raw && !grepl("json", httr2::resp_content_type(resp), ignore.case = TRUE)){
+    body <- httr2::resp_body_raw(resp)
+    # Every ZIP archive starts with "PK"; anything else, such as an HTML
+    # error page, would otherwise be written to disk as the dataset.
+    if (length(body) < 2L || !identical(body[1:2], charToRaw("PK"))){
+      stopLegi(
+        "invalid_response",
+        sprintf(
+          "API returned %s instead of a ZIP archive.",
+          if (is.na(httr2::resp_content_type(resp))) "an unknown content type" else httr2::resp_content_type(resp)
+        ),
+        op = op,
+        httpStatus = httr2::resp_status(resp)
+      )
+    }
+    return(body)
   }
 
-  response <- httr2::resp_body_json(req)
+  response <- tryCatch(
+    httr2::resp_body_json(resp),
+    error = function(e){
+      stopLegi(
+        "invalid_response",
+        paste0("API returned a response that is not valid JSON: ", redactSecrets(conditionMessage(e), secrets)),
+        op = op,
+        httpStatus = httr2::resp_status(resp)
+      )
+    }
+  )
 
   if (!is.list(response) || is.null(response$status)){
-    stop("API returned an invalid response without a status.", call. = FALSE)
+    stopLegi("invalid_response", "API returned an invalid response without a status.", op = op)
   }
   if (!identical(response$status, "OK")){
-    alert <- if (is.list(response$alert)) response$alert$message else NULL
-    if (!rlang::is_string(alert) || is.na(alert) || !nzchar(alert)){
-      alert <- paste0("status ", paste(response$status, collapse = ", "))
-    }
-    stop(sprintf("API returned error: %s", alert), call. = FALSE)
+    stopApiError(response, op, secrets)
   }
 
   return(response)

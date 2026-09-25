@@ -55,6 +55,19 @@ options(legihelpR.request_interval = 1)
 
 The spacing only applies within one R process. Parallel workers or separate sessions sharing one API key have to coordinate their combined traffic themselves.
 
+### Errors
+
+Temporary failures, such as rate limiting or a brief outage, are retried a few times with backoff, honoring LegiScan's `Retry-After` header. Other failures stop right away with a classed error you can catch, such as `legihelpR_rate_limited`, `legihelpR_quota_exceeded`, `legihelpR_invalid_key`, or `legihelpR_invalid_request`. All of them inherit from `legihelpR_error`. See `?"legihelpR-errors"` for the full list.
+
+```{r eval = FALSE}
+tryCatch(
+  getBill(billID = 1234),
+  legihelpR_quota_exceeded = function(e) message("Out of queries this month")
+)
+```
+
+If LegiScan asks for a wait longer than 60 seconds, legihelpR stops instead of waiting. Change the limit with `options(legihelpR.max_retry_wait = <seconds>)`.
+
 ## Sessions
 
 Receive a dataframe of all sessions in legiscan's database using `getSessions` to return unique Session IDs for the provided state.

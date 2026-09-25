@@ -1,5 +1,38 @@
 # legihelpR (development version)
 
+- API failures now stop with classed errors that separate temporary
+  problems from ones that will fail again. All inherit from
+  `legihelpR_error`: `legihelpR_rate_limited`, `legihelpR_unavailable`,
+  `legihelpR_network_error`, `legihelpR_quota_exceeded`,
+  `legihelpR_invalid_key`, `legihelpR_access_denied`,
+  `legihelpR_invalid_request`, `legihelpR_invalid_response`, plus
+  `legihelpR_api_error` and `legihelpR_http_error` on errors from API
+  bodies and HTTP statuses. Conditions carry `op`, `http_status`,
+  `api_message`, and `retry_after` fields and an actionable hint. See
+  `?"legihelpR-errors"`.
+  - Retries still depend on the HTTP status (429 and 503), never on
+    message wording, so a rate-limit response is never mistaken for an
+    exhausted allowance and stopped early. Read-only functions now also
+    retry HTTP 502 and 504 and network failures, and an HTTP 200 API error
+    that plainly reports rate limiting is retried. Other API errors, such
+    as an invalid key or id, still stop on the first attempt.
+  - A `Retry-After` longer than `legihelpR.max_retry_wait` (default 60
+    seconds) stops with the requested wait in `retry_after`, instead of
+    blocking the session.
+  - `setMonitor()` keeps retrying only HTTP 429, HTTP 503, and rate-limit
+    messages, where LegiScan did not handle the request. After a network
+    failure or gateway error its error says the change may already have
+    been applied.
+  - API and dataset access keys are removed from error messages. LegiScan
+    echoes the request URL, including the key, in some alerts. Errors no
+    longer carry the httr2 request, whose URL contains the keys.
+  - `getDatasetRaw()` errors instead of saving a file when the download is
+    not a ZIP archive, and responses that are not JSON raise
+    `legihelpR_invalid_response`.
+- Breaking: HTTP errors no longer have httr2's `httr2_http_<status>`
+  classes or its `resp` and `request` fields. Catch the legihelpR classes
+  and use `http_status` instead.
+
 - Inputs are now validated locally so predictable mistakes no longer spend
   API quota:
   - Search queries longer than the API's 1024-byte (UTF-8) limit error with

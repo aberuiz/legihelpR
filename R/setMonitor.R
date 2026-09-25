@@ -4,6 +4,10 @@
 #' Interact with GAITS to add or remove bills from the monitor list of the
 #' account associated with the legiKey provided, or set a stance on monitored bills
 #'
+#' @details
+#' Because this changes the account, it is not retried after a network failure
+#' or gateway error that may have reached LegiScan. See \link{legihelpR-errors}.
+#'
 #' @param billIDs One or more bill_id integer values to operate on
 #'
 #' @param action Action to take on the bill list: "monitor", "remove", or "set"

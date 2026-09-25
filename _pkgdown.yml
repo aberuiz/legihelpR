@@ -36,4 +36,7 @@ reference:
   - getMonitorList
   - getMonitorListRaw
   - setMonitor
+- title: Errors
+  contents:
+  - legihelpR-errors
 

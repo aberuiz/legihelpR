@@ -24,6 +24,10 @@ contain the API values for the requested action.
 Interact with GAITS to add or remove bills from the monitor list of the
 account associated with the legiKey provided, or set a stance on monitored bills
 }
+\details{
+Because this changes the account, it is not retried after a network failure
+or gateway error that may have reached LegiScan. See \link{legihelpR-errors}.
+}
 \examples{
 \dontrun{
 setMonitor(billIDs = c(150334, 141690), action = "monitor")
