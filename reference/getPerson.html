@@ -59,8 +59,9 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data frame (tibble) containing the individual record. Columns
-come from the API response.</p>
+    <p>A one-row data frame (tibble) containing the individual record.
+Columns come from the API response. Nested fields such as <code>bio</code> are
+kept as list columns, e.g. <code>person$bio[[1]]$social$email</code>.</p>
     </div>
 
     <div class="section level2">

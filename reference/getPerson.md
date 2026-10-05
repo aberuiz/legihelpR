@@ -20,8 +20,9 @@ getPerson(peopleID = NULL, legiKey = NULL)
 
 ## Value
 
-A data frame (tibble) containing the individual record. Columns come
-from the API response.
+A one-row data frame (tibble) containing the individual record. Columns
+come from the API response. Nested fields such as `bio` are kept as list
+columns, e.g. `person$bio[[1]]$social$email`.
 
 ## Examples
 
