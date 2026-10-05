@@ -7,8 +7,9 @@
 #'
 #' @param legiKey 32 character string provided by legiscan
 #'
-#' @returns A data frame (tibble) containing the individual record. Columns
-#' come from the API response.
+#' @returns A one-row data frame (tibble) containing the individual record.
+#' Columns come from the API response. Nested fields such as \code{bio} are
+#' kept as list columns, e.g. \code{person$bio[[1]]$social$email}.
 #'
 #' @examples
 #' \dontrun{
@@ -27,5 +28,12 @@ getPerson <- function(peopleID = NULL, legiKey = NULL){
   )
 
   message(response$person$name)
-  return(dplyr::bind_rows(response$person))
+
+  # bind_rows spreads nested fields (bio) across rows, so add them as list
+  # columns to keep one row per person
+  person <- response$person
+  nested <- vapply(person, is.list, logical(1))
+  df <- dplyr::bind_rows(person[!nested])
+  df[names(person)[nested]] <- lapply(person[nested], list)
+  return(df)
 }

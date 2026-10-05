@@ -12,8 +12,9 @@ getPerson(peopleID = NULL, legiKey = NULL)
 \item{legiKey}{32 character string provided by legiscan}
 }
 \value{
-A data frame (tibble) containing the individual record. Columns
-come from the API response.
+A one-row data frame (tibble) containing the individual record.
+Columns come from the API response. Nested fields such as \code{bio} are
+kept as list columns, e.g. \code{person$bio[[1]]$social$email}.
 }
 \description{
 Return an individual record with basic information

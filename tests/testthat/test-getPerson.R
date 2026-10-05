@@ -4,7 +4,13 @@ with_mock_dir("fixtures", {
       person <- getPerson(peopleID = 5997, legiKey = fakeKey)
     )
     expect_s3_class(person, "data.frame")
-    expect_true(all(person$people_id == 5997))
-    expect_contains(names(person), c("name", "party"))
+    expect_equal(nrow(person), 1)
+    expect_equal(person$people_id, 5997)
+    expect_contains(names(person), c("name", "party", "bio"))
+    expect_type(person$bio, "list")
+    expect_equal(
+      person$bio[[1]]$capitol_address$city,
+      "Austin"
+    )
   })
 })

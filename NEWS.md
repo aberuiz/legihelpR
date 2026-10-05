@@ -1,5 +1,9 @@
 # legihelpR (development version)
 
+- `getPerson()` now returns one row per person. The nested `bio` field
+  was spread across several rows by `bind_rows()`, so joins on
+  `people_id` (e.g. to roll call votes) could count a legislator more
+  than once. `bio` is now a list column.
 - API failures now stop with classed errors that separate temporary
   problems from ones that will fail again. All inherit from
   `legihelpR_error`: `legihelpR_rate_limited`, `legihelpR_unavailable`,
