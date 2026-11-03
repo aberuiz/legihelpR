@@ -68,6 +68,8 @@ tryCatch(
 
 If LegiScan asks for a wait longer than 60 seconds, legihelpR stops instead of waiting. Change the limit with `options(legihelpR.max_retry_wait = <seconds>)`.
 
+A connection that receives no data for 60 seconds counts as a network failure, even if the request has not started returning data yet. Slow downloads are not cut off as long as data keeps arriving. Read-only functions try 3 times, so a stalled request takes about 3 minutes to fail. Change the limit with `options(legihelpR.stall_timeout = <seconds>)`. Setting it to 0 turns the limit off, so a silent connection can then hang forever.
+
 ## Sessions
 
 Receive a dataframe of all sessions in legiscan's database using `getSessions` to return unique Session IDs for the provided state.

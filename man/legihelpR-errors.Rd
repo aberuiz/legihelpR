@@ -19,6 +19,14 @@ option allows (60 seconds by default), legihelpR stops instead of waiting;
 the requested wait is in the error's \code{retry_after} field. Other
 failures stop immediately.
 
+A connection that receives no data for 60 seconds, including while waiting
+for the response to start, counts as a network failure. Change the limit
+with the \code{legihelpR.stall_timeout} option, in seconds, rounded up to a
+whole number. 0 turns it off, so a silent connection can then hang forever.
+Slow downloads are not cut off as long as data keeps arriving. With the 3
+attempts for read-only functions, a stalled request takes about 3 minutes to
+fail by default.
+
 \code{setMonitor()} changes the monitor list of the account, so it is only
 retried after responses that say the request was not handled (HTTP 429 and
 503, or a rate limit message). After a network failure or gateway error the
@@ -35,8 +43,8 @@ generic \code{legihelpR_api_error} class.
   \item{\code{legihelpR_rate_limited}}{Too many requests. Temporary: wait
   and try again, or increase \code{options(legihelpR.request_interval)}.}
   \item{\code{legihelpR_unavailable}}{HTTP 502, 503 or 504. Temporary.}
-  \item{\code{legihelpR_network_error}}{LegiScan could not be reached.
-  Usually temporary.}
+  \item{\code{legihelpR_network_error}}{LegiScan could not be reached, or
+  the connection stalled. Usually temporary.}
   \item{\code{legihelpR_quota_exceeded}}{The key's query allowance is used
   up. Retrying will not help until it resets.}
   \item{\code{legihelpR_invalid_key}}{LegiScan does not recognize the API

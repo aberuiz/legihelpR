@@ -30,7 +30,7 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
   secrets <- c(legiKey, list(...)$access_key)
   changesState <- op %in% stateChangingOps
 
-  req <- httr2::request("https://api.legiscan.com")
+  req <- httr2::request(legiApiUrl())
   req <- httr2::req_url_query(
     req,
     key = legiKey,
@@ -39,6 +39,9 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
     .multi = "explode"
   )
   req <- httr2::req_user_agent(req, "legihelpR (https://github.com/aberuiz/legihelpR)")
+  # A stall limit, not req_timeout(), so slow but healthy downloads can finish.
+  # Always set, since 0 has to override the curl package's own 600 second limit.
+  req <- httr2::req_options(req, low_speed_limit = 1, low_speed_time = stallTimeout())
   # httr2's req_throttle() only paces the first attempt, so retries reserve
   # their send time from the same pacer as every other request. See
   # ?`legihelpR-errors` for which failures are retried.
@@ -102,6 +105,36 @@ legiRequest <- function(op, ..., legiKey = NULL, raw = FALSE){
   }
 
   return(response)
+}
+
+# Separate so tests can point requests at a local socket.
+legiApiUrl <- function() "https://api.legiscan.com"
+
+#' Seconds without data before a request is abandoned
+#'
+#' @description
+#' Reads `getOption("legihelpR.stall_timeout", 60)`. 0 turns the limit off.
+#' curl only takes whole seconds and truncates anything else, which would turn
+#' 0.5 into "no limit", so values are rounded up. It also fails at once on
+#' extremely large numbers such as 1e300, so values are capped.
+#'
+#' @returns Whole seconds for curl's `low_speed_time` option.
+#'
+#' @noRd
+stallTimeout <- function(){
+  timeout <- getOption("legihelpR.stall_timeout", 60)
+  validTimeout <- is.numeric(timeout) &&
+    length(timeout) == 1L &&
+    !is.na(timeout) &&
+    is.finite(timeout) &&
+    timeout >= 0
+  if (!validTimeout){
+    stop(
+      "`legihelpR.stall_timeout` option must be a non-negative number of seconds",
+      call. = FALSE
+    )
+  }
+  min(ceiling(timeout), .Machine$integer.max)
 }
 
 pacer <- new.env(parent = emptyenv())

@@ -20,3 +20,30 @@ legiscanRedactor <- function(x) {
   }
   x
 }
+
+# A listening socket that never accepts: connections succeed, requests are
+# sent, and no answer ever comes. Returns the URL and the socket.
+local_silent_server <- function(env = parent.frame()) {
+  for (port in sample(49152:65535, 20)) {
+    server <- tryCatch(suppressWarnings(serverSocket(port)), error = function(e) NULL)
+    if (!is.null(server)) {
+      withr::defer(close(server), envir = env)
+      return(list(url = sprintf("http://127.0.0.1:%d", port), server = server))
+    }
+  }
+  stop("Could not open a local socket", call. = FALSE)
+}
+
+# Number of connections a silent server received.
+count_connections <- function(server) {
+  count <- 0L
+  repeat {
+    connection <- tryCatch(
+      suppressWarnings(socketAccept(server, timeout = 1)),
+      error = function(e) NULL
+    )
+    if (is.null(connection)) return(count)
+    close(connection)
+    count <- count + 1L
+  }
+}
