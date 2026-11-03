@@ -16,6 +16,14 @@ When the server asks for a longer wait than the
 legihelpR stops instead of waiting; the requested wait is in the error's
 `retry_after` field. Other failures stop immediately.
 
+A connection that receives no data for 60 seconds, including while
+waiting for the response to start, counts as a network failure. Change
+the limit with the `legihelpR.stall_timeout` option, in seconds, rounded
+up to a whole number. 0 turns it off, so a silent connection can then
+hang forever. Slow downloads are not cut off as long as data keeps
+arriving. With the 3 attempts for read-only functions, a stalled request
+takes about 3 minutes to fail by default.
+
 [`setMonitor()`](https://aberuiz.github.io/legihelpR/reference/setMonitor.md)
 changes the monitor list of the account, so it is only retried after
 responses that say the request was not handled (HTTP 429 and 503, or a
@@ -41,7 +49,8 @@ generic `legihelpR_api_error` class.
 
 - `legihelpR_network_error`:
 
-  LegiScan could not be reached. Usually temporary.
+  LegiScan could not be reached, or the connection stalled. Usually
+  temporary.
 
 - `legihelpR_quota_exceeded`:
 

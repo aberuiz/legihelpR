@@ -2,6 +2,17 @@
 
 ## legihelpR (development version)
 
+- Requests now fail when a connection receives no data for 60 seconds,
+  instead of waiting for the curl package’s 10 minute limit on each
+  attempt. Slow downloads are not cut off as long as data keeps
+  arriving. Change the limit with
+  `options(legihelpR.stall_timeout = <seconds>)`; 0 turns it off. A
+  stall is a network failure: read-only functions retry it, so a stalled
+  request ends as `legihelpR_network_error` after about 3 minutes.
+  [`setMonitor()`](https://aberuiz.github.io/legihelpR/reference/setMonitor.md)
+  does not retry, and its error says the change may or may not have been
+  applied.
+
 - [`getPerson()`](https://aberuiz.github.io/legihelpR/reference/getPerson.md)
   now returns one row per person. The nested `bio` field was spread
   across several rows by `bind_rows()`, so joins on `people_id` (e.g. to
